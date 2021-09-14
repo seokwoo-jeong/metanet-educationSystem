@@ -6,51 +6,50 @@ create table class(
   	constraint pk_class primary key (classNO)
 );
 
-create table user(
-	userNO number(10) not null,
-	userName varchar2(10),
-	userPassword varchar2(30),
-	userEmail varchar2(30), 
-	userPhoneNO varchar2(30),
-	userDistinct number(1),
-	constraint pk_user primary key (userNO)
+create table member(
+	memberNO number(10) not null,
+	memberName varchar2(10),
+	memberPassword varchar2(30),
+	memberEmail varchar2(30), 
+	memberPhoneNO varchar2(30),
+	memberDistinct number(1),
+	constraint pk_member primary key (memberNO)
 );
 
 create table score(
 	classNO number(10) not null,
-	userNO number(10) not null,
+	memberNO number(10) not null,
 	midtermScore number(3),
 	finalsScore number(3), --기말고사점수
 	assignmentScore number(3),
 	attendanceScore number(3),
-	grade varchar2(2) -- 최종학점(a+,a0,b+,b0...)
-	constraint pk_class primary key (classNO)
-	constraint pk_user primary key (userNO)
-	constraint fk_classNO foreign key (classNO) references class (classNO)
-	constraint fk_userNO foreign key (userNO) references user (userNO)
+	grade varchar2(2), --최종학점(a+,a,b+,b...)
+	constraint pk_studentScore primary key (classNO,memberNO),
+	constraint fk_classNO foreign key (classNO) references class (classNO),
+	constraint fk_memberNO foreign key (memberNO) references member (memberNO)
 );
 
 create table student(
 	studentNO number(10) not null,
 	studentMajor varchar2(30),
-	studentSemester number(2) -- 이수학기
-	constraint pk_student primary key (studentNO)
-	constraint fk_studentNO foreign key (studentNO) references user (userNO)
+	studentSemester number(2), -- 이수학기
+	constraint pk_student primary key (studentNO),
+	constraint fk_studentNO foreign key (studentNO) references member (memberNO)
 );
 
 create table professor(
 	professorNO number(10) not null,
 	professorMajor varchar2(30),
 	professorRank varchar2(10), --ex) 주임교수, 주교수, 부교수 ...
-	constraint pk_professor primary key (professorNO)
-	constraint fk_professorNO foreign key (professorNO) references user (userNO)
+	constraint pk_professor primary key (professorNO),
+	constraint fk_professorNO foreign key (professorNO) references member (memberNO)
 	
 );
 
 create table admin(
 	adminNO number(10) not null,
 	adminDepartment varchar(30),
-	constraint pk_admin primary key (adminNO)
-	constraint fk_adminNO foreign key (adminNO) references user (userNO)
+	constraint pk_admin primary key (adminNO),
+	constraint fk_adminNO foreign key (adminNO) references member (memberNO)
 
 );
