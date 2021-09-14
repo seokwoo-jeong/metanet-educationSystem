@@ -14,7 +14,7 @@ public class TempController {
 	
 	@RequestMapping("/")
 	public String temp(Model model) {
-		model.addAttribute("dept",tempService.getAll());
+		//model.addAttribute("dept",tempService.getAll());
 		return "Main";
 	}
 
