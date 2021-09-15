@@ -70,7 +70,7 @@
 				<div class="header-right">
 					<div class="input-group icons">
 						<div class="col-12 text-center">
-							<form action="/">
+							<form action="/checkLogin">
 								 <button class="btn btn-primary px-3 ml-4">login</button>
 							</form>
 						</div>

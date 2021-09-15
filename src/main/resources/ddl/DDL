@@ -3,7 +3,9 @@ create table class(
 	className varchar2(30),
 	classGoal varchar2(30),
   	classSummary varchar2(30),
-  	constraint pk_class primary key (classNO)
+	professorNO number(10),
+  	constraint pk_class primary key (classNO),
+	constraint fk_class_professorNO foreign key (professorNO) references professor (professorNO)
 );
 
 create table member(
