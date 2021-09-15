@@ -23,14 +23,14 @@
                             <div class="card-body pt-5">
                                 <a class="text-center"> <h4>Login</h4></a>
         
-                                <form class="mt-5 mb-5 login-input" action = "#">
+                                <form class="mt-5 mb-5 login-input" action = "/login" method="post">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="UserNO">
+                                        <input type="text" class="form-control" placeholder="Id" name="userNO">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password">
+                                        <input type="password" class="form-control" placeholder="Password" name="userPassword">
                                     </div>
-                                    <button class="btn login-form__btn submit w-100">Sign In</button>
+                                    <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
                                 </form>
                                 
                             </div>

@@ -2,9 +2,11 @@ package com.metanet.educationSystem.model;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class ScoreVO {
 	private int classNO;
 	private int userNO;
