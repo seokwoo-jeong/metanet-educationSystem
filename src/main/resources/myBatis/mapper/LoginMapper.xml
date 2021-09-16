@@ -5,8 +5,18 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.metanet.educationSystem.mapper.login.LoginMapper">
 
+    <select id="readMember" parameterType="String" resultType="MemberVO">
+          SELECT * FROM member WHERE memberNO = #{memberNO}
+     </select>
+     
 	<select id="getPassword" resultType="MemberVO">
-        SELECT memberPassword from member where memberName=#{memberNO}
+        SELECT memberPassword from member where memberNO=#{memberNO}
     </select>
     
+
+     <select id="getDistinct" parameterType="String" resultType="String">
+          SELECT memberDistinct FROM member WHERE memberNO = #{memberNO}
+     </select>
+     
+     
 </mapper>

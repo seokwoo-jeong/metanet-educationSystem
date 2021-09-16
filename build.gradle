@@ -30,8 +30,9 @@ dependencies {
 	testCompileOnly 'org.projectlombok:lombok:1.18.20'
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 	// Spring Security
-	testImplementation 'org.springframework.security:spring-security-test'
-}
+	implementation "org.springframework.boot:spring-boot-starter-security"
+	implementation "org.springframework.boot:spring-boot-starter-security"
+}	
 
 test {
 	useJUnitPlatform()

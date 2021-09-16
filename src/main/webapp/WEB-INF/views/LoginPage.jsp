@@ -23,14 +23,15 @@
                             <div class="card-body pt-5">
                                 <a class="text-center"> <h4>Login</h4></a>
         
-                                <form class="mt-5 mb-5 login-input" action = "/login" method="post">
+                                <form class="mt-5 mb-5 login-input" action = "doLogin" method="post">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Id" name="userNO">
+                                        <input type="text" class="form-control" placeholder="Id" name="memberNO">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" placeholder="Password" name="userPassword">
+                                        <input type="password" class="form-control" placeholder="Password" name="memberPassword">
                                     </div>
                                     <button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
+                                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                                 </form>
                                 
                             </div>

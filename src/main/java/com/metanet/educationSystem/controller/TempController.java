@@ -12,7 +12,7 @@ public class TempController {
     @Autowired
     private TempService tempService;
 	
-	@RequestMapping("/")
+	@RequestMapping(value = {"/","/Main"})
 	public String temp(Model model) {
 		//model.addAttribute("dept",tempService.getAll());
 		return "Main";

@@ -18,6 +18,9 @@ import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.service.login.LoginService;
 import com.metanet.educationSystem.service.login.LoginServiceImpl;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class LoginController {
     
@@ -26,18 +29,26 @@ public class LoginController {
 	
 	@RequestMapping("/checkLogin")
 	public String checkLogin(Model model) {
-		
+		System.out.println("로그인 화면");
 		return "LoginPage";
 	}
 	
-	@PostMapping("/login")
-	public String login(HttpServletRequest request,
-			@ModelAttribute MemberVO user) {
-		System.out.println(user.toString());
-		user = loginService.getPassword(user);
-		System.out.println(user);
-		return "LoginPage";
+	@RequestMapping("/doLogin")
+	public String doLogin(HttpServletRequest request) {
+		System.out.println("로그인 Dologin");
+		return "LoginSuccess";
 	}
 
+	@RequestMapping("/loginSuccess")
+	public String loginSuccess(HttpServletRequest request) {
+		System.out.println("로그인 성공");
+		return "LoginSuccess";
+	}
+
+	@RequestMapping("/loginFail")
+	public String loginFail(HttpServletRequest request) {
+		System.out.println("로그인 실패");
+		return "LoginFail";
+	}
 
 }

@@ -1,13 +1,11 @@
 package com.metanet.educationSystem.service.login;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 
-import com.metanet.educationSystem.mapper.login.LoginMapper;
-import com.metanet.educationSystem.model.MemberVO;
+// UserDetailService : Security상속 메소드
+public interface LoginService extends UserDetailsService{
 
-public interface LoginService {
-
-
-	MemberVO getPassword(MemberVO user);
+	UserDetails loadUserByUsername(String memberNO);
 	
 }
