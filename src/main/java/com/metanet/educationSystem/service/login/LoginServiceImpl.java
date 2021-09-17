@@ -5,12 +5,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
+
 import com.metanet.educationSystem.mapper.LoginMapper;
-=======
-import com.metanet.educationSystem.mapper.login.LoginMapper;
 import com.metanet.educationSystem.model.MemberVO;
->>>>>>> fb472a3bec218c8780ec34ae326bfcaf0f15b740
+
 
 @Service
 public class LoginServiceImpl implements LoginService {
@@ -19,7 +17,7 @@ public class LoginServiceImpl implements LoginService {
 	private LoginMapper loginMapper;
 
 	@Override
-	// Security ÇÊ¼ö ¸Þ¼­µå
+	// Security ï¿½Ê¼ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public UserDetails loadUserByUsername(String memberNO) throws UsernameNotFoundException {
 		System.out.println("loadByname");
 		System.out.println(memberNO);

@@ -29,33 +29,27 @@ public class LoginController {
 	
 	@RequestMapping("/checkLogin")
 	public String checkLogin(Model model) {
-<<<<<<< HEAD:src/main/java/com/metanet/educationSystem/controller/LoginController.java
-		
-		return "login/LoginPage";
-	}
-	
-=======
-		System.out.println("·Î±×ÀÎ È­¸é");
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ È­ï¿½ï¿½");
 		return "LoginPage";
 	}
 	
 	@RequestMapping("/doLogin")
 	public String doLogin(HttpServletRequest request) {
-		System.out.println("·Î±×ÀÎ Dologin");
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ Dologin");
 		return "LoginSuccess";
 	}
 
 	@RequestMapping("/loginSuccess")
 	public String loginSuccess(HttpServletRequest request) {
-		System.out.println("·Î±×ÀÎ ¼º°ø");
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		return "LoginSuccess";
 	}
 
 	@RequestMapping("/loginFail")
 	public String loginFail(HttpServletRequest request) {
-		System.out.println("·Î±×ÀÎ ½ÇÆÐ");
+		System.out.println("ï¿½Î±ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
 		return "LoginFail";
 	}
->>>>>>> fb472a3bec218c8780ec34ae326bfcaf0f15b740:src/main/java/com/metanet/educationSystem/controller/login/LoginController.java
+
 
 }
