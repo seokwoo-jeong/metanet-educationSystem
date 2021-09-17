@@ -1,99 +1,63 @@
 create table class(
-	classNO number(10) not null,
-	className varchar2(30),
-	classGoal varchar2(30),
-  	classSummary varchar2(30),
-<<<<<<< Updated upstream
-	professorNO number(10),
+	classNO varchar2(100) not null,
+	className varchar2(100),
+	classGoal varchar2(4000),
+  classSummary varchar2(4000),
+  classPersonnel NUMBER(30),
+  classCredit NUMBER(10),
+	memberNO VARCHAR2(100),
   	constraint pk_class primary key (classNO),
-	constraint fk_class_professorNO foreign key (professorNO) references professor (professorNO)
+	constraint fk_class_memberNO foreign key (memberNO) references member (memberNO)
 );
 
 create table member(
-	memberNO number(10) not null,
-	memberName varchar2(10),
-	memberPassword varchar2(30),
-	memberEmail varchar2(30), 
-	memberPhoneNO varchar2(30),
-	memberDistinct number(1),
+	memberNO varchar2(100) not null,
+	memberName varchar2(500),
+	memberPassword varchar2(500),
+	memberEmail varchar2(1000),
+	memberPhoneNO varchar2(1000),
+	memberDistinct number(10),
+    isAccountNonExpired number(10),
+    isAccountNonLocked number(10),
+    isCredentialsNonExpired number(10),
+    isEnabled number(10),
 	constraint pk_member primary key (memberNO)
-=======
-  	constraint pk_class primary key (classNO)
-);
-
-create table user(
-	userNO number(10) not null,
-	userName varchar2(10),
-	userPassword varchar2(30),
-	userEmail varchar2(30), 
-	userPhoneNO varchar2(30),
-	userDistinct number(1),
-	constraint pk_user primary key (userNO)
->>>>>>> Stashed changes
 );
 
 create table score(
-	classNO number(10) not null,
-<<<<<<< Updated upstream
-	memberNO number(10) not null,
-=======
-	userNO number(10) not null,
->>>>>>> Stashed changes
-	midtermScore number(3),
-	finalsScore number(3), --±â¸»°í»çÁ¡¼ö
-	assignmentScore number(3),
-	attendanceScore number(3),
-<<<<<<< Updated upstream
-	grade varchar2(2), --ÃÖÁ¾ÇĞÁ¡(a+,a,b+,b...)
+	classNO varchar2(100) not null,
+	memberNO varchar2(100) not null,
+	midtermScore number(30),
+	finalsScore number(30), --ê¸°ë§ê³ ì‚¬ì ìˆ˜
+	assignmentScore number(30),
+	attendanceScore number(30),
+	grade varchar2(20), --ìµœì¢…í•™ì (a+,a,b+,b...)
 	constraint pk_studentScore primary key (classNO,memberNO),
 	constraint fk_classNO foreign key (classNO) references class (classNO),
 	constraint fk_memberNO foreign key (memberNO) references member (memberNO)
-=======
-	grade varchar2(2) -- ÃÖÁ¾ÇĞÁ¡(a+,a0,b+,b0...)
-	constraint pk_class primary key (classNO)
-	constraint pk_user primary key (userNO)
-	constraint fk_classNO foreign key (classNO) references class (classNO)
-	constraint fk_userNO foreign key (userNO) references user (userNO)
->>>>>>> Stashed changes
 );
 
 create table student(
-	studentNO number(10) not null,
-	studentMajor varchar2(30),
-<<<<<<< Updated upstream
-	studentSemester number(2), -- ÀÌ¼öÇĞ±â
+	studentNO varchar2(100) not null,
+	studentMajor varchar2(500),
+	studentSemester number(20), -- ì´ìˆ˜í•™ê¸°
+	studentCredit NUMBER(20),
 	constraint pk_student primary key (studentNO),
 	constraint fk_studentNO foreign key (studentNO) references member (memberNO)
-=======
-	studentSemester number(2) -- ÀÌ¼öÇĞ±â
-	constraint pk_student primary key (studentNO)
-	constraint fk_studentNO foreign key (studentNO) references user (userNO)
->>>>>>> Stashed changes
 );
 
 create table professor(
-	professorNO number(10) not null,
-	professorMajor varchar2(30),
-	professorRank varchar2(10), --ex) ÁÖÀÓ±³¼ö, ÁÖ±³¼ö, ºÎ±³¼ö ...
-<<<<<<< Updated upstream
+	professorNO varchar2(100) not null,
+	professorMajor varchar2(300),
+	professorRank varchar2(100), --ex) ì£¼ì„êµìˆ˜, ì£¼êµìˆ˜, ë¶€êµìˆ˜ ...
 	constraint pk_professor primary key (professorNO),
 	constraint fk_professorNO foreign key (professorNO) references member (memberNO)
-=======
-	constraint pk_professor primary key (professorNO)
-	constraint fk_professorNO foreign key (professorNO) references user (userNO)
->>>>>>> Stashed changes
-	
+
 );
 
 create table admin(
-	adminNO number(10) not null,
-	adminDepartment varchar(30),
-<<<<<<< Updated upstream
+	adminNO varchar2(100) not null,
+	adminDepartment varchar(300),
 	constraint pk_admin primary key (adminNO),
 	constraint fk_adminNO foreign key (adminNO) references member (memberNO)
-=======
-	constraint pk_admin primary key (adminNO)
-	constraint fk_adminNO foreign key (adminNO) references user (userNO)
->>>>>>> Stashed changes
-
-);
+	);

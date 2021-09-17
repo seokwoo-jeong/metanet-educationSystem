@@ -23,7 +23,7 @@ public class LoginServiceImpl implements LoginService {
 		System.out.println(memberNO);
 		MemberVO member = loginMapper.readMember(memberNO);
 		System.out.println(member.toString());
-		//member.setMemberPassword("{noop}"+member.getMemberPassword());
+		member.setMemberPassword("{noop}"+member.getMemberPassword());
 		System.out.println(member.toString());
 		return member;
 	}
