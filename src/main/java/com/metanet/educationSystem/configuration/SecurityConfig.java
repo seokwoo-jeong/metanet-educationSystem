@@ -23,6 +23,12 @@ import lombok.extern.slf4j.Slf4j;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	LoginService loginService;
+	
+	
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		// 허용되어야 할 경로들
@@ -30,38 +36,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				"/js/**","/favicon.ico", "/error");
 	}
 
-	@Autowired
-	LoginService loginService;
-	
-	
-	@Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-	
+
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/checkLogin", "/doLogin").permitAll()
-//            .antMatchers("/admin/**").hasRole("ADMIN")
-//            .antMatchers("/student/**").hasRole("STUDENT")
-//            .antMatchers("/professor/**").hasRole("PROFESSOR")
-//            .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
-				.anyRequest().authenticated()
-				.and()
-				.formLogin()
-				.loginPage("/checkLogin").loginProcessingUrl("/doLogin")
-				.usernameParameter("memberNO")
-				.passwordParameter("memberPassword")
-				.defaultSuccessUrl("/LoginSuccess")
-				.failureUrl("/LoginFail")
-				.and().httpBasic();
+			http.authorizeRequests()
+			.antMatchers("/checkLogin", "/","/doLogout").permitAll()
+	        .antMatchers("/admin/**").hasRole("2")
+	        .antMatchers("/professor/**").hasRole("1")
+	        .antMatchers("/student/**").hasRole("0")
+			.anyRequest().authenticated()
+		.and().formLogin()
+			.loginPage("/checkLogin").loginProcessingUrl("/doLogin")
+			.usernameParameter("memberNO")
+			.passwordParameter("memberPassword")
+			.successHandler(new LoginSuccessHandler())
+			.failureHandler(new LoginFailHandler())
+			.failureForwardUrl("/loginFail")
+		.and().logout()
+			.logoutUrl("/doLogout")
+			.logoutSuccessUrl("/");
 	}
 	
-	@Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		System.out.println("인증");
-        auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
-        System.out.println(auth);
-        System.out.println("인증완료");
-    }
+	
+	// 해싱 패스워드
+//	@Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+//	
+//	@Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		System.out.println("인증 Configure");		
+//        auth.userDetailsService(loginService).passwordEncoder(loginService.passwordEncoder());
+//        System.out.println(auth);
+//    }
 
 }
