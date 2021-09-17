@@ -1,67 +1,59 @@
 package com.metanet.educationSystem.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.context.annotation.*;
-import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-import com.metanet.educationSystem.service.login.LoginService;
-
-import lombok.AllArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
+import com.metanet.educationSystem.controller.login.LoginFailHandler;
+import com.metanet.educationSystem.controller.login.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		// Çã¿ëµÇ¾î¾ß ÇÒ °æ·Îµé
+		// ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Îµï¿½
 		web.ignoring().antMatchers("/resources/**", "/dist/**", "/css/**", "/font-awesome/**", "/fonts/**", "/img/**",
 				"/js/**","/favicon.ico", "/error");
 	}
 
-	@Autowired
-	LoginService loginService;
-	
-	
-	@Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-	
+
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers("/checkLogin", "/doLogin").permitAll()
-//            .antMatchers("/admin/**").hasRole("ADMIN")
-//            .antMatchers("/student/**").hasRole("STUDENT")
-//            .antMatchers("/professor/**").hasRole("PROFESSOR")
-//            .antMatchers("/db/**").access("hasRole('ADMIN') and hasRole('DBA')")
-				.anyRequest().authenticated()
-				.and()
-				.formLogin()
-				.loginPage("/checkLogin").loginProcessingUrl("/doLogin")
-				.usernameParameter("memberNO")
-				.passwordParameter("memberPassword")
-				.defaultSuccessUrl("/LoginSuccess")
-				.failureUrl("/LoginFail")
-				.and().httpBasic();
+			http.authorizeRequests()
+			.antMatchers("/checkLogin", "/").permitAll()
+	        .antMatchers("/admin/**").hasAuthority("2")
+	        .antMatchers("/professor/**").hasAuthority("1")
+	        .antMatchers("/student/**").hasAuthority("0")
+			.anyRequest().authenticated()
+		.and().formLogin()
+			.loginPage("/checkLogin").loginProcessingUrl("/doLogin")
+			.usernameParameter("memberNO")
+			.passwordParameter("memberPassword")
+			.successHandler(new LoginSuccessHandler())
+			.failureHandler(new LoginFailHandler())
+			.failureForwardUrl("/loginFail")
+		.and().logout()
+			.logoutUrl("/doLogout")
+			.logoutSuccessUrl("/").
+		and()
+		.exceptionHandling()
+		.accessDeniedPage("/error.jsp");
 	}
 	
-	@Override
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-		System.out.println("ÀÎÁõ");
-        auth.userDetailsService(loginService).passwordEncoder(passwordEncoder());
-        System.out.println(auth);
-        System.out.println("ÀÎÁõ¿Ï·á");
-    }
+	
+	// ï¿½Ø½ï¿½ ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	@Bean
+//    public PasswordEncoder passwordEncoder() {
+//        return new BCryptPasswordEncoder();
+//    }
+//	
+//	@Override
+//    public void configure(AuthenticationManagerBuilder auth) throws Exception {
+//		System.out.println("ï¿½ï¿½ï¿½ï¿½ Configure");		
+//        auth.userDetailsService(loginService).passwordEncoder(loginService.passwordEncoder());
+//        System.out.println(auth);
+//    }
 
 }

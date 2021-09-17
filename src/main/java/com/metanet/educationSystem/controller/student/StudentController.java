@@ -1,4 +1,4 @@
-package com.metanet.educationSystem.controller;
+package com.metanet.educationSystem.controller.student;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -24,6 +24,7 @@ public class StudentController {
 		model.addAttribute("classVOList",studentService.getClassList());
 		return "student/StudentApplyClassPage";
 	}
+<<<<<<< HEAD:src/main/java/com/metanet/educationSystem/controller/StudentController.java
 	//학생이 수강신청 버튼 누르면, 유효성(정원만족하는지, 학점만족하는지) 확인하는 function
 	@RequestMapping("/studentApplyClassCheck")
 	public String studentApplyClassCheck(Model model,  HttpServletRequest request) throws Exception {
@@ -32,5 +33,11 @@ public class StudentController {
 		//model.addAttribute("memberVO", studentService.getMemberVO());
 		//model.addAttribute("classVOList",studentService.getClassList());
 		return "student/StudentApplyClassPage";
+=======
+	
+	@RequestMapping(value = {"/student"})
+	public String temp(Model model) {
+		return "/student/Test";
+>>>>>>> 97b51244a7f0872856760d274bf80019d953d40d:src/main/java/com/metanet/educationSystem/controller/student/StudentController.java
 	}
 }

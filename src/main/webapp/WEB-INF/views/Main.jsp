@@ -2,6 +2,9 @@
 <!DOCTYPE html>
 <html>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <head>
 <jsp:include page="/incl/Head.jsp" />
 <title>Main</title>
@@ -13,7 +16,6 @@
 <jsp:include page="/incl/Sidebar.jsp" />
 
 	<div class="content-body">
-
 		<div class="row page-titles mx-0">
 			<div class="col p-md-0">
 				<ol class="breadcrumb">
@@ -87,11 +89,5 @@
 		</div>
 	</div>
 	<jsp:include page="/incl/Footer.jsp" />
-
-
-
-
-
-
 </body>
 </html>
