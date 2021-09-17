@@ -3,13 +3,8 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<<<<<<< HEAD
 <mapper namespace="com.metanet.educationSystem.mapper.LoginMapper">
 
-
-    
-=======
-<mapper namespace="com.metanet.educationSystem.mapper.login.LoginMapper">
 
     <select id="readMember" parameterType="String" resultType="MemberVO">
           SELECT * FROM member WHERE memberNO = #{memberNO}
@@ -23,7 +18,4 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
      <select id="getDistinct" parameterType="String" resultType="String">
           SELECT memberDistinct FROM member WHERE memberNO = #{memberNO}
      </select>
-     
-     
->>>>>>> fb472a3bec218c8780ec34ae326bfcaf0f15b740
 </mapper>

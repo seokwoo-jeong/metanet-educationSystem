@@ -1,23 +1,16 @@
 package com.metanet.educationSystem.configuration;
 
-import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 
-import com.metanet.educationSystem.controller.login.LoginFailHandler;
-import com.metanet.educationSystem.controller.login.LoginSuccessHandler;
-import com.metanet.educationSystem.service.login.LoginService;
+import com.metanet.educationSystem.controller.LoginFailHandler;
+import com.metanet.educationSystem.controller.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-
-	@Autowired
-	LoginService loginService;
-	
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
