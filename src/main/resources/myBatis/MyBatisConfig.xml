@@ -3,11 +3,11 @@
 <configuration>
     <typeAliases>
         <typeAlias type="com.metanet.educationSystem.model.DeptVO" alias="DeptVO"/>
-
+		<typeAlias type="com.metanet.educationSystem.model.MemberVO" alias="MemberVO"/>
     </typeAliases>
 
     <mappers>
         <mapper resource="myBatis/mapper/TempMapper.xml"/>
-  
+  		<mapper resource="myBatis/mapper/LoginMapper.xml"/>
     </mappers>
 </configuration>
