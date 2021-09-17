@@ -5,7 +5,8 @@
 
 <!DOCTYPE html>
 <html>
-<jsp:include page="/incl/Head.jsp" />
+<jsp:include page="/incl/DeepHead.jsp" />
+
 <title>StudentApplyClass</title>
 <body>
 	<div id="main-wrapper">
@@ -44,7 +45,7 @@
 													<td>${classVO.classCredit}</td>
 													<td>${classVO.MemberVO.memberName}</td>
 													<td>
-														<form action="/studentApplyClassCheck" id="studentApplyClassCheck" method="Post">
+														<form action="/student/studentApplyClassCheck" id="studentApplyClassCheck" method="Post">
 															<input type="hidden" name="classNO" id="classNO" value="${classVO.classNO}" />
 															
 															
@@ -95,7 +96,7 @@
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/incl/Footer.jsp" />
-
+	<jsp:include page="/incl/DeepFooter.jsp" />
+	
 </body>
 </html>

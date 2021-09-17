@@ -8,13 +8,15 @@ import lombok.ToString;
 @Setter
 @ToString
 public class StudentVO {
-	private int studentNO;
+	private String studentNO;
 	private String studentMajor;
 	private int studentSemester;
+	private int studentCredit;
 	
 	public StudentVO() {
-		this.studentNO = 0;
+		this.studentNO = null;
 		this.studentMajor = null;
 		this.studentSemester = 0;
+		this.studentCredit = 0;
 	}
 }

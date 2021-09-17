@@ -22,7 +22,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="getClassList" resultMap="classInfo">
 		select class.*,memberName
 		from class, member
-		where class.professorNO = member.memberNO
+		where class.memberNO = member.memberNO
 
 	</select>
 

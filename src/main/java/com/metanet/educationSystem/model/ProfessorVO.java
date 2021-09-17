@@ -8,13 +8,13 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ProfessorVO {
-	private int professorNO;
+	private String professorNO;
 	private String professorMajor;
 	private String professorRank;
 	
 	
 	public ProfessorVO() {
-		this.professorNO = 0;
+		this.professorNO = null;
 		this.professorMajor = null;
 		this.professorRank = null;
 	}
