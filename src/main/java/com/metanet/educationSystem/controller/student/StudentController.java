@@ -14,30 +14,25 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
-	
+
 	// 수강신청 페이지 보여주는 함수
 	@RequestMapping("/studentApplyClass")
 	public String studentApplyClass(Model model) throws Exception {
-		
-		//로그인한 학생 정보, 수강신청하기위한 강의 리스트 보내는 것
+
+		// 로그인한 학생 정보, 수강신청하기위한 강의 리스트 보내는 것
 		model.addAttribute("memberVO", studentService.getMemberVO());
-		model.addAttribute("classVOList",studentService.getClassList());
+		model.addAttribute("classVOList", studentService.getClassList());
 		return "student/StudentApplyClassPage";
 	}
-<<<<<<< HEAD:src/main/java/com/metanet/educationSystem/controller/StudentController.java
-	//학생이 수강신청 버튼 누르면, 유효성(정원만족하는지, 학점만족하는지) 확인하는 function
+
+	// 학생이 수강신청 버튼 누르면, 유효성(정원만족하는지, 학점만족하는지) 확인하는 function
 	@RequestMapping("/studentApplyClassCheck")
-	public String studentApplyClassCheck(Model model,  HttpServletRequest request) throws Exception {
-		String classNO  =request.getParameter("classNO");
+	public String studentApplyClassCheck(Model model, HttpServletRequest request) throws Exception {
+		String classNO = request.getParameter("classNO");
 		System.out.println(classNO);
-		//model.addAttribute("memberVO", studentService.getMemberVO());
-		//model.addAttribute("classVOList",studentService.getClassList());
+		// model.addAttribute("memberVO", studentService.getMemberVO());
+		// model.addAttribute("classVOList",studentService.getClassList());
 		return "student/StudentApplyClassPage";
-=======
-	
-	@RequestMapping(value = {"/student"})
-	public String temp(Model model) {
-		return "/student/Test";
->>>>>>> 97b51244a7f0872856760d274bf80019d953d40d:src/main/java/com/metanet/educationSystem/controller/student/StudentController.java
+
 	}
 }
