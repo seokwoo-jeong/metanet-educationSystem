@@ -1,4 +1,4 @@
-package com.metanet.educationSystem.configuration;
+package com.metanet.educationSystem.controller.login;
 
 import java.io.IOException;
 
@@ -24,6 +24,20 @@ public class LoginFailHandler implements AuthenticationFailureHandler {
     @Override
 	public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException exception) throws IOException, ServletException {
+    	System.out.println("Login Fail Controller");
+    	
+    	String memberNO = request.getParameter("memberNO");
+    	String memberPassword = request.getParameter("memberPassword");
+    	String errormsg = exception.getMessage();
+    	System.out.println(memberNO+memberPassword);
+    	
+    	request.setAttribute(loginidname, memberNO);
+        request.setAttribute(loginpwdname, memberPassword);
+        request.setAttribute(errormsgname, errormsg);
+        
+        request.getRequestDispatcher(defaultFailureUrl).forward(request, response);
+
+    	
 	}
 
 }

@@ -14,20 +14,15 @@ import lombok.ToString;
 @Setter
 @ToString
 public class MemberVO implements UserDetails{
-	@Override
-	public String toString() {
-		return "MemberVO [memberNO=" + memberNO + ", memberName=" + memberName + ", memberPassword=" + memberPassword
-				+ ", memberEmail=" + memberEmail + ", memberPhoneNO=" + memberPhoneNO + ", memberDistinct="
-				+ memberDistinct + ", authorities=" + authorities + "]";
-	}
 
 	private String memberNO;
 	private String memberName;
 	private String memberPassword;
 	private String memberEmail;
 	private String memberPhoneNO;
-
 	private String memberDistinct; //parameter ��Ȯ�� ����...
+	
+	//security fields
 	private Collection<GrantedAuthority> authorities;
 	
 	
@@ -79,4 +74,5 @@ public class MemberVO implements UserDetails{
 		// TODO Auto-generated method stub
 		return true;
 	}
+
 }
