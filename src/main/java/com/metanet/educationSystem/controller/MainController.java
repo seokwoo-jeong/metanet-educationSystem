@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MainController {
     
 	
-	@RequestMapping("/")
+	@RequestMapping(value = {"/","/Main"})
 	public String temp(Model model) {
 		return "Main";
 	}
