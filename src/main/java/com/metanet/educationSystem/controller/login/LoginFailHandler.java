@@ -1,4 +1,4 @@
-package com.metanet.educationSystem.controller;
+package com.metanet.educationSystem.controller.login;
 
 import java.io.IOException;
 

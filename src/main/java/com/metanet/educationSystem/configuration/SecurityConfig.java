@@ -5,8 +5,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 
-import com.metanet.educationSystem.controller.LoginFailHandler;
-import com.metanet.educationSystem.controller.LoginSuccessHandler;
+import com.metanet.educationSystem.controller.login.LoginFailHandler;
+import com.metanet.educationSystem.controller.login.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
@@ -14,7 +14,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		// Çã¿ëµÇ¾î¾ß ÇÒ °æ·Îµé
+		// ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½Îµï¿½
 		web.ignoring().antMatchers("/resources/**", "/dist/**", "/css/**", "/font-awesome/**", "/fonts/**", "/img/**",
 				"/js/**","/favicon.ico", "/error");
 	}
@@ -43,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	
-	// ÇØ½Ì ÆÐ½º¿öµå
+	// ï¿½Ø½ï¿½ ï¿½Ð½ï¿½ï¿½ï¿½ï¿½ï¿½
 //	@Bean
 //    public PasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //	
 //	@Override
 //    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-//		System.out.println("ÀÎÁõ Configure");		
+//		System.out.println("ï¿½ï¿½ï¿½ï¿½ Configure");		
 //        auth.userDetailsService(loginService).passwordEncoder(loginService.passwordEncoder());
 //        System.out.println(auth);
 //    }

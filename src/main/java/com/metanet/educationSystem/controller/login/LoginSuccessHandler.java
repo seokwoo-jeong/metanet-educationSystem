@@ -1,4 +1,4 @@
-package com.metanet.educationSystem.controller;
+package com.metanet.educationSystem.controller.login;
 
 import java.io.IOException;
 
@@ -15,7 +15,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 	@Override
 	public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
 			Authentication authentication) throws IOException, ServletException {
-		System.out.println("login Success handler ÁøÀÔ");
+		System.out.println("login Success handler ï¿½ï¿½ï¿½ï¿½");
 		System.out.println(authentication.toString());
 		HttpSession session = request.getSession();
 		session.setAttribute("member", authentication.getPrincipal());

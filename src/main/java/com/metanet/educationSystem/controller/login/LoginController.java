@@ -1,4 +1,4 @@
-package com.metanet.educationSystem.controller;
+package com.metanet.educationSystem.controller.login;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -13,19 +13,19 @@ public class LoginController {
 	
 	@RequestMapping("/checkLogin")
 	public String checkLogin(Model model) {
-		System.out.println("�α��� ȭ��");
-		return "LoginPage";
+		System.out.println("/checkLogin -> LoginController -> return HTML");
+		return "/login/LoginPage";
 	}
 
 	@RequestMapping("/loginSuccess")
 	public String loginSuccess(HttpServletRequest request) {
 		System.out.println("/loginSuccess -> LoginController -> return HTML");
-		return "LoginSuccess";
+		return "/login/LoginSuccess";
 	}
 
 	@RequestMapping("/loginFail")
 	public String loginFail(HttpServletRequest request) {
 		System.out.println("/loginFail -> LoginController -> return HTML");
-		return "LoginFail";
+		return "/login/LoginFail";
 	}
 }
