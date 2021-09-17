@@ -7,6 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-admin 권한 활성
+<h1>권한이 없습니다.</h1>
+<h2><a href = "/">홈페이지 가기</a></h2>
 </body>
 </html>

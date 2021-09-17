@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+Professor 권한 활성
 </body>
 </html>

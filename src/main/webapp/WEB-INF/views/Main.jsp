@@ -72,18 +72,15 @@
 									<button class="btn btn-primary px-3 ml-4">·Î±×ÀÎ</button>
 								</c:if>
 							</form>
-							<form action="${ pageContext.request.contextPath }/doLogout" method="post">
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-								<c:if test="${!empty member}">
+
+							<c:if test="${!empty member}">
+								<form action="${ pageContext.request.contextPath }/doLogout" method="post">
 									<button class="btn btn-primary px-3 ml-4">·Î±×¾Æ¿ô</button>
-									<button class="btn btn-primary px-3 ml-4">
-										<c:choose>
-											<c:when test="${member.memberDistinct eq 0}"> ${member.memberName} ÇÐ»ý ´Ô ¹Ý°©½À´Ï´Ù.</c:when>
-											<c:when test="${member.memberDistinct eq 1}"> ${member.memberName} ±³¼ö ´Ô ¹Ý°©½À´Ï´Ù.</c:when>
-										</c:choose>
-									</button>
-								</c:if>
-							</form>
+									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+								</form>
+
+							</c:if>
+
 
 						</div>
 					</div>
@@ -100,6 +97,11 @@
 		<div class="nk-sidebar">
 			<div class="nk-nav-scroll">
 				<ul class="metismenu" id="menu">
+					<li class="nav-label"><c:choose>
+							<c:when test="${member.memberDistinct eq 0}"> ${member.memberName} ÇÐ»ý´Ô ¹Ý°©½À´Ï´Ù.</c:when>
+							<c:when test="${member.memberDistinct eq 1}"> ${member.memberName} ±³¼ö´Ô ¹Ý°©½À´Ï´Ù.</c:when>
+							<c:when test="${member.memberDistinct eq 2}"> ${member.memberName} °ü¸®ÀÚ´Ô ¹Ý°©½À´Ï´Ù.</c:when>
+						</c:choose></li>
 					<li class="nav-label">Dashboard</li>
 					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"> <i class="icon-speedometer menu-icon"></i><span class="nav-text">Dashboard</span>
 					</a>
