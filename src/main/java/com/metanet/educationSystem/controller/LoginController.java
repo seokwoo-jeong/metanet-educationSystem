@@ -1,4 +1,4 @@
-package com.metanet.educationSystem.controller.login;
+package com.metanet.educationSystem.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,8 +16,8 @@ public class LoginController {
 	@RequestMapping("/checkLogin")
 	public String checkLogin(Model model) {
 		
-		return "LoginPage";
+		return "login/LoginPage";
 	}
-
+	
 
 }
