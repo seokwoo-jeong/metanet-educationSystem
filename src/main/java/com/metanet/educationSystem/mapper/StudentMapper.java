@@ -17,4 +17,20 @@ public interface StudentMapper {
 
 	public List<HashMap<String, Object>> getClassList() throws Exception;
 
+	public int checkClassApply(HashMap<String, Object> classNOAndMemberNO) throws Exception;
+
+	public int getClassPersonnel(String classNO) throws Exception;
+
+	public int getCurrentClassPersonnel(String classNO) throws Exception;
+
+	public int getCurrentStudentCredit(String memberNO) throws Exception;
+
+	public int getClassCredit(String classNO) throws Exception;
+
+	public List<HashMap<String, Object>> getStudentClassList(String memberNO) throws Exception;
+
+	public void studentApplyClass(HashMap<String, Object> classNOAndMemberNO) throws Exception;
+
+	public void studentDeleteClass(HashMap<String, Object> classNOAndMemberNO) throws Exception; 
+
 }
