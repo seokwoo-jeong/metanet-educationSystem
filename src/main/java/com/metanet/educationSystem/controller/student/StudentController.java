@@ -14,13 +14,14 @@ import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.service.student.StudentService;
 
 @Controller
+@RequestMapping("/student")
 public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
 
 	// 수강신청 페이지 보여주는 함수
-	@RequestMapping("/student/studentApplyClass")
+	@RequestMapping("/studentApplyClass")
 	public String studentApplyClass(Model model, HttpServletRequest request, HttpSession session,
 			RedirectAttributes rttr) throws Exception {
 		// session에서 get memberNO
@@ -37,7 +38,7 @@ public class StudentController {
 		return "student/StudentApplyClassPage";
 	}
 
-	@RequestMapping("/student/studentApplyClassCheck")
+	@RequestMapping("/studentApplyClassCheck")
 	public String studentApplyClassCheck(Model model, HttpServletRequest request, HttpSession session,
 			RedirectAttributes rttr) throws Exception {
 		String classNO = request.getParameter("classNO");
@@ -73,7 +74,7 @@ public class StudentController {
 
 	}
 
-	@RequestMapping("/student/studentDeleteClass")
+	@RequestMapping("/studentDeleteClass")
 	public String studentDeleteClass(Model model, HttpServletRequest request, HttpSession session,
 			RedirectAttributes rttr) throws Exception {
 		String classNO = request.getParameter("classNO");
