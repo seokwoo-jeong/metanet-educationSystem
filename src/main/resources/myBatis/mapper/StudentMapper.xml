@@ -38,7 +38,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(select class.*
 		FROM class, score
 		WHERE class.classNO = score.classNO
-		AND score.memberNO = 2014123451
+		AND score.memberNO = #{memberNO}
 		)a
 		JOIN member
 		ON a.memberNO = member.memberNO

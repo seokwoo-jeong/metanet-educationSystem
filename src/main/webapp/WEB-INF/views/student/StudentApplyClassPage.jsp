@@ -50,7 +50,7 @@
 													<td>${classVO.classCredit}</td>
 													<td>${classVO.MemberVO.memberName}</td>
 													<td>
-														<form action="/student/studentApplyClass" id="studentApplyClassCheck" method="Post">
+														<form action="/student/studentApplyClassCheck" id="studentApplyClassCheck" method="Post">
 															<input type="hidden" name="classNO" id="classNO" value="${classVO.classNO}" />
 															<button class="btn mb-1 btn-primary btn-sm" onclick="return studentApplyClass();">수강신청</button>
 														</form>
