@@ -38,11 +38,8 @@
 													<td>${classVO.className}</td>
 													
 													<td>
-													<form action="/professor/professorShowStudent?classID=${classVO.classNO}" id="professorShowStudent" >
-															<!-- <input type="hidden" name="classNO" id="classNO" value="${classVO.classNO}" /> -->
-
-															<button class="btn mb-1 btn-primary btn-sm">수강생 조회</button>
-														</form>
+															<a href="/professor/professorShowStudent?classID=${classVO.classNO}"><button class="btn mb-1 btn-primary btn-sm" >수강생 조회</button></a>
+													
 														
 													</td>
 
