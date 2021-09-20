@@ -16,7 +16,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		// ���Ǿ�� �� ��ε�
 		web.ignoring().antMatchers("/resources/**", "/dist/**", "/css/**", "/font-awesome/**", "/fonts/**", "/img/**",
-				"/js/**","/favicon.ico", "/error");
+				"/js/**","/favicon.ico", "/error","/incl/**","/plugins/**");
 	}
 
 
@@ -36,10 +36,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.failureForwardUrl("/loginFail")
 		.and().logout()
 			.logoutUrl("/doLogout")
-			.logoutSuccessUrl("/").
-		and()
-		.exceptionHandling()
-		.accessDeniedPage("/error.jsp");
+			.logoutSuccessUrl("/");
+//			.and()
+//		.exceptionHandling()
+//		.accessDeniedPage("/error.jsp");
 	}
 	
 	

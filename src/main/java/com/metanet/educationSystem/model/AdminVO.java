@@ -8,11 +8,11 @@ import lombok.ToString;
 @Setter
 @ToString
 public class AdminVO {
-	private int adminNO;
+	private String adminNO;
 	private String adminDepartment;
 	
 	public AdminVO() {
-		this.adminNO = 0;
+		this.adminNO = null;
 		this.adminDepartment = null; 
 	}
 }

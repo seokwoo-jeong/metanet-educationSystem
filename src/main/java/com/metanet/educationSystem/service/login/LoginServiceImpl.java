@@ -24,14 +24,16 @@ public class LoginServiceImpl implements LoginService {
 	// Security ï¿½Ê¼ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½
 	public UserDetails loadUserByUsername(String memberNO) throws UsernameNotFoundException {
 		MemberVO member = loginMapper.readMember(memberNO);
+
 		if (member == null){
-			System.out.println("À¯Àú ¾øÀ½, memberNO = "+memberNO);
+			System.out.println("ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½, memberNO = "+memberNO);
 			throw new UsernameNotFoundException(memberNO);
 		}
 		else {
 			member.setMemberPassword("{noop}" + member.getMemberPassword());
 			member.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(member.getMemberDistinct())));
 		}
+
 		return member;
 	}
 
