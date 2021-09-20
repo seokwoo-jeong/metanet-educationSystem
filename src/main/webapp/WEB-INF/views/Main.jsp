@@ -71,7 +71,7 @@
 												<th><c:choose>
 														<c:when test="${member.memberDistinct eq 0}"> 학생의 강의목록.</c:when>
 														<c:when test="${member.memberDistinct eq 1}">
-															<a href="/professor/professorShowMyclass">교수의 내강의실가기</a>
+															<a href="/professor/professorShowMyclass?professorID=${member.memberNO}">교수의 내강의실가기</a>
 														</c:when>
 
 													</c:choose></th>

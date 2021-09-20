@@ -1,13 +1,35 @@
 package com.metanet.educationSystem.service.professor;
+import java.util.HashMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metanet.educationSystem.mapper.ProfessorMapper;
+import com.metanet.educationSystem.model.ClassVO;
+import com.metanet.educationSystem.model.MemberVO;
 
 @Service
 public class ProfessorServiceImpl implements ProfessorService{
 	
 	@Autowired
 	private ProfessorMapper professorMapper;
+	
+	@Override
+	public List<ClassVO> professorGetClassList(String professorNO) throws Exception {
+	//System.out.println(professorMapper.professorGetClassList(professorNO).get(0).getClassNO());	
+		System.out.println(professorMapper.professorGetClassList(professorNO)+"매퍼실행");
+		System.out.println(professorNO+"넘버실행");
+		
+		return professorMapper.professorGetClassList(professorNO);
+		
+		
+	}
+
+
+	@Override
+	public ClassVO getMemberVO() throws Exception {
+		return null;
+	}
 
 }

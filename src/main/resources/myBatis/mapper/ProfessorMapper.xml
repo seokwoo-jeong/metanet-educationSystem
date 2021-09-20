@@ -5,6 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.metanet.educationSystem.mapper.ProfessorMapper">
 
+
+	<select id="professorGetClassList" parameterType="string" resultType="com.metanet.educationSystem.model.ClassVO">
+		SELECT * from class where memberNO=#{professorNO}
+	</select>
 	
     
 </mapper>

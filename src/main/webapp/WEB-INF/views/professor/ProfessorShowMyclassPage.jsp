@@ -20,7 +20,7 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">내 강의실 보기</h4>
+								<h4 class="card-title">수강생조회</h4>
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>
@@ -31,19 +31,19 @@
 											</tr>
 										</thead>
 										<tbody>
-
+									
 											<c:forEach var="classVO" items="${classVOList}">
 												<tr>
 													<td>${classVO.classNO}</td>
 													<td>${classVO.className}</td>
-													<td>${classVO.MemberVO.memberName}</td>
+													
 													<td>
-														<form action="/student/studentApplyClassCheck" id="studentApplyClassCheck" method="Post">
-															<input type="hidden" name="classNO" id="classNO" value="${classVO.classNO}" />
-															
-															
-															<button class="btn mb-1 btn-primary btn-sm" onclick="studentApplyClass();">수강신청</button>
+													<form action="/professor/professorShowStudent?classID=${classVO.classNO}" id="professorShowStudent" >
+															<!-- <input type="hidden" name="classNO" id="classNO" value="${classVO.classNO}" /> -->
+
+															<button class="btn mb-1 btn-primary btn-sm">수강생 조회</button>
 														</form>
+														
 													</td>
 
 												</tr>
@@ -83,8 +83,6 @@
 							</div>
 						</div>
 					</div>
-
-
 				</div>
 			</div>
 		</div>
