@@ -8,18 +8,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<resultMap type="java.util.HashMap" id="classInfo">
 		<id column="classNO" property="classNO" />
 		<result column="className" property="className" />
+		<result column="classGoal" property="classGoal" />
+		<result column="classSummary" property="classSummary" />
 		<result column="classPersonnel" property="classPersonnel" />
 		<result column="classCredit" property="classCredit" />
 		<result column="classCurrentPersonnel" property="classCurrentPersonnel" />
 		<association property="MemberVO" javaType="MemberVO">
 			<result column="memberName" property="memberName" />
+			<result column="memberEmail" property="memberEmail" />
+			<result column="memberPhoneNO" property="memberPhoneNO" />
+		</association>
+		<association property="ProfessorVO" javaType="ProfessorVO">
+			<result column="professorMajor" property="professorMajor" />
+			<result column="professorRank" property="professorRank" />
 		</association>
 	</resultMap>
 
 	<!-- Select Start -->
-	<select id="getMemberVO" resultType="MemberVO">
-		SELECT * from member where memberNO = 10
-	</select>
 
 	<select id="getClassList" resultMap="classInfo">
 		select class.*,member.memberName, nvl(a.classCurrentPersonnel,0)AS classCurrentPersonnel
@@ -29,7 +34,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		LEFT JOIN (SELECT classNO, COUNT(classNO)as classCurrentPersonnel FROM score GROUP BY CLASSNO) a
 		ON
 		a.classNO = class.classNO
-		
+
 	</select>
 
 	<select id="getStudentClassList" parameterType="string" resultMap="classInfo">
@@ -42,7 +47,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)a
 		JOIN member
 		ON a.memberNO = member.memberNO
-		JOIN (SELECT classNO, COUNT(classNO)as classCurrentPersonnel FROM score GROUP BY CLASSNO) b
+		JOIN (SELECT classNO,
+		COUNT(classNO)as classCurrentPersonnel FROM score GROUP BY CLASSNO) b
 		ON b.classNO = a.classNO
 		order by a.classNO
 	</select>
@@ -81,6 +87,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE classNO = #{classNO}
 
 	</select>
+
+	<select id="getClassInfo" parameterType="string" resultMap="classInfo">
+		SELECT class.*, member.*, professor.*
+		FROM class, member, PROFESSOR
+		WHERE class.memberNO = member.memberNO AND member.memberNO = professor.professorNO
+		AND classNO = #{classNO}
+	</select>
+
 	<!-- Select Finish -->
 
 	<!-- Insert Start -->

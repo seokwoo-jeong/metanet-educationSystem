@@ -1,5 +1,7 @@
 package com.metanet.educationSystem.controller.student;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,9 +9,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.metanet.educationSystem.constant.Constant;
+import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.service.student.StudentService;
 
@@ -86,5 +91,21 @@ public class StudentController {
 
 		return "redirect:studentApplyClass";
 	}
+	
+	@RequestMapping("/studentShowClass")
+	public String studentShowClass(Model model, HttpServletRequest request, HttpSession session) throws Exception {
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		model.addAttribute("studentClassVOList", this.studentService.getStudentClassList(memberVO.getMemberNO()));
+		
+		return "student/StudentShowClassPage";
+	}
+	
+	@ResponseBody
+    @RequestMapping(value = "/getClassSyllabus", method = RequestMethod.POST)
+    public HashMap<String, Object> getClassSyllabus(HttpServletRequest request,RedirectAttributes rttr) throws Exception {
+		String classNO = request.getParameter("classNO");
+        return this.studentService.getClassInfo(classNO);
+    }
+	
 
 }

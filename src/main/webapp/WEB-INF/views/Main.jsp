@@ -21,7 +21,7 @@
 			<div class="col p-md-0">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-					<li class="breadcrumb-item active"><a href="/student/studentApplyClass">Home</a></li>
+					<li class="breadcrumb-item active"><a href="#">Home</a></li>
 				</ol>
 			</div>
 		</div>

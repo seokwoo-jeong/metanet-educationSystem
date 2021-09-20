@@ -15,11 +15,6 @@ public class StudentServiceImpl implements StudentService{
 	@Autowired
 	private StudentMapper studentMapper;
 
-	@Override
-	public MemberVO getMemberVO()  throws Exception{
-		return studentMapper.getMemberVO();
-		
-	}
 
 	@Override
 	public List<HashMap<String, Object>> getClassList() throws Exception {
@@ -105,6 +100,13 @@ public class StudentServiceImpl implements StudentService{
 	public int getCurrentStudentCredit(String memberNO) throws Exception {
 		
 		return this.studentMapper.getCurrentStudentCredit(memberNO);
+	}
+
+	@Override
+	public HashMap<String, Object> getClassInfo(String classNO) throws Exception {
+		return this.studentMapper.getClassInfo(classNO);
+		// TODO Auto-generated method stub
+		
 	}
 
 	
