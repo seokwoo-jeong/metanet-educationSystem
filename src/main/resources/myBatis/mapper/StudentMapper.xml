@@ -5,25 +5,96 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.metanet.educationSystem.mapper.StudentMapper">
 
-	    <resultMap type="java.util.HashMap" id="classInfo">
-        <id column="classNO" property="classNO"/>
-        <result column="className" property="className"/>
-        <result column="classPersonnel" property="classPersonnel"/>
-        <result column="classCredit" property="classCredit"/>
-        <association property="MemberVO" javaType="MemberVO">
-            <result column="memberName" property="memberName"/>
-        </association>
-    </resultMap>
+	<resultMap type="java.util.HashMap" id="classInfo">
+		<id column="classNO" property="classNO" />
+		<result column="className" property="className" />
+		<result column="classPersonnel" property="classPersonnel" />
+		<result column="classCredit" property="classCredit" />
+		<result column="classCurrentPersonnel" property="classCurrentPersonnel" />
+		<association property="MemberVO" javaType="MemberVO">
+			<result column="memberName" property="memberName" />
+		</association>
+	</resultMap>
 
+	<!-- Select Start -->
 	<select id="getMemberVO" resultType="MemberVO">
 		SELECT * from member where memberNO = 10
 	</select>
 
 	<select id="getClassList" resultMap="classInfo">
-		select class.*,memberName
-		from class, member
-		where class.memberNO = member.memberNO
+		select class.*,member.memberName, nvl(a.classCurrentPersonnel,0)AS classCurrentPersonnel
+		from class
+		LEFT JOIN member
+		ON class.memberNO = member.memberNO
+		LEFT JOIN (SELECT classNO, COUNT(classNO)as classCurrentPersonnel FROM score GROUP BY CLASSNO) a
+		ON
+		a.classNO = class.classNO
+		
+	</select>
+
+	<select id="getStudentClassList" parameterType="string" resultMap="classInfo">
+		SELECT a.*, member.memberName, b.classCurrentPersonnel
+		FROM
+		(select class.*
+		FROM class, score
+		WHERE class.classNO = score.classNO
+		AND score.memberNO = #{memberNO}
+		)a
+		JOIN member
+		ON a.memberNO = member.memberNO
+		JOIN (SELECT classNO, COUNT(classNO)as classCurrentPersonnel FROM score GROUP BY CLASSNO) b
+		ON b.classNO = a.classNO
+		order by a.classNO
+	</select>
+
+	<select id="checkClassApply" parameterType="java.util.HashMap" resultType="int">
+		SELECT count(*)
+		FROM score
+		WHERE classNO = #{classNO} and memberNO = #{memberNO}
+	</select>
+
+	<select id="getClassPersonnel" parameterType="string" resultType="int">
+		SELECT classPersonnel
+		FROM class
+		WHERE classNO = #{classNO}
+	</select>
+
+	<select id="getCurrentClassPersonnel" parameterType="string" resultType="int">
+		SELECT count(*)
+		FROM score
+		WHERE classNO = #{classNO}
 
 	</select>
 
+	<select id="getCurrentStudentCredit" parameterType="string" resultType="int">
+
+		SELECT NVL(SUM(class.classCredit),0)
+		FROM class INNER JOIN score
+		ON class.classNO = score.CLASSNO
+		WHERE score.MEMBERNO = #{memberNO}
+
+	</select>
+
+	<select id="getClassCredit" parameterType="string" resultType="int">
+		SELECT classCredit
+		FROM class
+		WHERE classNO = #{classNO}
+
+	</select>
+	<!-- Select Finish -->
+
+	<!-- Insert Start -->
+
+	<insert id="studentApplyClass" parameterType="java.util.HashMap">
+		INSERT INTO score(classNO, memberNO) VALUES (#{classNO},#{memberNO})
+	</insert>
+	<!-- Insert Finish -->
+
+	<!-- Delete Start -->
+	<delete id="studentDeleteClass" parameterType="java.util.HashMap">
+		delete
+		from score
+		where memberNO = #{memberNO} AND classNO = #{classNO}
+	</delete>
+	<!-- Delete Finish -->
 </mapper>

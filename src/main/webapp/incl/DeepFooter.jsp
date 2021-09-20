@@ -15,7 +15,7 @@
 	<script src="../resources/js/gleek.js"></script>
 	<script src="../resources/js/styleSwitcher.js"></script>
 	
-	<script src="../resources/js/student.js"></script>
+	<script src="../resources/js/student.js" charset="utf-8" type="text/javascript"></script>
 
 	<script src="../../resources/plugins/chartist/js/chartist.min.js"></script>
 	<script src="../../resources/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
