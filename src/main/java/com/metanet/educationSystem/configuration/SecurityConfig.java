@@ -16,13 +16,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		// ���Ǿ�� �� ��ε�
 		web.ignoring().antMatchers("/resources/**", "/dist/**", "/css/**", "/font-awesome/**", "/fonts/**", "/img/**",
-				"/js/**","/favicon.ico", "/error","/incl/**","/incl");
+				"/js/**","/favicon.ico", "/error","/incl/**","/plugins/**");
 	}
 
 
 	protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
-			.antMatchers("/checkLogin", "/","../").permitAll()
+			.antMatchers("/checkLogin", "/").permitAll()
 	        .antMatchers("/admin/**").hasAuthority("2")
 	        .antMatchers("/professor/**").hasAuthority("1")
 	        .antMatchers("/student/**").hasAuthority("0")
@@ -36,10 +36,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.failureForwardUrl("/loginFail")
 		.and().logout()
 			.logoutUrl("/doLogout")
-			.logoutSuccessUrl("/").
-		and()
-		.exceptionHandling()
-		.accessDeniedPage("/error.jsp");
+			.logoutSuccessUrl("/");
+//			.and()
+//		.exceptionHandling()
+//		.accessDeniedPage("/error.jsp");
 	}
 	
 	

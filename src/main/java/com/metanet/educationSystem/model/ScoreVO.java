@@ -8,8 +8,8 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ScoreVO {
-	private int classNO;
-	private int userNO;
+	private String classNO;
+	private String memberNO;
 	private int midtermScore;
 	private int finalsScore;
 	private int assignmentScore;
@@ -18,8 +18,8 @@ public class ScoreVO {
 	
 	
 	public ScoreVO() {
-		this.classNO = 0;
-		this.userNO = 0;
+		this.classNO = null;
+		this.memberNO = null;
 		this.midtermScore = 0;
 		this.finalsScore = 0;
 		this.assignmentScore = 0;

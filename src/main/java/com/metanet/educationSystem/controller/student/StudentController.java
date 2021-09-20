@@ -1,5 +1,7 @@
 package com.metanet.educationSystem.controller.student;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,23 +14,27 @@ public class StudentController {
 
 	@Autowired
 	private StudentService studentService;
-	
+
+	// 수강신청 페이지 보여주는 함수
 	@RequestMapping("/student/studentApplyClass")
 	public String studentApplyClass(Model model) throws Exception {
-		
-		// 1. 파라미터가 (있으면) 받기
-		// 2. 로직 실행 (로직 실행 결과를 Model 에 담기 위해서)
-		// 3. Model에 로직 실행한 결과를 담아서
-		// 4. 뷰로 모델을 보내주는거에요.
-		System.out.println("가지나가지나");
-		model.addAttribute("memberVO", studentService.getMemberVO());
-		model.addAttribute("classVOList",studentService.getClassList());
-		
+
+		// 로그인한 학생 정보, 수강신청하기위한 강의 리스트 보내는 것
+		//model.addAttribute("memberVO", studentService.getMemberVO());
+		model.addAttribute("classVOList", studentService.getClassList());
+		return "student/StudentApplyClassPage";
+	}
+
+	// 학생이 수강신청 버튼 누르면, 유효성(정원만족하는지, 학점만족하는지) 확인하는 function
+	@RequestMapping("/student/studentApplyClassCheck")
+	public String studentApplyClassCheck(Model model, HttpServletRequest request) throws Exception {
+		String classNO = request.getParameter("classNO");
+		System.out.println(classNO);
+		// model.addAttribute("memberVO", studentService.getMemberVO());
+		// model.addAttribute("classVOList",studentService.getClassList());
 		return "student/StudentApplyClassPage";
 	}
 	
-	@RequestMapping(value = {"/student"})
-	public String temp(Model model) {
-		return "/student/Test";
-	}
+	
+
 }

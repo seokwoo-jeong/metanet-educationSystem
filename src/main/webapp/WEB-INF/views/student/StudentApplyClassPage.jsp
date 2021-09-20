@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
-<jsp:include page="/incl/Head.jsp" />
+<jsp:include page="/incl/DeepHead.jsp" />
+
 <title>StudentApplyClass</title>
 <body>
 	<div id="main-wrapper">
@@ -16,33 +17,42 @@
 			<div class="container-fluid">
 
 				<div class="row">
-					<div class="col-12">
+					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">¼ö°­½ÅÃ»¸®½ºÆ®</h4>
+								<h4 class="card-title">ìˆ˜ê°•ì‹ ì²­ë¦¬ìŠ¤íŠ¸</h4>
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>
 											<tr>
-												<th>°­ÁÂ¹øÈ£</th>
-												<th>°­ÁÂÀÌ¸§</th>
-												<th>ÇöÀçÀÎ¿ø</th>
-												<th>ÀüÃ¼ÀÎ¿ø</th>
-												<th>ÇĞÁ¡</th>
-												<th>±³¼öÀÌ¸§</th>
-												<th>¼ö°­½ÅÃ»</th>
+												<th>ê°•ì¢Œë²ˆí˜¸</th>
+												<th>ê°•ì¢Œì´ë¦„</th>
+												<th>í˜„ì¬ì¸ì›</th>
+												<th>ì „ì²´ì¸ì›</th>
+												<th>í•™ì </th>
+												<th>êµìˆ˜ì´ë¦„</th>
+												<th>ìˆ˜ê°•ì‹ ì²­</th>
 											</tr>
 										</thead>
 										<tbody>
-											<c:forEach var="classVOList" items="${classVOList}">
+
+											<c:forEach var="classVO" items="${classVOList}">
 												<tr>
-													<td>${classVOList.classNO}</td>
-													<td>${classVOList.className}</td>
-													<td>0</td>
-													<td>${classVOList.classPersonnel}</td>
-													<td>${classVOList.classCredit}</td>
-													<td>${classVOList.MemberVO.memberName}</td>
-													<td><button class="btn mb-1 btn-primary btn-sm">¼ö°­½ÅÃ»</button></td>
+													<td>${classVO.classNO}</td>
+													<td>${classVO.className}</td>
+													<td>${memberVO.memberName }</td>
+													<td>${classVO.classPersonnel}</td>
+													<td>${classVO.classCredit}</td>
+													<td>${classVO.MemberVO.memberName}</td>
+													<td>
+														<form action="/student/studentApplyClassCheck" id="studentApplyClassCheck" method="Post">
+															<input type="hidden" name="classNO" id="classNO" value="${classVO.classNO}" />
+															
+															
+															<button class="btn mb-1 btn-primary btn-sm" onclick="studentApplyClass();">ìˆ˜ê°•ì‹ ì²­</button>
+														</form>
+													</td>
+
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -52,82 +62,41 @@
 							</div>
 						</div>
 					</div>
+				</div>
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<div class="active-member">
+									<div class="table-responsive">
+										<table class="table table-xs mb-0">
+											<thead>
+												<tr>
+													<th>ìˆ˜ê°•ê³¼ëª©</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>static layout: Head, Header, Sidebar, Footerë¡œ ë‚˜ëˆ”</td>
+												</tr>
+												<tr>
+													<td>Head: css link</td>
+												</tr>
 
-					<div class="row">
-						<div class="col-lg-6">
-							<div class="card">
-								<div class="card-body">
-									<div class="active-member">
-										<div class="table-responsive">
-											<table class="table table-xs mb-0">
-												<thead>
-													<tr>
-														<th>°øÁö»çÇ×</th>
-													</tr>
-												</thead>
-												<tbody>
-
-
-
-													<tr>
-														<td>static layout: Head, Header, Sidebar, Footer·Î ³ª´®</td>
-													</tr>
-													<tr>
-														<td>Head: css link</td>
-													</tr>
-													<tr>
-														<td>Header: »ó´Ü layout</td>
-													</tr>
-													<tr>
-														<td>Sidebar: ÁÂÃø sidebar</td>
-													</tr>
-													<tr>
-														<td>Footer: ¸Ç ÇÏ´Ü ÇÏ¾á ºÎºĞ + js(javascript)</td>
-													</tr>
-													<tr>
-														<td>ÅÆÇÃ¸´ Àû¿ë ¾ÈµÉ ¶§: css, js, images, plugins etc... ¾Õ¿¡ 'resources/' ºÙ¿©¾ß ÅÆÇÃ¸´ Àû¿ë µÊ</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-lg-6">
-							<div class="card">
-								<div class="card-body">
-									<div class="active-member">
-										<div class="table-responsive">
-											<table class="table table-xs mb-0">
-												<thead>
-													<tr>
-														<th>¼ö°­Á¶È¸</th>
-													</tr>
-												</thead>
-												<tbody>
-													<tr>
-														<td>·Î±×ÀÎx : ¹®±¸ ¶ç¿ì±â (ex-·Î±×ÀÎÇØ¼­ ÀÌ¿ë¹Ù¶÷..)</td>
-
-													</tr>
-													<tr>
-
-														<td>·Î±×ÀÎ ½Ã: °ú¸ñ ¸®½ºÆ® ¶ç¿ì±â + ¹öÆ°</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
+											</tbody>
+										</table>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+
+
 				</div>
 			</div>
 		</div>
 	</div>
-	<jsp:include page="/incl/Footer.jsp" />
-
+	<jsp:include page="/incl/DeepFooter.jsp" />
+	
 </body>
 </html>

@@ -8,16 +8,22 @@ import lombok.ToString;
 @Setter
 @ToString
 public class ClassVO {
-	private int classNO;
+	private String classNO;
 	private String className;
 	private String classGoal;
 	private String classSummary;
+	private int classPersonnel;
+	private int classCredit;
+	private String memberNO;
 	
 	public ClassVO() {
-		this.classNO = 0;
+		this.classNO = null;
 		this.className = null;
 		this.classGoal = null;
 		this.classSummary = null;
+		this.classPersonnel = 0;
+		this.classCredit = 0;
+		this.memberNO = null;
 	}
 
 }
