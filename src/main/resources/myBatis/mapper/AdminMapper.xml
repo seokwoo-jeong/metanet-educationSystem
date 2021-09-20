@@ -5,8 +5,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.metanet.educationSystem.mapper.AdminMapper">
 
-<!-- 	<select id="getAll" resultType="DeptVO">
-        SELECT * from dept where deptNO = 10
-    </select>
-     -->
+	<!-- <select id="getAll" resultType="DeptVO"> SELECT * from dept where deptNO = 10 </select> -->
+	
+	<insert id="memberInsert" parameterType="MemberVO">
+		insert into member (memberNO, memberName,memberPassword,memberEmail,memberPhoneNO,memberDistinct,isAccountNonExpired,isAccountNonLocked,isCredentialsNonExpired,isEnabled)
+		values(#{memberNO},#{memberName},#{memberPassword},#{memberEmail},#{memberPhoneNO},#{memberDistinct},0,0,0,0)
+	</insert>
 </mapper>

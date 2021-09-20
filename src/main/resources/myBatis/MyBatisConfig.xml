@@ -9,5 +9,6 @@
     <mappers>
         <mapper resource="myBatis/mapper/TempMapper.xml"/>
   		<mapper resource="myBatis/mapper/LoginMapper.xml"/>
+  		<mapper resource="myBatis/mapper/AdminMapper.xml"/>
     </mappers>
 </configuration>
