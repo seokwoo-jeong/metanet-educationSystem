@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 
@@ -12,8 +13,8 @@
 
 
 <body>
-<jsp:include page="/incl/Header.jsp" />
-<jsp:include page="/incl/Sidebar.jsp" />
+	<jsp:include page="/incl/Header.jsp" />
+	<jsp:include page="/incl/Sidebar.jsp" />
 
 <div class="content-body">
 	<div class="content-body">
@@ -21,7 +22,9 @@
 			<div class="col p-md-0">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+
 					<li class="breadcrumb-item active"><a href="#">Home</a></li>
+
 				</ol>
 			</div>
 		</div>
@@ -48,7 +51,8 @@
 												<td>head의 import 정의해서 incl로 이동 (header에 있어야 하나?...)</td>
 											</tr>
 											<tr>
-												<td>탬플릿 적용 안될 때: css, js, images, plugins etc... 앞에 'resources/' 붙여야 탬플릿 적용 됨</td>
+												<td>탬플릿 적용 안될 때: css, js, images, plugins etc... 앞에
+													'resources/' 붙여야 탬플릿 적용 됨</td>
 											</tr>
 										</tbody>
 									</table>
@@ -66,7 +70,13 @@
 									<table class="table table-xs mb-0">
 										<thead>
 											<tr>
-												<th>수강조회</th>
+												<th><c:choose>
+														<c:when test="${member.memberDistinct eq 0}"> 학생의 강의목록.</c:when>
+														<c:when test="${member.memberDistinct eq 1}">
+															<a href="/professor/professorShowMyclass?professorID=${member.memberNO}">교수의 내강의실가기</a>
+														</c:when>
+
+													</c:choose></th>
 											</tr>
 										</thead>
 										<tbody>
