@@ -1,4 +1,3 @@
-
 function studentApplyClass(){
 	if(!confirm("해당 과목을 수강 신청 하시겠습니까?")){
 		return false;
@@ -45,7 +44,6 @@ function getClassSyllabus(classNO){
 			$("#memberPhoneNO").val(memberPhoneNO);
 			$("#professorMajor").val(professorMajor);
 			$("#professorRank").val(professorRank);
-			
 		}
 	});
 }

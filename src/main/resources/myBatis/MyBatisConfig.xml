@@ -2,12 +2,19 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
-        <typeAlias type="com.metanet.educationSystem.model.DeptVO" alias="DeptVO"/>
+        <typeAlias type="com.metanet.educationSystem.model.AdminVO" alias="AdminVO"/>
+        <typeAlias type="com.metanet.educationSystem.model.ClassVO" alias="ClassVO"/>
 		<typeAlias type="com.metanet.educationSystem.model.MemberVO" alias="MemberVO"/>
+		<typeAlias type="com.metanet.educationSystem.model.NoticeVO" alias="NoticeVO"/>
+		<typeAlias type="com.metanet.educationSystem.model.ProfessorVO" alias="ProfessorVO"/>
+		<typeAlias type="com.metanet.educationSystem.model.ScoreVO" alias="ScoreVO"/>
+		<typeAlias type="com.metanet.educationSystem.model.StudentVO" alias="StudentVO"/>
     </typeAliases>
 
     <mappers>
-        <mapper resource="myBatis/mapper/TempMapper.xml"/>
-  		<mapper resource="myBatis/mapper/LoginMapper.xml"/>
+        <mapper resource="myBatis/mapper/AdminMapper.xml"/>
+        <mapper resource="myBatis/mapper/LoginMapper.xml"/>
+        <mapper resource="myBatis/mapper/ProfessorMapper.xml"/>
+        <mapper resource="myBatis/mapper/StudentMapper.xml"/>
     </mappers>
 </configuration>
