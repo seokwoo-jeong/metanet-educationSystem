@@ -16,7 +16,6 @@ function studentDeleteClass(){
 
 function getClassSyllabus(classNO){
 	var query = {classNO: classNO};
-	
 	$.ajax({
 		url: "/student/getClassSyllabus",
 		type : "post",
@@ -33,17 +32,17 @@ function getClassSyllabus(classNO){
 			var memberPhoneNO = data.MemberVO.memberPhoneNO;
 			var professorMajor = data.ProfessorVO.professorMajor;
 			var professorRank = data.ProfessorVO.professorRank;
-			$("#classNO").val(classNO);
-			$("#className").val(className);
-			$("#classGoal").val(classGoal);
-			$("#classSummary").val(classSummary);
-			$("#classPersonnel").val(classPersonnel);
-			$("#classCredit").val(classCredit);
-			$("#memberName").val(memberName);
-			$("#memberEmail").val(memberEmail);
-			$("#memberPhoneNO").val(memberPhoneNO);
-			$("#professorMajor").val(professorMajor);
-			$("#professorRank").val(professorRank);
+			$("#syllabusClassNO").val(classNO);
+			$("#syllabusClassName").val(className);
+			$("#syllabusClassGoal").val(classGoal);
+			$("#syllabusClassSummary").val(classSummary);
+			$("#syllabusClassPersonnel").val(classPersonnel);
+			$("#syllabusClassCredit").val(classCredit);
+			$("#syllabusMemberName").val(memberName);
+			$("#syllabusMemberEmail").val(memberEmail);
+			$("#syllabusMemberPhoneNO").val(memberPhoneNO);
+			$("#syllabusProfessorMajor").val(professorMajor);
+			$("#syllabusProfessorRank").val(professorRank);
 		}
 	});
 }

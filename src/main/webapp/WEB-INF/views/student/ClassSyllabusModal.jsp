@@ -17,26 +17,62 @@
 				</div>
 				<div class="modal-body">
 					<div class="modal-body">
-						<label> 수업번호: </label> <input type="text" id="classNO" name="classNO" readonly> 
-						<label> 수업이름: </label> <input type="text" id="className" name="className" readonly>
-						<hr>
-						<label> 정원 수: </label> <input type="text" id="classPersonnel" name="classPersonnel" readonly> 
-						<label> 학점: </label> <input type="text" id="classCredit" name="classCredit" readonly>
-						<hr>
-						<label> 수업목표: </label> <input type="text" id="classGoal" name="classGoal" readonly>
-						<hr>
-						<label> 수업내용: </label> <input type="text" id="classSummary" name="classSummary" readonly>
-						<hr>
-						<label> 교수이름: </label> <input type="text" id="memberName" name="memberName" readonly> 
-						<label> 교수이메일: </label> <input type="text" id="memberEmail" name="memberEmail" readonly>
-						<label> 교수번호: </label> <input type="text" id="memberPhoneNO" name="memberPhoneNO" readonly>
-						<hr>
-						<label> 교수전공: </label> <input type="text" id="professorMajor" name="professorMajor" readonly>
-						<label> 교수신분:</label> <input type="text" id="professorRank" name="professorRank" readonly>
+						<div class="col-lg-12">
+							<div class="card">
+								<div class="card-body">
+									<h4 class="card-title">강의계획서</h4>
+									<div class="basic-form">
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>수업번호</label> <input type="text" class="form-control" id="syllabusClassNO" name="syllabusClassNO" readonly>
+											</div>
+											<div class="form-group col-md-6">
+												<label>수업이름</label> <input type="text" class="form-control" id="syllabusClassName" name="syllabusClassName" readonly>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>정원 수</label> <input type="text" class="form-control" id="syllabusClassPersonnel" name="syllabusClassPersonnel" readonly>
+											</div>
+											<div class="form-group col-md-6">
+												<label>학점</label> <input type="text" class="form-control" id="syllabusClassCredit" name="syllabusClassCredit" readonly>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>교수이름</label> <input type="text" class="form-control" id="syllabusMemberName" name="syllabusMemberName" readonly>
+											</div>
+											<div class="form-group col-md-6">
+												<label>교수전공</label> <input type="text" class="form-control" id="syllabusProfessorMajor" name="syllabusProfessorMajor" readonly>
+											</div>
+											
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>이메일</label> <input type="text" class="form-control" id="syllabusMemberEmail" name="syllabusMemberEmail" readonly>
+											</div>
+											<div class="form-group col-md-6">
+												<label>전화번호</label> <input type="text" class="form-control" id="syllabusMemberPhoneNO" name="syllabusMemberPhoneNO" readonly>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<label>수업목표</label> <input type="text" class="form-control" id="syllabusClassGoal" name="syllabusClassGoal" readonly>
+											</div>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-12">
+												<label>수업내용</label> <input type="text" class="form-control" id="syllabusClassSummary" name="syllabusClassSummary" readonly>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" data-dismiss="modal">닫기</button>
+					</div>
 				</div>
 			</div>
 		</div>

@@ -37,7 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().logout()
 			.logoutUrl("/doLogout")
 			.logoutSuccessUrl("/")
-
 			.and()
 		.exceptionHandling()
 		.accessDeniedPage("/error.jsp")
