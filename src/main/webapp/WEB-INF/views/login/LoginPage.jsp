@@ -7,6 +7,8 @@
 <title>loginPage</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script type="text/javascript">
+/*  
+
 $(document).ready(function(){
 		$("#doLogin").click(function(){
 			var queryString = $("form[name=loginInfo]").serialize();
@@ -23,7 +25,9 @@ $(document).ready(function(){
 				})
 			})
 		})
+		*/
 </script>
+
 </head>
 <body class="h-100">
 	<div class="login-form-bg h-100">
@@ -37,14 +41,14 @@ $(document).ready(function(){
 									<h4>Login</h4>
 								</a>
 
-								<form class="mt-5 mb-5 login-input" name="loginInfo" method="post">
+								<form class="mt-5 mb-5 login-input" name="loginInfo" action="/doLogin" method="post">
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="Id" name="memberNO">
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control" placeholder="Password" name="memberPassword">
 									</div>
-									<button class="btn login-form__btn submit w-100" id="doLogin">Sign In</button>
+									<button type="submit" class="btn login-form__btn submit w-100" id="doLogin">Sign In</button>
 								</form>
 							</div>
 						</div>
