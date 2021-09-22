@@ -24,6 +24,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 	</resultMap>
 
+
+
 	<!-- Select Start -->
 
 	<select id="getClassList" resultMap="classInfo">
@@ -95,10 +97,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		AND classNO = #{classNO}
 	</select>
 
+	<resultMap type="java.util.HashMap" id="scoreInfo">
+		<association property="ScoreVO" javaType="ScoreVO">
+			<result column="classNO" property="classNO"/>
+			<result column="midtermScore" property="midtermScore" />
+			<result column="finalsScore" property="finalsScore" />
+			<result column="assignmentScore" property="assignmentScore" />
+			<result column="attendanceScore" property="attendanceScore" />
+			<result column="grade" property="grade" />
+		</association>
+
+		<association property="ClassVO" javaType="ClassVO">
+			<result column="className" property="className" />
+		</association>
+	</resultMap>
+
+	<select id="getStudentScoreList" parameterType="string" resultMap="scoreInfo">
+		SELECT score.classNO, nvl(midtermScore,0), nvl(finalsScore,0),
+		nvl(assignmentScore,0), nvl(attendanceScore,0), nvl(grade,'-') as grade, class.className
+		FROM score ,class
+		WHERE score.classNO = class.classNO AND score.memberNO = #{memberNO}
+	</select>
+
+
 	<!-- Select Finish -->
 
 	<!-- Insert Start -->
-
 	<insert id="studentApplyClass" parameterType="java.util.HashMap">
 		INSERT INTO score(classNO, memberNO) VALUES (#{classNO},#{memberNO})
 	</insert>

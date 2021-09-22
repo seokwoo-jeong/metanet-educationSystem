@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.metanet.educationSystem.constant.Constant;
-import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.service.student.StudentService;
 
@@ -102,10 +101,26 @@ public class StudentController {
 	
 	@ResponseBody
     @RequestMapping(value = "/getClassSyllabus", method = RequestMethod.POST)
-    public HashMap<String, Object> getClassSyllabus(HttpServletRequest request,RedirectAttributes rttr) throws Exception {
+    public HashMap<String, Object> getClassSyllabus(HttpServletRequest request) throws Exception {
 		String classNO = request.getParameter("classNO");
         return this.studentService.getClassInfo(classNO);
     }
+	
+	@RequestMapping("/studentShowScore")
+	public String studentShowScore(Model model, HttpServletRequest request, HttpSession session) throws Exception {
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		model.addAttribute("studentScoreVOList",this.studentService.getStudentScoreList(memberVO.getMemberNO()));
+		
+		return "student/StudentShowScorePage";
+	}
+	
+	@RequestMapping("/studentShowGrade")
+	public String studentShowGrade(Model model, HttpServletRequest request, HttpSession session) throws Exception {
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+		model.addAttribute("studentScoreVOList",this.studentService.getStudentScoreList(memberVO.getMemberNO()));
+		
+		return "student/StudentShowGradePage";
+	}
 	
 
 }

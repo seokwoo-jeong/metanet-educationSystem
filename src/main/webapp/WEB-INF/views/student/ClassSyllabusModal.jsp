@@ -24,7 +24,7 @@
 									<div class="basic-form">
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>수업번호</label> <input type="text" class="form-control" id="syllabusClassNO" name="syllabusClassNO" readonly>
+												<label>수업번호</label> <input type="text" class="form-control" id="syllabusClassNO"  name="syllabusClassNO" readonly>
 											</div>
 											<div class="form-group col-md-6">
 												<label>수업이름</label> <input type="text" class="form-control" id="syllabusClassName" name="syllabusClassName" readonly>
