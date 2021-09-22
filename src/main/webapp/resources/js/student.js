@@ -14,6 +14,7 @@ function studentDeleteClass(){
 	}
 }
 
+
 function getClassSyllabus(classNO){
 	var query = {classNO: classNO};
 	$.ajax({
@@ -46,3 +47,4 @@ function getClassSyllabus(classNO){
 		}
 	});
 }
+
