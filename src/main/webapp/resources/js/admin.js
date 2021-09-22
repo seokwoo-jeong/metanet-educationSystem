@@ -23,12 +23,15 @@ function studentInsert(){
 	
 	//'빈칸을 채우시오' 학번까지 완료 
 	//비밀번호 ~ 작업 중
-/*	var memberPasswordstr = document.getElementById('memberPassword');
+	
+	/*	
+	var memberPasswordstr = document.getElementById('memberPassword');
 
 	if( memberPasswordstr.value == '' || memberPasswordstr.value == null ){
 	    alert( '비밀번호를 입력해주세요' );
 	    return false;
-	}*/ 
+	}
+	*/ 
 	
 		
 	if(!confirm("해당 정보로 학생을 등록 하시겠습니까?")){
