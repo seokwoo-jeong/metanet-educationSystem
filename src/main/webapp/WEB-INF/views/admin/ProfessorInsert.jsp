@@ -7,7 +7,7 @@
 
 <head>
 <jsp:include page="/incl/Head.jsp" />
-<title>Main</title>
+<title></title>
 </head>
 
 <body>
@@ -45,42 +45,48 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">Vertical Form</h4>
+								<h4 class="card-title"> 교수 등록 페이지 </h4>
+								<br>
 								<div class="basic-form">
-									<form action="/studentInsert" method="post">
+									<form action="/admin/studentInsertCheck" id="/studentInsertCheck" method="Post">
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>학번</label> <input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="학번">
+												<label>교수 번호</label> <input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="Professor Number">
 											</div>
 											<div class="form-group col-md-6">
 												<label>비밀번호</label> <input type="password" class="form-control" name="memberPassword" placeholder="Password">
 											</div>
-										</div>
-										<div class="form-group">
-											<label>이름</label> <input type="text" class="form-control" placeholder="이름을 입력하세요." name="memberName">
-										</div>
-										<div class="form-group">
-											<label>이메일</label> <input type="text" class="form-control" name="memberEmail" placeholder="이메일 입력">
-										</div>
-										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>핸드폰번호</label> <input type="text" class="form-control" name="memberPhoneNO">
+												<label>이름</label> <input type="text" class="form-control" placeholder="이름을 입력하세요" name="memberName">
 											</div>
+											<div class="form-group col-md-6">
+												<label>이메일</label> <input type="text" class="form-control" name="memberEmail" placeholder="이메일을 입력하세요">
+											</div>
+											<div class="form-group col-md-6">
+												<label>핸드폰번호</label> <input type="text" class="form-control" name="memberPhoneNO" placeholder="핸드폰 번호를 입력하세요">
+											</div>
+										</div>
+										
+										<div class="form-row">
+											<!-- 
 											<div class="form-group col-md-4">
 												<label>구분</label> <select id="inputState" class="form-control" name="memberDistinct">
 													<option selected="selected">선택하세요</option>
 													<option value="0">학생</option>
 													<option value="1">교수</option>
 												</select>
-											</div>
+											</div> 
+											-->
 										</div>
 										<div class="form-group">
-											<!-- <div class="form-check">
-														<input class="form-check-input" type="checkbox"> <label
-															class="form-check-label">Check me out</label>
-													</div> -->
+											<!-- 
+											<div class="form-check">
+														<input class="form-check-input" type="checkbox"> 
+														<label class="form-check-label">Check me out</label>
+											</div> 
+											-->
 										</div>
-										<button type="submit" class="btn btn-dark">Sign in</button>
+											<button class="btn mb-1 btn-primary btn-sm" onclick="return professorInsert();">교수 등록</button>
 									</form>
 								</div>
 							</div>

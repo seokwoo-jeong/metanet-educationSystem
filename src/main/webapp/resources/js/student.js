@@ -14,4 +14,3 @@ function studentDeleteClass(){
 		document.getElementById('studentDeleteClass').submit();
 	}
 }
-
