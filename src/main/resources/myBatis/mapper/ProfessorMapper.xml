@@ -3,8 +3,36 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
-<mapper namespace="com.metanet.educationSystem.mapper.ProfessorMapper">
+<mapper
+	namespace="com.metanet.educationSystem.mapper.ProfessorMapper">
 
-	
-    
+	<resultMap type="java.util.HashMap" id="studentInfo">
+		<id column="scoreNO" property="scoreNO" />
+		<result column="classNO" property="classNO" />
+		<association property="MemberVO" javaType="MemberVO">
+			<result column="memberNO" property="memberNO" />
+			<result column="memberName" property="memberName" />
+			<result column="memberEmail" property="memberEmail" />
+			<result column="memberPhoneNO" property="memberPhoneNO" />
+		</association>
+		<association property="ClassVO" javaType="ClassVO">
+			<result column="className" property="className" />
+		</association>
+	</resultMap>
+
+
+	<select id="professorGetClassList" parameterType="string"
+		resultType="ClassVO">
+		SELECT * from class where memberNO=#{professorNO}
+	</select>
+
+	<select id="professorGetStudentList" parameterType="string"
+		resultMap="studentInfo">
+		select score.classNO, score.memberNO, memberName, memberEmail, memberPhoneNO, className
+		from score join member on score.memberNO = member.memberNO
+		join class on class.classNO = score.classNO
+		where score.classNO = #{classNO}
+
+	</select>
+
 </mapper>

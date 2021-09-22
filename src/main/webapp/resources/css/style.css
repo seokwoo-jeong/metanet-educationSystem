@@ -7737,13 +7737,13 @@ sub {
   .header-left .icons {
     float: left;
     margin: 0;
-    padding: 0 0.3125rem;
+    padding: 0 1rem;
     position: relative; }
     .header-left .icons > a {
       padding: 0 0.3125rem;
       color: #464a53; }
   .header-left .input-group {
-    margin-top: 17px; }
+    margin-top: 25px; }
     .header-left .input-group input {
       border-radius: 5px !important; }
     .header-left .input-group .input-group-text {

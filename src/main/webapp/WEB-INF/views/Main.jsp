@@ -12,19 +12,22 @@
 
 
 <body>
-<jsp:include page="/incl/Header.jsp" />
-<jsp:include page="/incl/Sidebar.jsp" />
+	<jsp:include page="/incl/Header.jsp" />
+	<jsp:include page="/incl/Sidebar.jsp" />
 
-<div class="content-body">
 	<div class="content-body">
+
 		<div class="row page-titles mx-0">
 			<div class="col p-md-0">
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
-					<li class="breadcrumb-item active"><a href="/student/studentApplyClass">Home</a></li>
+
+					<li class="breadcrumb-item active"><a href="#">Home</a></li>
+
 				</ol>
 			</div>
 		</div>
+
 		<!-- row -->
 
 		<div class="container-fluid">
@@ -66,7 +69,13 @@
 									<table class="table table-xs mb-0">
 										<thead>
 											<tr>
-												<th>수강조회</th>
+												<th><c:choose>
+														<c:when test="${member.memberDistinct eq 0}"> 학생의 강의목록.</c:when>
+														<c:when test="${member.memberDistinct eq 1}">
+															<a href="/professor/professorShowMyclass?professorID=${member.memberNO}">교수의 내강의실가기</a>
+														</c:when>
+
+													</c:choose></th>
 											</tr>
 										</thead>
 										<tbody>
@@ -89,7 +98,7 @@
 
 		</div>
 	</div>
-</div>
+
 	<jsp:include page="/incl/Footer.jsp" />
 </body>
 </html>

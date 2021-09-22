@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,6 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>·Î±×ÀÎ ½ÇÆĞ</h1>
+	<h1>ë¡œê·¸ì¸ ì‹¤íŒ¨</h1>
+	${param }
+	memberNO = ${param.memberNO}
+	memberPassword = ${param.memberPassword}
+	errormsg = ${errormsgname}
 </body>
 </html>

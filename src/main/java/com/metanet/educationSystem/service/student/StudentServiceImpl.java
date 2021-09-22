@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.metanet.educationSystem.mapper.StudentMapper;
 import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.model.MemberVO;
+import com.metanet.educationSystem.model.ScoreVO;
 import com.metanet.educationSystem.constant.Constant;
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -15,11 +16,6 @@ public class StudentServiceImpl implements StudentService{
 	@Autowired
 	private StudentMapper studentMapper;
 
-	@Override
-	public MemberVO getMemberVO()  throws Exception{
-		return studentMapper.getMemberVO();
-		
-	}
 
 	@Override
 	public List<HashMap<String, Object>> getClassList() throws Exception {
@@ -105,6 +101,18 @@ public class StudentServiceImpl implements StudentService{
 	public int getCurrentStudentCredit(String memberNO) throws Exception {
 		
 		return this.studentMapper.getCurrentStudentCredit(memberNO);
+	}
+
+	@Override
+	public HashMap<String, Object> getClassInfo(String classNO) throws Exception {
+		return this.studentMapper.getClassInfo(classNO);
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<HashMap<String, Object>> getStudentScoreList(String memberNO) throws Exception {
+		return this.studentMapper.getStudentScoreList(memberNO);
 	}
 
 	
