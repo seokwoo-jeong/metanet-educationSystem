@@ -9,8 +9,8 @@
 	<!-- Nav header start -->
 	<div class="nav-header">
 		<div class="brand-logo">
-			<a href="/"> <b class="logo-abbr"><img src="../resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img src="../resources/images/metanetUniversityLogo.png" width="200"
-					height="50" alt="">
+			<a href="/"> <b class="logo-abbr"><img src="../resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img src="../resources/images/metanetUniversityLogo.png"
+					width="200" height="50" alt="">
 			</span>
 			</a>
 		</div>
@@ -24,9 +24,9 @@
 				<div class="input-group icons">
 					 <h3 class="mb-0">
 					<c:choose>
-							<c:when test="${member.memberDistinct eq 0}"> ${member.memberName} 학생님, 안녕하세요.</c:when>
-							<c:when test="${member.memberDistinct eq 1}"> ${member.memberName} 교수님, 안녕하세요.</c:when>
-							<c:when test="${member.memberDistinct eq 2}"> ${member.memberName} 관리자님, 안녕하세요.</c:when>
+						<c:when test="${member.memberDistinct eq 0}"> ${member.memberName} 학생님, 안녕하세요.</c:when>
+						<c:when test="${member.memberDistinct eq 1}"> ${member.memberName} 교수님, 안녕하세요.</c:when>
+						<c:when test="${member.memberDistinct eq 2}"> ${member.memberName} 관리자님, 안녕하세요.</c:when>
 					</c:choose>
 					</h3>
 					
@@ -36,13 +36,12 @@
 				<div class="input-group icons">
 					<div class="col-12 text-center">
 						<c:if test="${empty member}">
-							<form action="/checkLogin" method="post">
+							<a href="/checkLogin">
 								<button class="btn btn-primary px-3 ml-4">login</button>
-							</form>
+							</a>
 						</c:if>
 						<c:if test="${!empty member}">
 							<form action="/doLogout" method="post">
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 								<button class="btn btn-primary px-3 ml-4">logout</button>
 							</form>
 						</c:if>

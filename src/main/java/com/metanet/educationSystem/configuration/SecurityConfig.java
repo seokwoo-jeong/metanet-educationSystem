@@ -14,7 +14,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		// ���Ǿ�� �� ��ε�
 		web.ignoring().antMatchers("/resources/**", "/dist/**", "/css/**", "/font-awesome/**", "/fonts/**", "/img/**",
 				"/js/**","/favicon.ico", "/error","/incl/**","/plugins/**");
 	}
@@ -22,29 +21,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	protected void configure(HttpSecurity http) throws Exception {
 			http.authorizeRequests()
-			.antMatchers("/checkLogin", "/","/studentInsert").permitAll()
+			.antMatchers("/checkLogin", "/").permitAll()
 	        .antMatchers("/admin/**").hasAuthority("2")
 	        .antMatchers("/professor/**").hasAuthority("1")
 	        .antMatchers("/student/**").hasAuthority("0")
-			.anyRequest().authenticated()
 		.and().formLogin()
 			.loginPage("/checkLogin").loginProcessingUrl("/doLogin")
 			.usernameParameter("memberNO")
 			.passwordParameter("memberPassword")
 			.successHandler(new LoginSuccessHandler())
 			.failureHandler(new LoginFailHandler())
-			.failureForwardUrl("/loginFail")
 		.and().logout()
 			.logoutUrl("/doLogout")
 			.logoutSuccessUrl("/")
-			.and()
-		.exceptionHandling()
-		.accessDeniedPage("/error.jsp")
 		.and().csrf().disable();
 	}
 	
 	
-	// �ؽ� �н�����
 //	@Bean
 //    public PasswordEncoder passwordEncoder() {
 //        return new BCryptPasswordEncoder();
