@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.model.MemberVO;
+import com.metanet.educationSystem.model.ScoreVO;
 
 public interface StudentService {
 
@@ -25,6 +26,8 @@ public interface StudentService {
 	public int getCurrentStudentCredit(String memberNO) throws Exception;
 
 	public HashMap<String, Object> getClassInfo(String classNO) throws Exception;
+
+	public List<HashMap<String, Object>> getStudentScoreList(String memberNO) throws Exception;
 
 	
 

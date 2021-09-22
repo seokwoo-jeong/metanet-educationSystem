@@ -27,22 +27,16 @@
 											<tr>
 												<th>강좌번호</th>
 												<th>강좌이름</th>
-												
+
 											</tr>
 										</thead>
 										<tbody>
-									
+
 											<c:forEach var="classVO" items="${classVOList}">
 												<tr>
 													<td>${classVO.classNO}</td>
 													<td>${classVO.className}</td>
-													
-													<td>
-															<a href="/professor/professorShowStudent?classID=${classVO.classNO}"><button class="btn mb-1 btn-primary btn-sm" >수강생 조회</button></a>
-													
-														
-													</td>
-
+													<td><a href="/professor/professorShowStudent?classID=${classVO.classNO}"><button class="btn mb-1 btn-primary btn-sm">수강생 조회</button></a></td>
 												</tr>
 											</c:forEach>
 										</tbody>
@@ -85,6 +79,6 @@
 		</div>
 	</div>
 	<jsp:include page="/incl/DeepFooter.jsp" />
-	
+
 </body>
 </html>
