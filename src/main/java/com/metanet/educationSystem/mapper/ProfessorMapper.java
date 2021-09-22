@@ -13,5 +13,8 @@ import com.metanet.educationSystem.model.ClassVO;
 public interface ProfessorMapper {
 	
 	public List<ClassVO> professorGetClassList(String professorNO) throws Exception;
+	
+	public List<HashMap<String, Object>> professorGetStudentList(String classNO) throws Exception;
+
 
 }
