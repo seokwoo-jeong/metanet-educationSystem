@@ -25,6 +25,11 @@ public class ProfessorServiceImpl implements ProfessorService{
 		
 		
 	}
+	@Override
+	public List<HashMap<String, Object>> professorGetStudentList(String classNO) throws Exception {
+		System.out.println(professorMapper.professorGetStudentList(classNO).size() + "dsf");
+		return professorMapper.professorGetStudentList(classNO);
+	}
 
 
 	@Override
