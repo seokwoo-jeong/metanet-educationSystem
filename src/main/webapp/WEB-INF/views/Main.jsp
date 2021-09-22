@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
 <!DOCTYPE html>
 <html>
 
@@ -16,8 +15,8 @@
 	<jsp:include page="/incl/Header.jsp" />
 	<jsp:include page="/incl/Sidebar.jsp" />
 
-<div class="content-body">
 	<div class="content-body">
+
 		<div class="row page-titles mx-0">
 			<div class="col p-md-0">
 				<ol class="breadcrumb">
@@ -28,6 +27,7 @@
 				</ol>
 			</div>
 		</div>
+
 		<!-- row -->
 
 		<div class="container-fluid">
@@ -51,8 +51,7 @@
 												<td>head의 import 정의해서 incl로 이동 (header에 있어야 하나?...)</td>
 											</tr>
 											<tr>
-												<td>탬플릿 적용 안될 때: css, js, images, plugins etc... 앞에
-													'resources/' 붙여야 탬플릿 적용 됨</td>
+												<td>탬플릿 적용 안될 때: css, js, images, plugins etc... 앞에 'resources/' 붙여야 탬플릿 적용 됨</td>
 											</tr>
 										</tbody>
 									</table>
@@ -99,7 +98,7 @@
 
 		</div>
 	</div>
-</div>
+
 	<jsp:include page="/incl/Footer.jsp" />
 </body>
 </html>

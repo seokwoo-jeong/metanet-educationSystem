@@ -44,7 +44,6 @@
 														<td>${studentClassVO.classPersonnel}</td>
 														<td>${studentClassVO.classCredit}</td>
 														<td>${studentClassVO.MemberVO.memberName}</td>
-														
 														<td><button  class="btn mb-1 btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="getClassSyllabus('${studentClassVO.classNO}');">계획서 보기</button></td>
 													</tr>
 												</c:forEach>

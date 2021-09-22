@@ -31,7 +31,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.passwordParameter("memberPassword")
 			.successHandler(new LoginSuccessHandler())
 			.failureHandler(new LoginFailHandler())
-			.failureForwardUrl("/loginFail")
 		.and().logout()
 			.logoutUrl("/doLogout")
 			.logoutSuccessUrl("/")

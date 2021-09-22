@@ -25,14 +25,13 @@ public class LoginServiceImpl implements LoginService {
 	public UserDetails loadUserByUsername(String memberNO) throws UsernameNotFoundException {
 		MemberVO member = loginMapper.readMember(memberNO);
 
-		if (member == null){
-			System.out.println("memberNO = "+memberNO);
-			throw new UsernameNotFoundException(memberNO);
-		}
-		else {
+//		if (member == null){
+//			throw new UsernameNotFoundException(memberNO);
+//		}
+//		else {
 			member.setMemberPassword("{noop}" + member.getMemberPassword());
 			member.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(member.getMemberDistinct())));
-		}
+//		}
 
 		return member;
 	}

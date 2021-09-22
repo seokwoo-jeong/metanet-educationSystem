@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
@@ -13,8 +14,9 @@ public class LoginController {
     
 	
 	@RequestMapping("/checkLogin")
-	public String checkLogin(Model model) {
+	public String checkLogin(HttpServletRequest request) {
 		System.out.println("/checkLogin -> LoginController -> return HTML");
+		System.out.println("errorcode = "+request.getAttribute("errormsg"));
 		return "/login/LoginPage";
 	}
 
@@ -29,4 +31,15 @@ public class LoginController {
 		System.out.println("/loginFail -> LoginController -> return HTML");
 		return "/login/LoginFail";
 	}
+	
+	@RequestMapping("/doLoginImpl")
+	public String doLoginImpl(HttpServletRequest request, RedirectAttributes redirect) {
+		System.out.println("/doLoginImpl-> LoginController -> return URL");
+		String memberNO = request.getParameter("memberNO");
+		String memberPassword = request.getParameter("memberPassword");
+		redirect.addFlashAttribute("memberNO", memberNO);
+		redirect.addFlashAttribute("memberPassword", memberPassword);
+		return "redirect:/doLogin";
+	}
+	
 }
