@@ -10,6 +10,8 @@ import com.metanet.educationSystem.model.MemberVO;
 @Mapper
 public interface AdminMapper {
 
-	void memberInsert(MemberVO memberVO);
+	void memberInsert(MemberVO memberVO) throws Exception;
+
+	String checkMemberNO(String memberNO) throws Exception;
 
 }
