@@ -26,7 +26,7 @@ public class LoginServiceImpl implements LoginService {
 		MemberVO member = loginMapper.readMember(memberNO);
 
 		if (member == null){
-			System.out.println("���� ����, memberNO = "+memberNO);
+			System.out.println("memberNO = "+memberNO);
 			throw new UsernameNotFoundException(memberNO);
 		}
 		else {

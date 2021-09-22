@@ -14,7 +14,6 @@ public class LoginController {
 	
 	@RequestMapping("/checkLogin")
 	public String checkLogin(Model model) {
-		System.out.println("{memberNO : 100000001}");
 		System.out.println("/checkLogin -> LoginController -> return HTML");
 		return "/login/LoginPage";
 	}

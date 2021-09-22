@@ -1,9 +1,29 @@
+<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html class="h-100" lang="en">
+<html>
 
 <head>
 <jsp:include page="/incl/Head.jsp" />
 <title>loginPage</title>
+<script type="text/javascript">
+		$("#doLogin").click(function(){
+		
+			$.ajax({
+				url: "doLogin",
+				type: "post",
+				data: {name:"홍길동"},
+				success: function(result){
+					$("body")
+				},
+				error: function(xhr, status, error){
+					alert("통신 에러")
+				}
+			
+			})
+		})
+	}
+</script>
+
 </head>
 
 <body class="h-100">
@@ -25,7 +45,7 @@
 									<div class="form-group">
 										<input type="password" class="form-control" placeholder="Password" name="memberPassword">
 									</div>
-									<button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
+									<button onclick="return doLogin();" class="btn login-form__btn submit w-100" id="doLogin">Sign In</button>
 								</form>
 							</div>
 						</div>
