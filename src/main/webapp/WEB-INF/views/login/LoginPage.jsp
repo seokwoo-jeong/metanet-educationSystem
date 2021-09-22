@@ -26,7 +26,6 @@
 										<input type="password" class="form-control" placeholder="Password" name="memberPassword">
 									</div>
 									<button type="submit" class="btn login-form__btn submit w-100">Sign In</button>
-									<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 								</form>
 							</div>
 						</div>

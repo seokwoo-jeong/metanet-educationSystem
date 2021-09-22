@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -13,6 +14,7 @@ public class LoginController {
 	
 	@RequestMapping("/checkLogin")
 	public String checkLogin(Model model) {
+		System.out.println("{memberNO : 100000001}");
 		System.out.println("/checkLogin -> LoginController -> return HTML");
 		return "/login/LoginPage";
 	}

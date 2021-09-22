@@ -9,5 +9,6 @@
 <body>
 <h1>권한이 없습니다.</h1>
 <h2><a href = "/">홈페이지 가기</a></h2>
+<h2><a href = "/login/LoginPage">로그인 하러가기</a></h2>
 </body>
 </html>

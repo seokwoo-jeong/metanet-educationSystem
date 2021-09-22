@@ -11,38 +11,43 @@ import com.metanet.educationSystem.controller.login.LoginSuccessHandler;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-	
+
 	@Override
 	public void configure(WebSecurity web) throws Exception {
-		// ���Ǿ�� �� ��ε�
 		web.ignoring().antMatchers("/resources/**", "/dist/**", "/css/**", "/font-awesome/**", "/fonts/**", "/img/**",
-				"/js/**","/favicon.ico", "/error","/incl/**","/plugins/**");
+				"/js/**", "/favicon.ico", "/error", "/incl/**", "/plugins/**");
 	}
 
-
 	protected void configure(HttpSecurity http) throws Exception {
-			http.authorizeRequests()
-			.antMatchers("/checkLogin", "/").permitAll()
+			http
+			.authorizeRequests()
+			.antMatchers("/").permitAll()
+//			.antMatchers("/login/**").permitAll()
+			.antMatchers("/checkLogin").permitAll()
 	        .antMatchers("/admin/**").hasAuthority("2")
 	        .antMatchers("/professor/**").hasAuthority("1")
 	        .antMatchers("/student/**").hasAuthority("0")
 			.anyRequest().authenticated()
-		.and().formLogin()
+		.and()
+			.formLogin()
 			.loginPage("/checkLogin").loginProcessingUrl("/doLogin")
 			.usernameParameter("memberNO")
 			.passwordParameter("memberPassword")
 			.successHandler(new LoginSuccessHandler())
 			.failureHandler(new LoginFailHandler())
 			.failureForwardUrl("/loginFail")
-		.and().logout()
+		.and()
+			.logout()
 			.logoutUrl("/doLogout")
-			.logoutSuccessUrl("/");
-//			.and()
-//		.exceptionHandling()
-//		.accessDeniedPage("/error.jsp");
+			.logoutSuccessUrl("/")
+//		.and()
+//			.exceptionHandling()
+//			.authenticationEntryPoint(AuthenticationEntryPoint()) // 인증 실패시
+//			.accessDeniedPage("/error.jsp") // 인가 실패시
+		.and()
+			.csrf().disable();
 	}
-	
-	
+
 	// �ؽ� �н�����
 //	@Bean
 //    public PasswordEncoder passwordEncoder() {
