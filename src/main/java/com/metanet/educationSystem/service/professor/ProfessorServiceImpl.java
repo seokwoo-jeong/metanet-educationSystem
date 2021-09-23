@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.metanet.educationSystem.mapper.ProfessorMapper;
 import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.model.MemberVO;
+import com.metanet.educationSystem.model.ScoreVO;
 
 @Service
 public class ProfessorServiceImpl implements ProfessorService{
@@ -34,6 +35,16 @@ public class ProfessorServiceImpl implements ProfessorService{
 
 	@Override
 	public ClassVO getMemberVO() throws Exception {
+		return null;
+	}
+	@Override
+	public ScoreVO inputScoreVO() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<ScoreVO> inputStudentScore(String studentNO) throws Exception {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
