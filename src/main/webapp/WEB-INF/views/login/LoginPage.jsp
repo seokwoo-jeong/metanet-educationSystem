@@ -13,6 +13,11 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+window.onload = function() {
+	if(${param.error}=="401")
+		alert("로그인이 필요한 기능입니다.");
+	};
+
 </script>
 </head>
 

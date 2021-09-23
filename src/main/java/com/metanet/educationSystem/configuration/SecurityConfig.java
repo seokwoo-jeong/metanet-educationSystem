@@ -1,16 +1,21 @@
 package com.metanet.educationSystem.configuration;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.*;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 
+import com.metanet.educationSystem.controller.login.CommenceEntryPoint;
 import com.metanet.educationSystem.controller.login.LoginFailHandler;
 import com.metanet.educationSystem.controller.login.LoginSuccessHandler;
 
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+	
+	@Autowired
+	private CommenceEntryPoint unauthorizedHandler;
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -34,6 +39,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		.and().logout()
 			.logoutUrl("/doLogout")
 			.logoutSuccessUrl("/")
+		.and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
 		.and().csrf().disable();
 	}
 	
