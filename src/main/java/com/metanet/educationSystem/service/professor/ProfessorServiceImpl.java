@@ -43,9 +43,8 @@ public class ProfessorServiceImpl implements ProfessorService{
 		return null;
 	}
 	@Override
-	public List<ScoreVO> inputStudentScore(String studentNO) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public void inputStudentScore(ScoreVO scoreVO) throws Exception {
+		professorMapper.inputStudentScore(scoreVO);
 	}
 
 }

@@ -28,11 +28,37 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<select id="professorGetStudentList" parameterType="string"
 		resultMap="studentInfo">
-		select score.classNO, score.memberNO, memberName, memberEmail, memberPhoneNO, className
-		from score join member on score.memberNO = member.memberNO
-		join class on class.classNO = score.classNO
+		select score.classNO, score.memberNO, memberName,
+		memberEmail, memberPhoneNO, className
+		from score join member on
+		score.memberNO = member.memberNO
+		join class on class.classNO =
+		score.classNO
 		where score.classNO = #{classNO}
 
 	</select>
+
+
+	<update id="inputStudentScore" parameterType="ScoreVO">
+		MERGE INTO score s
+		USING DUAL
+		ON (s.CLASSNO = #{classNO} AND s.MEMBERNO = #{memberNO})
+		WHEN MATCHED THEN
+		UPDATE SET s.MIDTERMSCORE = #{midtermScore},
+		s.FINALSSCORE=#{finalsScore},
+		s.assignmentScore= #{assignmentScore},
+		s.attendanceScore= #{attendanceScore},
+		s.GRADE= #{grade}
+		WHEN NOT
+		MATCHED THEN
+		INSERT(classNO, memberNO,
+		midtermScore,finalsScore,assignmentScore, attendanceScore, grade)
+		VALUES
+		(#{classNO} , #{memberNO} , #{midtermScore}, #{finalsScore},
+		#{assignmentScore}, #{attendanceScore}, #{grade}
+		)
+		
+	</update>
+
 
 </mapper>
