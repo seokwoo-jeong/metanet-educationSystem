@@ -63,11 +63,12 @@ public class ProfessorController {
 		return "professor/ProfessorInputScorePage";
 	}
 	@RequestMapping("/professor/professorInputScoreCheck")
+	//@RequestMapping("/professor/professorShowStudent")
 	public String professorInputScore(Model model, HttpServletRequest request, ScoreVO scoreVO) throws Exception {
 		// 수업번호 받아옴
-//		String classNO = request.getParameter("classNO");
+	String classID = request.getParameter("classID");
 //		String studentNO = request.getParameter("memberNO");
-//		System.out.println(classNO+"인풋클래스번호");
+	System.out.println(classID+"클래스아이디이이이이이이이이ㅣㅇ");
 //		System.out.println(studentNO+"인풋학생번호");
 		System.out.println(scoreVO+"스쿠어브이오내용!!!!!!!");
 		//model.addAttribute("studentScoreList", professorService.inputStudentScore(scoreVO));

@@ -48,7 +48,8 @@
 							<div class="card-body">
 								<h4 class="card-title">학생 성적 입력</h4>
 								<div class="basic-form">
-									<form action="/professor/professorShowStudent?classID=${classNO}"
+
+									<form action="/professor/professorInputScoreCheck"
 										method="post">
 										<div class="form-row">
 											<div class="form-group col-md-6">
@@ -58,11 +59,11 @@
 												String memberNO = request.getParameter("memberNO");
 												%>
 												<label>학수번호</label> <input type="text" class="form-control"
-													id="classNO" name="classNO" value="<%= classNO %>">
+													id="classNO" name="classNO" value="<%=classNO%>">
 											</div>
 											<div class="form-group col-md-6">
 												<label>학생 학번</label> <input type="text" class="form-control"
-													id="memberNO" name="memberNO" value="<%= memberNO %>">
+													id="memberNO" name="memberNO" value="<%=memberNO%>">
 											</div>
 
 										</div>
@@ -89,26 +90,34 @@
 											<label>최종학점</label> <input type="text" class="form-control"
 												id="grade" name="grade" placeholder="최종 학점 입력">
 										</div> -->
-										
-										
+
+
 										<div class="form-group">
-												<label>구분</label> <select id="grade" class="form-control" name="grade">
-													<option selected="selected">최종 학점을 입력하세요</option>
-													<option value="A+">A+</option>
-													<option value="A0">A0</option>
-													<option value="B+">B+</option>
-													<option value="B0">B0</option>
-													<option value="C+">C+</option>
-													<option value="C0">C0</option>
-													<option value="F">F</option>
-												</select>
-											</div>
-										
+											<label>구분</label> <select id="grade" class="form-control"
+												name="grade">
+												<option selected="selected">최종 학점을 입력하세요</option>
+												<option value="A+">A+</option>
+												<option value="A0">A0</option>
+												<option value="B+">B+</option>
+												<option value="B0">B0</option>
+												<option value="C+">C+</option>
+												<option value="C0">C0</option>
+												<option value="F">F</option>
+											</select>
+										</div>
+
 										<!--  <button type="submit" class="btn btn-dark"
 											onclick="return professorInputScore();">성적 입력</button>-->
-										<button class="btn mb-1 btn-primary btn-sm">성적 입력</button>
-										 <input type="hidden" name="classNumber" value="${classNO}" /> 
+										<script>
+											function btn() {
+												alert('등록되었습니다');
+											}
+										</script>
+										<button class="btn mb-1 btn-primary btn-sm"
+											onclick="javascript:btn()">성적 입력</button>
+									
 									</form>
+									<form action="/professor/professorInputScoreCheck">	<input type="hidden" name="classID" value="${classNO}" /></form>
 								</div>
 
 
@@ -120,3 +129,5 @@
 				<jsp:include page="/incl/DeepFooter.jsp" />
 </body>
 </html>
+
+
