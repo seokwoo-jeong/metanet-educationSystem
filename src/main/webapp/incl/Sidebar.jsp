@@ -22,7 +22,7 @@
 				<li class="mega-menu mega-menu-sm"><a class="has-arrow" href="javascript:void()" aria-expanded="false"> <i class="icon-globe-alt menu-icon"></i><span class="nav-text">Layouts</span>
 				</a>
 					<ul aria-expanded="false">
-						<li><a href="./layout-blank.html">Blank</a></li>
+						<li><a href="/student/fileTemp">Blank</a></li>
 						<li><a href="./layout-one-column.html">One Column</a></li>
 
 					</ul></li>

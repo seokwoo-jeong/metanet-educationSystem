@@ -56,7 +56,7 @@
 											<div class="form-group col-md-6">	
 												<br><br>
 												<p class="result">
-												<button type="button" class="checkMemberNO btn mb-1 btn-primary btn-sm">중복확인</button>
+												<button type="button" id="zbCheckPassButton" class="checkMemberNO btn mb-1 btn-primary btn-sm">중복확인</button>
 	                                   			<span class="msg">중복확인을 해주세요.</span>
 	                               				</p>
 											</div>
@@ -72,22 +72,25 @@
  											--%>
  										<div class="form-row">	
 											<div class="form-group col-md-6">
-												<label>비밀번호</label> <input type="password" class="form-control" name="memberPassword" placeholder="Password">
+												<label>비밀번호</label> 
+												<input type="password" id="memberPassword" name="memberPassword" class="form-control" name="memberPassword" placeholder="Password">
 											</div>
 											<div class="form-group col-md-6">
-												<label>이름</label> <input type="text" class="form-control" placeholder="이름을 입력하세요" name="memberName">
+												<label>이름</label> 
+												<input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요" name="memberName">
 											</div>
 											<div class="form-group col-md-6">
-												<label>이메일</label> <input type="text" class="form-control" name="memberEmail" placeholder="이메일을 입력하세요">
+												<label>이메일</label> 
+												<input type="text" id="memberEmail" name="memberEmail" class="form-control" name="memberEmail" placeholder="이메일을 입력하세요">
 											</div>
 											<div class="form-group col-md-6">
-												<label>핸드폰번호</label> <input type="text" class="form-control" name="memberPhoneNO" placeholder="핸드폰 번호를 입력하세요">
+												<label>핸드폰번호</label> 
+												<input type="text" id="memberPhoneNO" name="memberPhoneNO" class="form-control" name="memberPhoneNO" placeholder="핸드폰 번호를 입력하세요">
 											</div>
 											<div class="form-group col-md-6">
-												<label>구분</label> <select id="inputState" class="form-control" name="memberDistinct">
-													<option selected="selected">선택하세요</option>
-													<option value="0">학생</option>
-													<option value="1">교수</option>
+												<label>구분</label>
+												<select id="inputState" class="form-control" name="memberDistinct">
+													<option selected="selected" value="0">학생</option>
 												</select>
 											</div>
 
@@ -118,31 +121,55 @@
 </body>
 
 <script>
-    $(".checkMemberNO").click(function () {
+	var zbCheckPass = false; //중복 확인 여부
+	var userIdCheck = RegExp(/[^0-9]$/);
+
+	$(".checkMemberNO").click(function () {
         var query = {memberNO: $("#memberNO").val()};
+        var a =$("#memberNO").val();
         
-        $.ajax({
-            url: "/admin/checkMemberNO",
-            type: "post",
-            data: query,
-            success: function (data) {
-                if (data == 1) {
-                    $(".result .msg").text("사용불가");
-                    $(".result .msg").attr("style", "color:#f00");
-                    $("#submit").attr("disabled", "disabled");
-                } else {
-                    $(".result .msg").text("사용가능");
-                    $(".result .msg").attr("style", "color:#00f");
-                    $("#submit").removeAttr("disabled");
-                }
-            }
-        });  // ajax ��
+        //console.log($("#memberNO").val());
+        if (userIdCheck.test($('#memberNO').val())){
+        	$(".result .msg").text("학번은 숫자로만 입력할 수 있습니다.");
+            $(".result .msg").attr("style", "color:#f00");
+            $("#submit").attr("disabled", "disabled");
+        }else if($("#memberNO").val() == ""){
+        	$(".result .msg").text("학번을 입력해주세요.");
+            $(".result .msg").attr("style", "color:#f00");
+            $("#submit").attr("disabled", "disabled");
+        }else if(a.length != 10){
+        	$(".result .msg").text("학번은 10자리의 숫자로만 입력할 수 있습니다.");
+            $(".result .msg").attr("style", "color:#f00");
+            $("#submit").attr("disabled", "disabled");    
+        } else {		
+	        $.ajax({
+	            url: "/admin/checkMemberNO",
+	            type: "post",
+	            data: query,
+	            success: function (data) { 
+	            	
+	            	if (data == 1) { 
+	                	zbCheckPass = false;
+	                    $(".result .msg").text("사용불가");
+	                    $(".result .msg").attr("style", "color:#f00");
+	                    $("#submit").attr("disabled", "disabled");
+	                } else {
+	                	zbCheckPass = true;
+	                    $(".result .msg").text("사용가능");
+	                    $(".result .msg").attr("style", "color:#00f");
+	                    $("#submit").removeAttr("disabled");
+	                }
+	            }
+	        });
+        }
     });
-    $("#memberNO").keyup(function () {
+    $("#checkMemberNO").keyup(function () {
         $(".result .msg").text("중복확인을 해주세요");
         $(".result .msg").attr("style", "color:#000");
         $("#submit").attr("disabled", "disabled");
     });
 </script>
+
+
 
 </html>
