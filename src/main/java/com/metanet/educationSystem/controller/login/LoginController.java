@@ -16,7 +16,10 @@ public class LoginController {
 	@RequestMapping("/checkLogin")
 	public String checkLogin(HttpServletRequest request) {
 		System.out.println("/checkLogin -> LoginController -> return HTML");
+		String referer = (String)request.getHeader("REFERER");
+
 		System.out.println("errorcode = "+request.getAttribute("errormsg"));
+		System.out.println("refer = "+referer);
 		return "/login/LoginPage";
 	}
 

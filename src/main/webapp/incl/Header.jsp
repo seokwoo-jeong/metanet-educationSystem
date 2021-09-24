@@ -9,7 +9,7 @@
 	<!-- Nav header start -->
 	<div class="nav-header">
 		<div class="brand-logo">
-			<a href="/"> <b class="logo-abbr"><img src="../resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img src="../resources/images/metanetUniversityLogo.png"
+			<a href="/"> <b class="logo-abbr"><img src="${pageContext.request.contextPath }/resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img src="${pageContext.request.contextPath }/resources/images/metanetUniversityLogo.png"
 					width="200" height="50" alt="">
 			</span>
 			</a>

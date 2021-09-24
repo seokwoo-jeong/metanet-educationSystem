@@ -9,6 +9,8 @@
 		<typeAlias type="com.metanet.educationSystem.model.ProfessorVO" alias="ProfessorVO"/>
 		<typeAlias type="com.metanet.educationSystem.model.ScoreVO" alias="ScoreVO"/>
 		<typeAlias type="com.metanet.educationSystem.model.StudentVO" alias="StudentVO"/>
+		<typeAlias type="com.metanet.educationSystem.model.NoticeVO" alias="NoticeVO"/>
+		<typeAlias type="com.metanet.educationSystem.model.CommentsVO" alias="CommentsVO"/>
     </typeAliases>
 
     <mappers>
@@ -16,7 +18,9 @@
         <mapper resource="myBatis/mapper/LoginMapper.xml"/>
         <mapper resource="myBatis/mapper/ProfessorMapper.xml"/>
         <mapper resource="myBatis/mapper/StudentMapper.xml"/>
-
+        <mapper resource="myBatis/mapper/NoticeMapper.xml"/>
+        <mapper resource="myBatis/mapper/CommentsMapper.xml"/>
+        
     </mappers>
 
 </configuration>

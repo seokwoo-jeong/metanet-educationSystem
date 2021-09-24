@@ -48,53 +48,86 @@
 							<div class="card-body">
 								<h4 class="card-title">학생 성적 입력</h4>
 								<div class="basic-form">
-									<form action="/studentInsert" method="post">
+
+									<form action="/professor/professorInputScoreCheck"
+										method="post">
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>학번</label> <input type="text" class="form-control"
-													id="memberNO" name="memberNO" placeholder="학번">
+												<%
+												request.setCharacterEncoding("UTF-8");
+												String classNO = request.getParameter("classNO");
+												String memberNO = request.getParameter("memberNO");
+												%>
+												<label>학수번호</label> <input type="text" class="form-control"
+													id="classNO" name="classNO" value="<%=classNO%>">
 											</div>
 											<div class="form-group col-md-6">
-												<label>비밀번호</label> <input type="password"
-													class="form-control" name="memberPassword"
-													placeholder="Password">
+												<label>학생 학번</label> <input type="text" class="form-control"
+													id="memberNO" name="memberNO" value="<%=memberNO%>">
 											</div>
+
 										</div>
 										<div class="form-group">
-											<label>이름</label> <input type="text" class="form-control"
-												placeholder="이름을 입력하세요." name="memberName">
+											<label>중간고사</label> <input type="number" class="form-control"
+												placeholder="중간고사 점수 입력" id="midtermScore"
+												name="midtermScore">
 										</div>
 										<div class="form-group">
-											<label>이메일</label> <input type="text" class="form-control"
-												name="memberEmail" placeholder="이메일 입력">
-										</div>
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label>핸드폰번호</label> <input type="text" class="form-control"
-													name="memberPhoneNO">
-											</div>
-											<div class="form-group col-md-4">
-												<label>구분</label> <select id="inputState"
-													class="form-control" name="memberDistinct">
-													<option selected="selected">선택하세요</option>
-													<option value="0">학생</option>
-													<option value="1">교수</option>
-												</select>
-											</div>
+											<label>기말고사</label> <input type="number" class="form-control"
+												id="finalsScore" name="finalsScore" placeholder="기말고사 점수입력">
 										</div>
 										<div class="form-group">
-											<!-- <div class="form-check">
-														<input class="form-check-input" type="checkbox"> <label
-															class="form-check-label">Check me out</label>
-													</div> -->
+											<label>과제</label> <input type="number" class="form-control"
+												id="assignmentScore" name="assignmentScore"
+												placeholder="과제 점수 입력">
 										</div>
-										<button type="submit" class="btn btn-dark">Sign in</button>
+										<div class="form-group">
+											<label>출석</label> <input type="number" class="form-control"
+												id="attendanceScore" name="attendanceScore"
+												placeholder="출석 점수 입력">
+										</div>
+										<!-- <div class="form-group">
+											<label>최종학점</label> <input type="text" class="form-control"
+												id="grade" name="grade" placeholder="최종 학점 입력">
+										</div> -->
+
+
+										<div class="form-group">
+											<label>구분</label> <select id="grade" class="form-control"
+												name="grade">
+												<option selected="selected">최종 학점을 입력하세요</option>
+												<option value="A+">A+</option>
+												<option value="A0">A0</option>
+												<option value="B+">B+</option>
+												<option value="B0">B0</option>
+												<option value="C+">C+</option>
+												<option value="C0">C0</option>
+												<option value="F">F</option>
+											</select>
+										</div>
+
+										<!--  <button type="submit" class="btn btn-dark"
+											onclick="return professorInputScore();">성적 입력</button>-->
+										<script>
+											function btn() {
+												alert('등록되었습니다');
+											}
+										</script>
+										<button class="btn mb-1 btn-primary btn-sm"
+											onclick="javascript:btn()">성적 입력</button>
+									
 									</form>
+									<form action="/professor/professorInputScoreCheck">	<input type="hidden" name="classID" value="${classNO}" /></form>
 								</div>
+
+
 							</div>
 						</div>
 					</div>
+				</div>
 
-					<jsp:include page="/incl/DeepFooter.jsp" />
+				<jsp:include page="/incl/DeepFooter.jsp" />
 </body>
 </html>
+
+
