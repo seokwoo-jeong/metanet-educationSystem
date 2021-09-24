@@ -11,7 +11,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class NoticeVO {
-	private int noticeNO;
+	private String noticeNO;
 	private String noticeSubject;
 	private String noticeContent;
 	
@@ -19,7 +19,7 @@ public class NoticeVO {
 	private String noticeDate;
 	
 	public NoticeVO(){
-		this.noticeNO = 0;
+		this.noticeNO = null;
 		this.noticeSubject = null;
 		this.noticeContent = null;
 		this.noticeDate = null;

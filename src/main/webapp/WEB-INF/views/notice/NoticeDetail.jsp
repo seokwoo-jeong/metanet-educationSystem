@@ -21,8 +21,8 @@
 		<jsp:include page="/incl/Sidebar.jsp" />
 		<div class="content-body">
 			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-12">
+				<div class="d-flex justify-content-center">
+					<div class="col-lg-8">
 						<div class="card">
 							<div class="card-body">
 								
