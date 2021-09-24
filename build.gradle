@@ -30,6 +30,11 @@ dependencies {
 	testAnnotationProcessor 'org.projectlombok:lombok:1.18.20'
 	// Spring Security
 	implementation "org.springframework.boot:spring-boot-starter-security"
+	
+	//file upload
+	implementation 'commons-io:commons-io:2.8.0'
+	implementation 'commons-fileupload:commons-fileupload:1.4'
+	
 
 }	
 

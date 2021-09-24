@@ -8,12 +8,19 @@
 <html>
 <jsp:include page="/incl/DeepHead.jsp" />
 
+
 <title>StudentApplyClass</title>
 <body>
+	<script>
+		var message = "${message}";
+		if (message != "") {
+			alert(message);
+		}
+	</script>
 	<div id="main-wrapper">
 		<jsp:include page="/incl/Header.jsp" />
 		<jsp:include page="/incl/Sidebar.jsp" />
-		
+
 		<div class="content-body">
 			<div class="container-fluid">
 
