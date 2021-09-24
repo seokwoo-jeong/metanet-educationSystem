@@ -13,6 +13,7 @@
 	<div id="main-wrapper">
 		<jsp:include page="/incl/Header.jsp" />
 		<jsp:include page="/incl/Sidebar.jsp" />
+		<jsp:include page="ProfessorInputScoreModal.jsp" />
 
 		<div class="content-body">
 			<div class="container-fluid">
@@ -47,10 +48,35 @@
 													<td>${studentinfo.MemberVO.memberEmail}</td>
 													<td>${studentinfo.MemberVO.memberPhoneNO}</td>
 
-													<td><button class="btn mb-1 btn-primary btn-sm"
-															data-toggle="modal" data-target=".bd-example-modal-lg"
-															onclick="professorInputScore('${studentinfo.MemberVO.memberNO}');">성적
-															입력</button></td>
+													<!-- onclick="professorInputScore('${studentinfo.MemberVO.memberNO}'
+													<a
+														herf="/professor/professorInputScore?studentinfo=${studentinfo.MemberVO.memberNO}"> -->
+													<!-- <td><a
+														href="/professor/professorShowStudent?classID=${classVO.classNO}"><button
+																class="btn mb-1 btn-primary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">성적 입력</button></a></td> -->
+													<!-- 				<td>
+														<form action="/professor/professorInputScore">
+															<input type="hidden" name="classNO"
+																value="${studentinfo.classNO}" /> <input type="hidden"
+																name="memberNO" value="${studentinfo.MemberVO.memberNO}" />
+															<button class="btn mb-1 btn-primary btn-sm"
+																data-toggle="modal" data-target=".bd-example-modal-lg"
+																onclick="alert(1);professorInput($(this))">성적
+																입력</button>
+														</form>
+													</td> /professor/professorInputScore-->
+
+													<td>
+														<form action=" /professor/professorInputScore">
+														 <input type="hidden" name="classNO" value="${studentinfo.classNO}" /> 
+															<input type="hidden" name="memberNO" value="${studentinfo.MemberVO.memberNO}" /> 
+															
+															<button class="btn mb-1 btn-primary btn-sm">성적
+																입력</button>
+														</form>
+													</td>
+
+
 												</tr>
 											</c:forEach>
 										</tbody>
