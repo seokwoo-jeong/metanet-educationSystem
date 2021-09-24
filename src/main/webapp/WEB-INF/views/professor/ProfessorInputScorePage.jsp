@@ -50,7 +50,7 @@
 								<div class="basic-form">
 
 									<form action="/professor/professorInputScoreCheck"
-										method="post">
+										id=professorInputScoreCheck method="post">
 										<div class="form-row">
 											<div class="form-group col-md-6">
 												<%
@@ -108,16 +108,22 @@
 
 										<!--  <button type="submit" class="btn btn-dark"
 											onclick="return professorInputScore();">성적 입력</button>-->
+
+
+
+
 										<script>
-											function btn() {
-												alert('등록되었습니다');
-											}
+											function InputScore() {
+												alert("성적 입력이 완료되었습니다.");
+												document.getElementById('professorInputScoreCheck').submit();
+															
+												}
 										</script>
 										<button class="btn mb-1 btn-primary btn-sm"
-											onclick="javascript:btn()">성적 입력</button>
-									
+											onclick="javascript:InputScore()">성적 입력</button>
 									</form>
-									<form action="/professor/professorInputScoreCheck">	<input type="hidden" name="classID" value="${classNO}" /></form>
+
+									<!-- <form action="/professor/professorInputScoreCheck">	<input type="hidden" name="classID" value="${classNO}" /></form> -->
 								</div>
 
 
