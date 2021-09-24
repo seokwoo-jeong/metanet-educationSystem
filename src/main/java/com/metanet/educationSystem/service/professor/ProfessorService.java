@@ -17,7 +17,8 @@ public interface ProfessorService {
 
 	public List<HashMap<String, Object>> professorGetStudentList(String classNO) throws Exception;
 
-	public List<ScoreVO> inputStudentScore(String studentNO) throws Exception;
+	//public List<ScoreVO> inputStudentScore(ScoreVO scoreVO) throws Exception;
+	void inputStudentScore(ScoreVO scoreVO) throws Exception;
 	
 	
 
