@@ -4,6 +4,31 @@
 <html class="h-100" lang="en">
 
 <head>
+<<<<<<< HEAD
+<jsp:include page="/incl/Head.jsp" />
+<title>loginPage</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script type="text/javascript">
+/*  
+
+$(document).ready(function(){
+		$("#doLogin").click(function(){
+			var queryString = $("form[name=loginInfo]").serialize();
+			$.ajax({
+				url: "/doLoginImpl",
+				type: "post",
+				data:queryString,
+				success: function(data){
+					alert("오류 번호 : ${errormsg}");
+				},
+				error: function(request, status, error){
+					alert("아이디 또는 비밀번호 오류입니다.");
+				}
+				})
+			})
+		})
+		*/
+=======
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -18,7 +43,9 @@ window.onload = function() {
 		alert("로그인이 필요한 기능입니다.");
 	};
 
+>>>>>>> 295776cc44ff20d52704a5dec097c5ea3d6920d9
 </script>
+
 </head>
 
 <body class="h-100">
@@ -52,14 +79,22 @@ window.onload = function() {
 									<h4>로그인</h4>
 								</a>
 
+<<<<<<< HEAD
+								<form class="mt-5 mb-5 login-input" name="loginInfo" action="/doLogin" method="post">
+=======
 								<form class="mt-5 mb-5 login-input" action="/doLogin" method="post">
+>>>>>>> 295776cc44ff20d52704a5dec097c5ea3d6920d9
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="Id" name="memberNO">
 									</div>
 									<div class="form-group">
 										<input type="password" class="form-control" placeholder="Password" name="memberPassword">
 									</div>
+<<<<<<< HEAD
+									<button type="submit" class="btn login-form__btn submit w-100" id="doLogin">Sign In</button>
+=======
 									<button class="btn login-form__btn submit w-100" type="submit" onclick="doLogin();">Sign In</button>
+>>>>>>> 295776cc44ff20d52704a5dec097c5ea3d6920d9
 								</form>
 								<p class="mt-5 login-form__footer" align="center" style="color:blue;">${requestScope.loginFailMsg}</p>
 							</div>
