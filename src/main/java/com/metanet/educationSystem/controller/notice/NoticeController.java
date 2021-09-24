@@ -37,7 +37,6 @@ public class NoticeController {
 	public String noticeDetail(HttpServletRequest request, 
 			@RequestParam(value="no") String noticeNO) throws Exception {
 		
-		System.out.println(noticeNO);
 		NoticeVO noticeVO = new NoticeVO();
 		noticeVO = noticeService.getNoticedetail(noticeNO);
 		request.setAttribute("noticeVO", noticeVO);

@@ -4,11 +4,6 @@
 <html>
 
 <body>
-
-  
-
-
-
 	<!-- Scripts -->
 	<script src="${pageContext.request.contextPath }/resources/plugins/common/common.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/custom.min.js"></script>
