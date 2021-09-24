@@ -45,6 +45,7 @@ public class ProfessorServiceImpl implements ProfessorService{
 	@Override
 	public void inputStudentScore(ScoreVO scoreVO) throws Exception {
 		professorMapper.inputStudentScore(scoreVO);
+
 	}
 
 }
