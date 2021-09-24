@@ -6,12 +6,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NoticeVO {
-	private int noticeNO;
+	private String noticeNO;
 	private String noticeSubject;
 	private String noticeContent;
 	
 	public NoticeVO(){
-		this.noticeNO = 0;
+		this.noticeNO = null;
 		this.noticeSubject = null;
 		this.noticeContent = null;
 	}
