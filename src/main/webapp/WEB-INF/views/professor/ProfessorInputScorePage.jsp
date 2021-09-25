@@ -49,7 +49,7 @@
 								<h4 class="card-title">학생 성적 입력</h4>
 								<div class="basic-form">
 
-									<form action="/professor/professorInputScoreCheck"
+									<form action="/professor/professorshowStudent"
 										id=professorInputScoreCheck method="post">
 										<div class="form-row">
 											<div class="form-group col-md-6">
@@ -67,45 +67,58 @@
 											</div>
 
 										</div>
-										<div class="form-group">
-											<label>중간고사</label> <input type="number" class="form-control"
-												placeholder="중간고사 점수 입력" id="midtermScore"
-												name="midtermScore">
-										</div>
-										<div class="form-group">
-											<label>기말고사</label> <input type="number" class="form-control"
-												id="finalsScore" name="finalsScore" placeholder="기말고사 점수입력">
-										</div>
-										<div class="form-group">
-											<label>과제</label> <input type="number" class="form-control"
-												id="assignmentScore" name="assignmentScore"
-												placeholder="과제 점수 입력">
-										</div>
-										<div class="form-group">
-											<label>출석</label> <input type="number" class="form-control"
-												id="attendanceScore" name="attendanceScore"
-												placeholder="출석 점수 입력">
-										</div>
-										<!-- <div class="form-group">
+										<c:forEach var="getstudentScore" items="${getstudentScore}">
+											<div class="form-group">
+												<label>중간고사</label> <input type="number"
+													class="form-control" placeholder="중간고사 점수 입력"
+													id="midtermScore" name="midtermScore"
+													value="${getstudentScore.midtermScore}">
+											</div>
+											<div class="form-group">
+												<label>기말고사</label> <input type="number"
+													class="form-control" id="finalsScore" name="finalsScore"
+													placeholder="기말고사 점수입력"
+													value="${getstudentScore.finalsScore}">
+											</div>
+											<div class="form-group">
+												<label>과제</label> <input type="number" class="form-control"
+													id="assignmentScore" name="assignmentScore"
+													placeholder="과제 점수 입력"
+													value="${getstudentScore.assignmentScore}">
+											</div>
+											<div class="form-group">
+												<label>출석</label> <input type="number" class="form-control"
+													id="attendanceScore" name="attendanceScore"
+													placeholder="출석 점수 입력"
+													value="${getstudentScore.attendanceScore}">
+											</div>
+											<!-- <div class="form-group">
 											<label>최종학점</label> <input type="text" class="form-control"
 												id="grade" name="grade" placeholder="최종 학점 입력">
 										</div> -->
 
+											<div class="form-row">
 
-										<div class="form-group">
-											<label>구분</label> <select id="grade" class="form-control"
-												name="grade">
-												<option selected="selected">최종 학점을 입력하세요</option>
-												<option value="A+">A+</option>
-												<option value="A0">A0</option>
-												<option value="B+">B+</option>
-												<option value="B0">B0</option>
-												<option value="C+">C+</option>
-												<option value="C0">C0</option>
-												<option value="F">F</option>
-											</select>
-										</div>
-
+												<div class="form-group col-md-6">
+													<label>최종 성적</label> <select id="grade"
+														class="form-control" name="grade">
+														<option selected="selected">최종 성적을 입력하세요.</option>
+														<option value="A+">A+</option>
+														<option value="A0">A0</option>
+														<option value="B+">B+</option>
+														<option value="B0">B0</option>
+														<option value="C+">C+</option>
+														<option value="C0">C0</option>
+														<option value="F">F</option>
+													</select>
+												</div>
+												<div class="form-group col-md-2">
+													<label>현재 입력된 성적</label> <input type="text"
+														class="form-control" id="curgrade" name="curgrades"
+														value="${getstudentScore.grade}">
+												</div>
+											</div>
+										</c:forEach>
 										<!--  <button type="submit" class="btn btn-dark"
 											onclick="return professorInputScore();">성적 입력</button>-->
 
@@ -115,9 +128,12 @@
 										<script>
 											function InputScore() {
 												alert("성적 입력이 완료되었습니다.");
-												document.getElementById('professorInputScoreCheck').submit();
-															
-												}
+												document
+														.getElementById(
+																'professorInputScoreCheck')
+														.submit();
+
+											}
 										</script>
 										<button class="btn mb-1 btn-primary btn-sm"
 											onclick="javascript:InputScore()">성적 입력</button>

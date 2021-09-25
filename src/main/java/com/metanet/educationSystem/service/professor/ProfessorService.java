@@ -19,6 +19,8 @@ public interface ProfessorService {
 
 	//public List<ScoreVO> inputStudentScore(ScoreVO scoreVO) throws Exception;
 	void inputStudentScore(ScoreVO scoreVO) throws Exception;
+
+	public List<ScoreVO> getstudentScore(String classNOO, String studentNO) throws Exception;
 	
 	
 

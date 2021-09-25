@@ -113,8 +113,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<select id="getStudentScoreList" parameterType="string" resultMap="scoreInfo">
-		SELECT score.classNO, nvl(midtermScore,0), nvl(finalsScore,0),
-		nvl(assignmentScore,0), nvl(attendanceScore,0), nvl(grade,'-') as grade, class.className
+		SELECT score.classNO, nvl(midtermScore,0) AS midtermScore, nvl(finalsScore,0)AS finalsScore,
+		nvl(assignmentScore,0)AS
+		assignmentScore, nvl(attendanceScore,0) AS attendanceScore, nvl(grade,'-') as grade, class.className
 		FROM score ,class
 		WHERE score.classNO = class.classNO AND score.memberNO = #{memberNO}
 	</select>

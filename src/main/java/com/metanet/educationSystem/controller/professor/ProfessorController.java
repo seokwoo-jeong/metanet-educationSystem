@@ -54,15 +54,19 @@ public class ProfessorController {
 	@RequestMapping("/professor/professorInputScore")
 	public String professorInputScore(Model model, HttpServletRequest request) throws Exception {
 		// 수업번호 받아옴
-		String classNO = request.getParameter("classNO");
+		String classNOO = request.getParameter("classNO");
 		String studentNO = request.getParameter("memberNO");
-		System.out.println(classNO+"인풋클래스번호");
+		System.out.println(classNOO+"인풋클래스번호");
 		System.out.println(studentNO+"인풋학생번호");
+		//ScoreVO scoreVO = professorService.getstudentScore(classNO,studentNO);
+		model.addAttribute("getstudentScore", professorService.getstudentScore(classNOO,studentNO));
+		
 		//model.addAttribute("studentScoreList", professorService.inputStudentScore(classNO, studentNO));
 
 		return "professor/ProfessorInputScorePage";
 	}
-	@RequestMapping("/professor/professorInputScoreCheck")
+	
+	@RequestMapping("/professor/professorshowStudent")
 	//@RequestMapping("/professor/professorShowStudent")
 	public String professorInputScore(Model model, HttpServletRequest request, ScoreVO scoreVO) throws Exception {
 		// 수업번호 받아옴
