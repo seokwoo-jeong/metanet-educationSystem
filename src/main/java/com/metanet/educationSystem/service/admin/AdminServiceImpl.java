@@ -61,30 +61,22 @@ public class AdminServiceImpl implements AdminService {
 	public void noticeInsert(NoticeVO noticeVO, HttpServletRequest request,
 			MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception {
 		String noticeNO = adminMapper.getNoticeNO();
-		if (noticeNO == null) {
-			noticeNO = "1";
-		} else {
-			noticeNO = Integer.toString(Integer.parseInt(noticeNO) + 1);
-		}
+		
 		noticeVO.setNoticeNO(noticeNO);
 
 		List<NoticeFileVO> noticeFileList = fileUtils.parseFileInfo(noticeVO.getNoticeNO(), request,
 				multipartHttpServeltRequest);
 		if (CollectionUtils.isEmpty(noticeFileList) == false) {
 			String fileNO = adminMapper.getFileNO();
-			if (fileNO == null) {
-				fileNO = "1";
-			} else {
-				fileNO = Integer.toString(Integer.parseInt(fileNO) + 1);
-			}
 			for (NoticeFileVO list : noticeFileList) {
 				list.setFileNO(fileNO);
-				System.out.println(list.getOriginFileName());
+				fileNO = Integer.toString((Integer.parseInt(fileNO)+1));
 			}
 
-			// adminMapper.noticeInsert(noticeVO);
-			// adminMapper.insertNoticeFileList(noticeFileList);
+			
 		}
+		 adminMapper.noticeInsert(noticeVO);
+		 adminMapper.insertNoticeFileList(noticeFileList);
 	}
 
 	@Override

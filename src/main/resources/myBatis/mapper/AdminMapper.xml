@@ -30,7 +30,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- noticeInsert -->
 	<select id="getNoticeNO" resultType="string">
-		select max(noticeNO) as noticeNO from notice
+		SELECT nvl(MAX(to_number(noticeNO)), 0) + 1 as noticeNO FROM notice
 	</select>
 
 	<insert id="noticeInsert" parameterType="NoticeVO">
@@ -44,7 +44,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	
 	<select id="getFileNO" resultType="string">
-		select max(fileNO) as fileNO from noticeFile
+		SELECT nvl(MAX(to_number(fileNO)), 0) + 1 as fileNO FROM noticeFile
 	</select>
 	
 	<insert id="insertNoticeFileList" parameterType="NoticeFileVO">
