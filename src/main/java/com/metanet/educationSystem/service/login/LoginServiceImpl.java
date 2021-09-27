@@ -21,17 +21,11 @@ public class LoginServiceImpl implements LoginService {
 //	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
 	@Override
-	// Security �ʼ� �޼���
 	public UserDetails loadUserByUsername(String memberNO) throws UsernameNotFoundException {
 		MemberVO member = loginMapper.readMember(memberNO);
-
-//		if (member == null){
-//			throw new UsernameNotFoundException(memberNO);
-//		}
-//		else {
-			member.setMemberPassword("{noop}" + member.getMemberPassword());
-			member.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(member.getMemberDistinct())));
-//		}
+		
+		member.setMemberPassword("{noop}" + member.getMemberPassword());
+		member.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(member.getMemberDistinct())));
 
 		return member;
 	}

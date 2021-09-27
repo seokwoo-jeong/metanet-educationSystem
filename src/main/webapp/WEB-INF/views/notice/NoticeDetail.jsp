@@ -25,11 +25,11 @@ $(document).ready(function() {
 					result+=item.memberName+' (학생)'
 				}else if(item.MEMBERDISTINCT == 1){
 					result+=item.memberName+' (교수)'
-				}else if(item.MEMBERDISTINCT == 1){
+				}else if(item.MEMBERDISTINCT == 2){
 					result+=item.memberName+' (관리자)'
 				}
-				result+='<small class="text-muted ml-3">'+item.commentDate+'</small>'+'</h5>'+'<div class="media-reply__link">'+'<button class="btn btn-transparent p-0 mr-3"></button>'+'<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>';
-				if(item.MEMBERNO == ${member.memberNO}){
+				result+='<small class="text-muted ml-3">'+item.commentDate+'</small>'+'</h5>'+'<div class="media-reply__link">'+'<button class="btn btn-transparent p-0 mr-3"></button>';
+				if(item.MEMBERNO == '${member.memberNO}'){
 					result+='<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment('+item.commentNO+');">삭제</button>';
 				}
 				result+='</div>'+'</div>'+'<p>'+item.commentContent+'</p>'+'<hr>'+'</div>' 
@@ -49,8 +49,9 @@ $(document).ready(function() {
 		var formData = {
 				'commentContent':$("#commentContent").val(),
 				'noticeNO':${param.no},
-				'memberNO':${member.memberNO}
+				'memberNO':'${member.memberNO}'
 				}
+
 		$.ajax({
 			url : "/notice/insertComment",
 			type : "post",
@@ -64,11 +65,11 @@ $(document).ready(function() {
 						result+=item.memberName+' (학생)'
 					}else if(item.MEMBERDISTINCT == 1){
 						result+=item.memberName+' (교수)'
-					}else if(item.MEMBERDISTINCT == 1){
+					}else if(item.MEMBERDISTINCT == 2){
 						result+=item.memberName+' (관리자)'
 					}
-					result+='<small class="text-muted ml-3">'+item.commentDate+'</small>'+'</h5>'+'<div class="media-reply__link">'+'<button class="btn btn-transparent p-0 mr-3"></button>'+'<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>';
-					if(item.MEMBERNO == ${member.memberNO}){
+					result+='<small class="text-muted ml-3">'+item.commentDate+'</small>'+'</h5>'+'<div class="media-reply__link">'+'<button class="btn btn-transparent p-0 mr-3"></button>';
+					if(item.MEMBERNO == '${member.memberNO}'){
 						result+='<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment('+item.commentNO+');">삭제</button>';
 					}
 					result+='</div>'+'</div>'+'<p>'+item.commentContent+'</p>'+'<hr>'+'</div>' 
@@ -100,6 +101,14 @@ $(document).ready(function() {
 			}
 		})
     }
+    
+    function deleteNotice(noticeNO){
+    	if(!confirm("공지사항을 삭제하시겠습니까?")){
+    		return false;
+    	}else{
+    		$("#deleteNotice").submit();
+    	}
+    }
 </script>
 </head>
 
@@ -125,6 +134,10 @@ $(document).ready(function() {
 											<div class="media-body">
 												<h5 class="m-b-3">공지사항 ${param.no }번</h5>
 												<p class="m-b-2">${noticeVO.noticeDate}</p>
+												<form id="deleteNotice" method="post" action="/notice/delete">
+												<input type="hidden" id="noticeNO" name="noticeNO" value="${param.no}"/>
+												<span class="float-right"><button class="btn btn-primary px-3 ml-4" onclick="deleteNotice()">삭제</button></span>
+												</form>
 											</div>
 
 										</div>
@@ -160,9 +173,6 @@ $(document).ready(function() {
 
 												</div>
 											</c:forEach>
-
-
-
 										</div>
 										<hr>
 									</div>
@@ -171,29 +181,6 @@ $(document).ready(function() {
 
 											<div class="media-body" id="comment">
 
-												<%-- <c:forEach var="comment" items="${commentsVO}">
-													<div id="del${comment.commentNO}">
-														<div class="d-sm-flex justify-content-between mb-2">
-															<h5 class="mb-sm-0">
-																<c:choose>
-																	<c:when test="${comment.MEMBERDISTINCT eq 0}"> ${comment.memberName} (학생)</c:when>
-																	<c:when test="${comment.MEMBERDISTINCT eq 1}"> ${comment.memberName} (교수)</c:when>
-																	<c:when test="${comment.MEMBERDISTINCT eq 2}"> ${comment.memberName} (관리자)</c:when>
-																</c:choose>
-																<small class="text-muted ml-3">${comment.commentDate}</small>
-															</h5>
-															<div class="media-reply__link">
-																<button class="btn btn-transparent p-0 mr-3"></button>
-																<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>
-																<c:if test="${member.memberNO eq comment.MEMBERNO}">
-																	<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment(${comment.commentNO});">삭제</button>
-																</c:if>
-															</div>
-														</div>
-														<p>${comment.commentContent}</p>
-														<hr>
-													</div>
-												</c:forEach> --%>
 											</div>
 										</div>
 									</div>

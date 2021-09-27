@@ -20,4 +20,6 @@ public interface NoticeMapper {
 
 	public NoticeFileVO downloadNoticeFile(NoticeFileVO noticeFileVO) throws Exception;
 
+	public int deleteNotice(String noticeNO);
+
 }
