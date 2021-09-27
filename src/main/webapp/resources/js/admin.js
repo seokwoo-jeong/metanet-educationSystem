@@ -77,8 +77,6 @@ function professorInsert() {
 	}
 }
 
-<<<<<<< Updated upstream
-=======
 //class///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function classInsert() {
@@ -179,4 +177,3 @@ function noticeInsert() {
 		document.getElementById('noticeInsertCheck').submit();
 	}
 }
->>>>>>> Stashed changes
