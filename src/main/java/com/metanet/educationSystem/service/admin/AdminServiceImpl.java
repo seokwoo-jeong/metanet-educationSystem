@@ -1,5 +1,6 @@
 package com.metanet.educationSystem.service.admin;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,5 +81,7 @@ public class AdminServiceImpl implements AdminService {
 	public int checkNoticeNO(String noticeVO) throws Exception {
 		return 0;
 	}
+
+	
 
 }
