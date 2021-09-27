@@ -10,8 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
-
 import com.metanet.educationSystem.common.FileUtils;
 import com.metanet.educationSystem.mapper.AdminMapper;
 import com.metanet.educationSystem.model.ClassVO;
@@ -26,8 +24,6 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper adminMapper;
 	@Autowired
 	private FileUtils fileUtils;
-
-//memberInsert - student, professor	
 
 //memberInsert - student, professor	
 
@@ -65,21 +61,30 @@ public class AdminServiceImpl implements AdminService {
 	public void noticeInsert(NoticeVO noticeVO, HttpServletRequest request,
 			MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception {
 		String noticeNO = adminMapper.getNoticeNO();
+		if (noticeNO == null) {
+			noticeNO = "1";
+		} else {
+			noticeNO = Integer.toString(Integer.parseInt(noticeNO) + 1);
+		}
 		noticeVO.setNoticeNO(noticeNO);
-		adminMapper.noticeInsert(noticeVO);
-		
+
 		List<NoticeFileVO> noticeFileList = fileUtils.parseFileInfo(noticeVO.getNoticeNO(), request,
 				multipartHttpServeltRequest);
 		if (CollectionUtils.isEmpty(noticeFileList) == false) {
 			String fileNO = adminMapper.getFileNO();
+			if (fileNO == null) {
+				fileNO = "1";
+			} else {
+				fileNO = Integer.toString(Integer.parseInt(fileNO) + 1);
+			}
 			for (NoticeFileVO list : noticeFileList) {
 				list.setFileNO(fileNO);
-				fileNO = Integer.toString((Integer.parseInt(fileNO)+1));
+				System.out.println(list.getOriginFileName());
 			}
-			this.adminMapper.insertNoticeFileList(noticeFileList);
-		}
-		
 
+			// adminMapper.noticeInsert(noticeVO);
+			// adminMapper.insertNoticeFileList(noticeFileList);
+		}
 	}
 
 	@Override
