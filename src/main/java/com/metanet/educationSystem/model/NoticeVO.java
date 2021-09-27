@@ -1,6 +1,8 @@
 package com.metanet.educationSystem.model;
 
 
+import java.sql.Date;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Getter;
@@ -16,7 +18,7 @@ public class NoticeVO {
 	private String noticeContent;
 	
 	@DateTimeFormat(pattern = "yyyy-MM-dd") 
-	private String noticeDate;
+	private Date noticeDate;
 	
 	public NoticeVO(){
 		this.noticeNO = null;
