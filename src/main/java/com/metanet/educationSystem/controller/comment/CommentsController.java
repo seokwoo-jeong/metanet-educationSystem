@@ -23,7 +23,7 @@ public class CommentsController {
 
 	@RequestMapping("/notice/getCommentsList")
 	public List<HashMap<String, Object>> noticeCommentsList(HttpServletRequest request, 
-			@RequestParam(value="no") String noticeNO) throws Exception {
+			@RequestParam(value="noticeNO") String noticeNO) throws Exception {
 		System.out.println("/notice/getCommentsList, no="+noticeNO);
 		List<HashMap<String, Object>> commentsList = commentService.getCommentsList(noticeNO);
 		return commentsList;
