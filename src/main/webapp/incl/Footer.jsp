@@ -2,7 +2,9 @@
 <!DOCTYPE html>
 <html>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <body>
+
 	<!-- Scripts -->
 	<script src="${pageContext.request.contextPath }/resources/plugins/common/common.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/custom.min.js"></script>
@@ -18,6 +20,6 @@
 	<script src="${pageContext.request.contextPath }/resources/plugins/tables/js/jquery.dataTables.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/plugins/tables/js/datatable/dataTables.bootstrap4.min.js"></script>
     <script src="${pageContext.request.contextPath }/resources/plugins/tables/js/datatable-init/datatable-basic.min.js"></script>
-    
+
 </body>
 </html>

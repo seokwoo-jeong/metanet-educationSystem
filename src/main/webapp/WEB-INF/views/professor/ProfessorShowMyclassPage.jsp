@@ -7,7 +7,7 @@
 <html>
 <jsp:include page="/incl/DeepHead.jsp" />
 
-<title>StudentApplyClass</title>
+<title>ProfessorShowClass</title>
 <body>
 	<div id="main-wrapper">
 		<jsp:include page="/incl/Header.jsp" />
