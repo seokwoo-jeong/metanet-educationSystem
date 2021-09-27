@@ -77,3 +77,106 @@ function professorInsert() {
 	}
 }
 
+<<<<<<< Updated upstream
+=======
+//class///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function classInsert() {
+	
+	//객체 string 변환
+	var classNOstr = $("#classNO");
+	var classNamestr = $("#className");
+	var classGoalstr = $("#classGoal");
+	var classSummarystr = $("#classSummary");
+	var classPersonalstr = $("#classPersonal");
+	var classCreditstr = $("#classCredit");
+	var memberNOstr = $("#memberNO");
+	
+	if (classNOstr.val() == '') {
+		alert('수업번호를 입력해주세요');
+		return false;
+	}
+	
+	if (classNamestr.val() == '') {
+		alert('수업명을 입력해주세요');
+		return false;
+	}	
+
+	if (classGoalstr.val() == '') {
+		alert('수업목표를 입력해주세요');
+		return false;
+	}
+
+	if (classSummarystr.val() == '') {
+		alert('수업요약을 입력해주세요');
+		return false;
+	}
+
+	if (classPersonalstr.val() == '') {
+		alert('수업인원을 입력해주세요');
+		return false;
+	}
+
+	if (classCreditstr.val() == '') {
+		alert('수업학점을 입력해주세요');
+		return false;
+	}
+	
+	if (memberNOstr.val() == '') {
+		alert('교수번호를 입력해주세요');
+		return false;
+	}
+
+	if (!confirm("해당 정보로 수업을 등록 하시겠습니까?")) {
+		return false;
+	} else {
+		document.getElementById('classInsertCheck').submit();
+	}
+}
+
+//notice///////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function noticeInsert() {
+	
+	//객체 string 변환
+	var noticeSubjectstr = $("#noticeSubject");
+	var noticeContentstr = $("#noticeContent");
+	
+	var reg_noticeSubject = /^.{5,20}$/     //모든 글자 5글자이상 20글자 이하
+	var reg_noticeContent = /^.{10,500}$/     //모든 글자 10글자이상 20글자 이하
+	
+	if (noticeSubjectstr.val() == '') {
+		alert('제목을 입력해주세요');
+		return false;
+	}
+	
+	if (!reg_noticeSubject.test(noticeSubjectstr.val())) {
+		alert('제목은 5글자 이상, 20글자 이하로 입력해주세요');
+		$("#noticeSubject").focus(this).css("background-color","#CCE1FF");
+		$("#noticeSubject").focus();
+		return false;
+	} else{
+		$("#noticeSubject").focus(this).css("background-color","white");
+	}
+	
+	if (noticeContentstr.val() == '') {
+		alert('공지사항 내용을 입력해주세요');
+		return false;
+	}
+	
+	if (!reg_noticeContent.test(noticeContentstr.val())) {
+		alert('공지사항 내용은 10글자 이상, 500글자 이내로 입력해주세요');
+		$("#noticeContent").focus(this).css("background-color","#CCE1FF");
+		$("#noticeContent").focus();
+		return false;
+	} else{
+		$("#noticeContent").focus(this).css("background-color","white");
+	}
+
+	if (!confirm("공지사항을 등록 하시겠습니까?")) {
+		return false;
+	} else {
+		document.getElementById('noticeInsertCheck').submit();
+	}
+}
+>>>>>>> Stashed changes
