@@ -202,6 +202,15 @@ function professorInsert() {
 //class///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function classInsert() {
+
+	if (!zbCheckPass) {
+		alert('교수번호 체크를 해주세요');
+		$("#memberNO").focus(this).css("background-color","#CCE1FF");
+		$("#memberNO").focus();
+		$("#zbCheckPassButton").focus(this).css("background-color","#FF5675");
+		$("#zbCheckPassButton").focus(this).css("border-color","#FF5675");
+		return false;
+	}
 	
 	//객체 string 변환
 	var classNOstr = $("#classNO");
