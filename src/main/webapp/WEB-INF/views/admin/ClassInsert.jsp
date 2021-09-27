@@ -114,15 +114,15 @@
         
         //console.log($("#classNO").val());
         if (userIdCheck.test($('#classNO').val())){
-        	$(".result .msg").text("학생번호는 숫자로만 입력할 수 있습니다.");
+        	$(".result .msg").text("교수번호는 숫자로만 입력할 수 있습니다.");
             $(".result .msg").attr("style", "color:#f00");
             $("#submit").attr("disabled", "disabled");
         }else if($("#classNO").val() == ""){
-        	$(".result .msg").text("학생번호를 입력해주세요.");
+        	$(".result .msg").text("교수번호를 입력해주세요.");
             $(".result .msg").attr("style", "color:#f00");
             $("#submit").attr("disabled", "disabled");
         }else if(a.length != 10){
-        	$(".result .msg").text("학생번호는 10자리의 숫자로만 입력할 수 있습니다.");
+        	$(".result .msg").text("교수번호는 10자리의 숫자로만 입력할 수 있습니다.");
             $(".result .msg").attr("style", "color:#f00");
             $("#submit").attr("disabled", "disabled");    
         } else {		
@@ -131,20 +131,19 @@
 	            type: "post",
 	            data: query,
 	            success: function (data) { 
-	            	
 	            	if (data == 1) { 
 	                	zbCheckPass = false;
-	                    $(".result .msg").text("이미 존재하는 학생번호입니다.");
-	                    $(".result .msg").attr("style", "color:#f00");
-	                    $("#submit").attr("disabled", "disabled");
-	                } else {
-	                	zbCheckPass = true;
-	                    $(".result .msg").text("사용 가능한 학생번호입니다.");
+	                    $(".result .msg").text("교수번호 확인되었습니다.");
 	                    $(".result .msg").attr("style", "color:#00f");
 	                    $("#submit").removeAttr("disabled");
 	                    $("#zbCheckPassButton").focus(this).css("background-color","#7B68EE");
 	                    $("#zbCheckPassButton").focus(this).css("border-color","#7B68EE");
 	            		$("#classNO").focus(this).css("background-color","white");
+	                } else {
+	                	zbCheckPass = true;
+	                    $(".result .msg").text("존재하지 않는 교수번호입니다.");
+	                    $(".result .msg").attr("style", "color:#f00");
+	                    $("#submit").attr("disabled", "disabled");
 	                }
 	            }
 	        });
