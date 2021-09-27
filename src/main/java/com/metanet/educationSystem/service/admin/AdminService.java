@@ -3,6 +3,9 @@ package com.metanet.educationSystem.service.admin;
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeVO;
 
+import java.util.HashMap;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -23,4 +26,7 @@ public interface AdminService {
 	void noticeInsert(NoticeVO noticeVO, HttpServletRequest request, MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception;
 	int checkNoticeNO(String noticeVO) throws Exception;
 	
+//ClassPage
+	public List<HashMap<String, Object>> getClassList() throws Exception;
+	public void adminDeleteClass(String classNO) throws Exception;
 }

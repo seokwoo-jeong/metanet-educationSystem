@@ -308,3 +308,13 @@ function noticeInsert() {
 		document.getElementById('noticeInsertCheck').submit();
 	}
 }
+
+//classPage/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function adminDeleteClass(){
+	if(!confirm("해당 과목을 삭제 하시겠습니까?")){
+		return false;
+	}else{
+		$('#adminDeleteClass').submit();
+	}
+}

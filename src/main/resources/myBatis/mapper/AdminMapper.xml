@@ -5,9 +5,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 <mapper namespace="com.metanet.educationSystem.mapper.AdminMapper">
 
-	<!-- <select id="getAll" resultType="DeptVO"> SELECT * from dept where deptNO = 10 </select> -->
+		<resultMap type="java.util.HashMap" id="classInfo">
+		<id column="classNO" property="classNO" />
+		<result column="className" property="className" />
+		<result column="classGoal" property="classGoal" />
+		<result column="classSummary" property="classSummary" />
+		<result column="classPersonnel" property="classPersonnel" />
+		<result column="classCredit" property="classCredit" />
+		<result column="classCurrentPersonnel" property="classCurrentPersonnel" />
+		<association property="MemberVO" javaType="MemberVO">
+			<result column="memberName" property="memberName" />
+			<result column="memberEmail" property="memberEmail" />
+			<result column="memberPhoneNO" property="memberPhoneNO" />
+		</association>
+		<association property="ProfessorVO" javaType="ProfessorVO">
+			<result column="professorMajor" property="professorMajor" />
+			<result column="professorRank" property="professorRank" />
+		</association>
+	</resultMap>
+	
+<!-- <select id="getAll" resultType="DeptVO"> SELECT * from dept where deptNO = 10 </select> -->
 
-	<!-- memberInsert - student, professor -->
+<!-- memberInsert - student, professor -->
 	<insert id="memberInsert" parameterType="MemberVO">
 		insert into member (memberNO,
 		memberName,memberPassword,memberEmail,memberPhoneNO,memberDistinct,isAccountNonExpired,isAccountNonLocked,isCredentialsNonExpired,isEnabled)
@@ -18,17 +37,17 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select memberNO from member where memberNO = #{memberNO}
 	</select>
 
-	<!-- classInsert -->
+<!-- classInsert -->
 	<insert id="classInsert" parameterType="classVO">
 		insert into class (classNO, className, classGoal, classSummary, classPersonnel, classCredit, memberNO)
 		values(#{classNO},#{className},#{classGoal},#{classSummary},#{classPersonnel},#{classCredit},#{memberNO})
 	</insert>
 
 	<select id="checkClassNO" parameterType="String" resultType="String">
-		select classNO from class where classNO = #{classNO}
+		select memberNO from member where memberDistinct = '1' and memberNO = #{memberNO}
 	</select>
 
-	<!-- noticeInsert -->
+<!-- noticeInsert -->
 	<select id="getNoticeNO" resultType="string">
 		SELECT nvl(MAX(to_number(noticeNO)), 0) + 1 as noticeNO FROM notice
 	</select>
@@ -42,33 +61,49 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select noticeNO from notice where noticeNO = #{noticeNO}
 	</select>
 
-	
+
 	<select id="getFileNO" resultType="string">
 		SELECT nvl(MAX(to_number(fileNO)), 0) + 1 as fileNO FROM noticeFile
 	</select>
-	
-	
+
+
 	<insert id="insertNoticeFileList" parameterType="NoticeFileVO">
-	<foreach item="item" index="index" collection="list" separator=" " open="INSERT ALL" close = "select * from dual">
-	INTO noticeFile(
-    	fileNO,
-    	noticeNO,
-    	originFileName,
-    	storedFilePath,
-    	fileSize
-    	)
-    		values
-	(
+		<foreach item="item" index="index" collection="list" separator=" " open="INSERT ALL" close="select * from dual">
+			INTO noticeFile(
+			fileNO,
+			noticeNO,
+			originFileName,
+			storedFilePath,
+			fileSize
+			)
+			values
+			(
 			#{item.fileNO},
 			#{item.noticeNO},
 			#{item.originFileName},
 			#{item.storedFilePath},
 			#{item.fileSize}
 			)
-	</foreach>
+		</foreach>
+
+	</insert>
+
+<!-- classPage -->
+	<select id="getClassList" resultMap="classInfo">
+		select class.*,member.memberName, nvl(a.classCurrentPersonnel,0)AS classCurrentPersonnel
+		from class
+		LEFT JOIN member
+		ON class.memberNO = member.memberNO
+		LEFT JOIN (SELECT classNO, COUNT(classNO)as classCurrentPersonnel FROM score GROUP BY CLASSNO) a
+		ON
+		a.classNO = class.classNO
+	</select>
 	
-</insert>
-	
-	
+	<delete id="adminDeleteClass" parameterType="String">
+		delete
+		from class
+		where classNO = #{classNO}
+	</delete>
+
 
 </mapper>

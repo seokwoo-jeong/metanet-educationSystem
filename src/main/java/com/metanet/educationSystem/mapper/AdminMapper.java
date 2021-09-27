@@ -1,5 +1,6 @@
 package com.metanet.educationSystem.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -24,12 +25,15 @@ public interface AdminMapper {
 	String checkClassNO(String classNO) throws Exception;
 
 //notice Insert
-
 	public void noticeInsert(NoticeVO noticeVO) throws Exception;
 	public String checkNoticeNO(String noticeNO) throws Exception;
 	public String getFileNO() throws Exception;
 	public void insertNoticeFileList(List<NoticeFileVO> noticeFileList) throws Exception;
 	public String getNoticeNO()throws Exception;
+	
+//classPage
+	public List<HashMap<String, Object>> getClassList() throws Exception;
+	public void adminDeleteClass(String classNO) throws Exception;
 
 
 }

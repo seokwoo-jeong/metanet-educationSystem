@@ -108,16 +108,16 @@
 	var zbCheckPass = false; //중복 확인 여부
 	var userIdCheck = RegExp(/[^0-9]$/);
 
-	$(".checkClassNO").click(function () {
-        var query = {classNO: $("#classNO").val()};
-        var a =$("#classNO").val();
+	$(".checkMemberNO").click(function () {
+        var query = {memberNO: $("#memberNO").val()};
+        var a =$("#memberNO").val();
         
-        //console.log($("#classNO").val());
-        if (userIdCheck.test($('#classNO').val())){
+        //console.log($("#memberNO").val());
+        if (userIdCheck.test($('#memberNO').val())){
         	$(".result .msg").text("교수번호는 숫자로만 입력할 수 있습니다.");
             $(".result .msg").attr("style", "color:#f00");
             $("#submit").attr("disabled", "disabled");
-        }else if($("#classNO").val() == ""){
+        }else if($("#memberNO").val() == ""){
         	$(".result .msg").text("교수번호를 입력해주세요.");
             $(".result .msg").attr("style", "color:#f00");
             $("#submit").attr("disabled", "disabled");
@@ -133,26 +133,21 @@
 	            success: function (data) { 
 	            	if (data == 1) { 
 	                	zbCheckPass = false;
-	                    $(".result .msg").text("교수번호 확인되었습니다.");
+	                	$(".result .msg").text("수업 등록이 가능합니다.");
 	                    $(".result .msg").attr("style", "color:#00f");
 	                    $("#submit").removeAttr("disabled");
 	                    $("#zbCheckPassButton").focus(this).css("background-color","#7B68EE");
 	                    $("#zbCheckPassButton").focus(this).css("border-color","#7B68EE");
-	            		$("#classNO").focus(this).css("background-color","white");
+	            		$("#memberNO").focus(this).css("background-color","white");
 	                } else {
 	                	zbCheckPass = true;
-	                    $(".result .msg").text("존재하지 않는 교수번호입니다.");
+	                	$(".result .msg").text("존재하지 않는 교수번호입니다.");
 	                    $(".result .msg").attr("style", "color:#f00");
 	                    $("#submit").attr("disabled", "disabled");
 	                }
 	            }
 	        });
         }
-    });
-    $("#checkClassNO").keyup(function () {
-        $(".result .msg").text("중복확인을 해주세요");
-        $(".result .msg").attr("style", "color:#000");
-        $("#submit").attr("disabled", "disabled");
     });
 </script>
 

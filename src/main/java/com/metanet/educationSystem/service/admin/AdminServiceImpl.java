@@ -1,5 +1,6 @@
 package com.metanet.educationSystem.service.admin;
 
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -49,10 +50,15 @@ public class AdminServiceImpl implements AdminService {
 		adminMapper.classInsert(classVO);
 
 	}
-
+	
 	@Override
-	public int checkClassNO(String classVO) throws Exception {
-		return 0;
+	public int checkClassNO(String classNO) throws Exception {
+		String checkClassNO = this.adminMapper.checkClassNO(classNO);
+		int isExist = 0;
+		if (checkClassNO != null) {
+			isExist = 1;
+		}
+		return isExist;
 	}
 
 //noticeInsert
@@ -81,4 +87,19 @@ public class AdminServiceImpl implements AdminService {
 		return 0;
 	}
 
+//classPage
+	
+	@Override
+	public List<HashMap<String, Object>> getClassList() throws Exception {
+		
+		return adminMapper.getClassList();
+	}
+
+	@Override
+	public void adminDeleteClass(String classNO) throws Exception {
+		
+		this.adminMapper.adminDeleteClass(classNO);
+		
+	}
+	
 }
