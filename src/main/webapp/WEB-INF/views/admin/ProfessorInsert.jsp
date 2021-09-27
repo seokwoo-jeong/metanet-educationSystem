@@ -62,49 +62,48 @@
 											</div>
 										</div>	
 
-											<%-- 이름
-											<div class="form-group mb-5">
-												<label class="label mb-0" for="userName">
-												<h5>NAME</h5></label> 
-												<input type="text" id="userName" class="form-control" onpaste="return false;" placeholder="이름(한글만 입력가능)" name="userName"
-													onkeypress="koreanCheck()">
-											</div>
- 											--%>
  										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>비밀번호</label> 
 												<input type="password" id="memberPassword" name="memberPassword" class="form-control" name="memberPassword" placeholder="Password">
 											</div>
+											<p>
+										</div>	
+											
+										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>이름</label> 
 												<input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요" name="memberName">
 												<p>
 											</div>
+										</div>
+											
+										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>이메일</label> 
 												<input type="text" id="memberEmail" name="memberEmail" class="form-control" name="memberEmail" placeholder="이메일을 입력하세요">
+												<p>
 											</div>
+											<p>
+										</div>
+											
+										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>핸드폰번호</label> 
 												<input type="text" id="memberPhoneNO" name="memberPhoneNO" class="form-control" name="memberPhoneNO" placeholder="핸드폰 번호를 입력하세요">
-												<p>
 											</div>
+											<p>
+										</div>
+										
+										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>구분</label>
 												<select id="inputState" class="form-control" name="memberDistinct">
 													<option selected="selected" value="1">교수</option>
 												</select>
 											</div>
-
 										</div>
-										<div class="form-group">
-											<!-- 
-												<div class="form-check">
-															<input class="form-check-input" type="checkbox"> 
-															<label class="form-check-label">Check me out</label>
-												</div> 
-											-->
-										</div>
+										
 										<button class="btn mb-1 btn-primary btn-sm" onclick="return professorInsert();">교수 등록</button>
 									</form>
 								</div>
