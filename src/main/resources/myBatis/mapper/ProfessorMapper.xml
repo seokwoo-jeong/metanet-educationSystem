@@ -57,8 +57,25 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(#{classNO} , #{memberNO} , #{midtermScore}, #{finalsScore},
 		#{assignmentScore}, #{attendanceScore}, #{grade}
 		)
-		
+
 	</update>
+
+	<select id="getstudentScore" parameterType="map"
+		resultType="ScoreVO">
+		SELECT
+		NVL(midtermScore,'0') AS midtermScore,
+		NVL(finalsScore,'0') AS finalsScore,
+		NVL(assignmentScore,'0') AS
+		assignmentScore,
+		NVL(attendanceScore,'0') AS attendanceScore,
+		NVL(grade,'0') AS grade
+		FROM score
+		WHERE classNO=#{classNOO} AND
+		memberNO= #{studentNO}
+
+	</select>
+
+
 
 
 </mapper>

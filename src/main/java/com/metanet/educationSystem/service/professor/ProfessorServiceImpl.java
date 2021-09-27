@@ -47,5 +47,11 @@ public class ProfessorServiceImpl implements ProfessorService{
 		professorMapper.inputStudentScore(scoreVO);
 
 	}
+	@Override
+	public List<ScoreVO> getstudentScore(String classNOO, String studentNO) throws Exception {
+		System.out.println(professorMapper.getstudentScore(classNOO,  studentNO)+"scoreVO불러오기 서비스임플 실행됨");
+		// TODO Auto-generated method stub
+		return professorMapper.getstudentScore(classNOO, studentNO);
+	}
 
 }

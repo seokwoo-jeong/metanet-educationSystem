@@ -7,7 +7,7 @@
 <html>
 <jsp:include page="/incl/DeepHead.jsp" />
 
-<title>StudentApplyClass</title>
+<title>ProfessorShowClass</title>
 <body>
 	<div id="main-wrapper">
 		<jsp:include page="/incl/Header.jsp" />
@@ -20,7 +20,7 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">수강생조회</h4>
+								<h4 class="card-title">내 강의실</h4>
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>
@@ -47,34 +47,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-lg-12">
-						<div class="card">
-							<div class="card-body">
-								<div class="active-member">
-									<div class="table-responsive">
-										<table class="table table-xs mb-0">
-											<thead>
-												<tr>
-													<th>수강과목</th>
-												</tr>
-											</thead>
-											<tbody>
-												<tr>
-													<td>static layout: Head, Header, Sidebar, Footer로 나눔</td>
-												</tr>
-												<tr>
-													<td>Head: css link</td>
-												</tr>
-
-											</tbody>
-										</table>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+	
 			</div>
 		</div>
 	</div>

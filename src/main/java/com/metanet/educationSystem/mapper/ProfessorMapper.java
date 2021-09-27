@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.metanet.educationSystem.model.ClassVO;
@@ -19,6 +20,8 @@ public interface ProfessorMapper {
 
 	//public List<ScoreVO> inputStudentScore(ScoreVO scoreVO) throws Exception;
 	void inputStudentScore(ScoreVO scoreVO) throws Exception;
+
+	public List<ScoreVO> getstudentScore(@Param("classNOO") String classNOO, @Param("studentNO") String studentNO) throws Exception;
 
 
 }
