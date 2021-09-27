@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+
+
 import com.metanet.educationSystem.common.FileUtils;
 import com.metanet.educationSystem.mapper.AdminMapper;
 import com.metanet.educationSystem.model.ClassVO;
@@ -24,6 +26,8 @@ public class AdminServiceImpl implements AdminService {
 	private AdminMapper adminMapper;
 	@Autowired
 	private FileUtils fileUtils;
+
+//memberInsert - student, professor	
 
 //memberInsert - student, professor	
 
@@ -75,6 +79,7 @@ public class AdminServiceImpl implements AdminService {
 			this.adminMapper.insertNoticeFileList(noticeFileList);
 		}
 		
+
 	}
 
 	@Override

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.metanet.educationSystem.mapper.NoticeMapper;
+import com.metanet.educationSystem.model.NoticeFileVO;
 import com.metanet.educationSystem.model.NoticeVO;
 
 @Service
@@ -20,8 +21,18 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public NoticeVO getNoticedetail(String noticeNO) {
+	public NoticeVO getNoticedetail(String noticeNO) throws Exception{
 		return noticeMapper.getNotice(noticeNO);
+	}
+
+	@Override
+	public List<NoticeFileVO> getNoticeFile(String noticeNO) throws Exception {
+		return this.noticeMapper.getNoticeFile(noticeNO);
+	}
+
+	@Override
+	public NoticeFileVO downloadNoticeFile(NoticeFileVO noticeFileVO) throws Exception {
+		return this.noticeMapper.downloadNoticeFile(noticeFileVO);
 	}
 	
 	
