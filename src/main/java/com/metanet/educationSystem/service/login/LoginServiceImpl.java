@@ -23,7 +23,6 @@ public class LoginServiceImpl implements LoginService {
 	@Override
 	public UserDetails loadUserByUsername(String memberNO) throws UsernameNotFoundException {
 		MemberVO member = loginMapper.readMember(memberNO);
-		
 		member.setMemberPassword("{noop}" + member.getMemberPassword());
 		member.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(member.getMemberDistinct())));
 
