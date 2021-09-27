@@ -1,11 +1,15 @@
 package com.metanet.educationSystem.service.comment;
 
+import java.util.HashMap;
 import java.util.List;
 
-import com.metanet.educationSystem.model.CommentsVO;
 
 public interface CommentsService {
 
-	List<CommentsVO> getCommentsList(String noticeNO);
+	List<HashMap<String, Object>> getCommentsList(String noticeNO);
+
+	int insertComments(String noticeNO, String memberNO, String commentContent);
+
+	int deleteComments(String commentNO);
 
 }

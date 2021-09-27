@@ -3,6 +3,7 @@
 <html>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <head>
 <jsp:include page="/incl/DeepHead.jsp" />
@@ -10,30 +11,58 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-	$(document).ready(function() {
-		var noticeNO = ${param.no}
-		var result="";
-		sendData = {"no" : noticeNO}
-		console.log("doc들어옴");
+	function insertComment(){
+		var formData = {
+				'commentContent':$("#commentContent").val(),
+				'noticeNO':${param.no},
+				'memberNO':${member.memberNO}
+				}
 		$.ajax({
-			url : "/notice/getCommentsList",
-			type : "get",
-			data : sendData,
+			url : "/notice/insertComment",
+			type : "post",
+			data : formData,
 			success : function(resp) {
-				console.log("success들어옴");
-				$.each(resp,function(index, item){
-					result+='<div class="d-sm-flex justify-content-between mb-2"><h5 class="mb-sm-0">'
-					result+=item.memberNO+'<small class="text-muted ml-3">'+item.commentDate+'</small></h5>'
-					result+='<div class="media-reply__link"><button class="btn btn-transparent p-0 mr-3"></button><button class="btn btn-transparent p-0 mr-3"><i class="fa fa-thumbs-down"></i></button><button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button></div></div><p>여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.</p><hr>'	
-					console.log(index);
-					console.log(item);
-					console.log(result);
+				var result='';
+				$.each(resp, function(index, item) {
+					console.log(resp);
+					result += '<div class="d-sm-flex justify-content-between mb-2"><h5 class="mb-sm-0">'
+					result += item.memberName
+							+ '<small class="text-muted ml-3">'
+							+ item.commentDate
+							+ '</small></h5>'
+					result += '<div class="media-reply__link"><button class="btn btn-transparent p-0 mr-3"></button><button class="btn btn-transparent p-0 mr-3"><i class="fa fa-thumbs-down"></i></button><button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button></div></div><p>'
+					result += item.commentContent
+							+ '</p><hr>'
 				})
-				console.log(result);
-				$("#media-body").html(result)
+				$("#comment").html(result);
+				$("#commentContent").val('');
 			}
 		})
-	})
+	}
+	
+	function Enter_Check(){
+        // 엔터키의 코드는 13입니다.
+	    if(event.keyCode == 13){
+	    	insertComment();  // 실행할 이벤트
+	    }   
+	}
+	
+    function deleteComment(commentNO){
+    	if (!confirm("삭제하시겠습니까?")) {
+            return;
+        }
+    	$.ajax({
+			url : "/notice/deleteComment",
+			type : "post",
+			data : {'commentNO':commentNO},
+			success : function(resp) {
+				if (resp=="success") {
+	                $("#del"+commentNO).remove();
+	                alert("삭제되었습니다.");
+	            }
+			}
+		})
+    }
 </script>
 </head>
 
@@ -103,62 +132,32 @@
 								</div>
 								<div class="card-body">
 									<div class="media media-reply">
-										<div class="media-body">
 
-											<div class="d-sm-flex justify-content-between mb-2">
-												<h5 class="mb-sm-0">
-													댓글 작성자 이름 <small class="text-muted ml-3">날짜</small>
-												</h5>
-												<div class="media-reply__link">
-													<button class="btn btn-transparent p-0 mr-3">
-														<i class="fa fa-thumbs-up"></i>
-													</button>
-													<button class="btn btn-transparent p-0 mr-3">
-														<i class="fa fa-thumbs-down"></i>
-													</button>
-													<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>
-												</div>
-											</div>
-											<p>여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.</p>
-											<hr>
+										<div class="media-body" id="comment">
 
-											<div class="d-sm-flex justify-content-between mb-2">
-												<h5 class="mb-sm-0">
-													댓글 작성자 이름 <small class="text-muted ml-3">날짜</small>
-												</h5>
-												<div class="media-reply__link">
-													<button class="btn btn-transparent p-0 mr-3">
-														<i class="fa fa-thumbs-up"></i>
-													</button>
-													<button class="btn btn-transparent p-0 mr-3">
-														<i class="fa fa-thumbs-down"></i>
-													</button>
-													<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>
-												</div>
-											</div>
-											<p>여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.여기에는 본문이 쓰일 예정입니다.</p>
-											<hr>
-
-											<div class="media mt-3">
-												<div class="media-body">
-													<div class="d-sm-flex justify-content-between mb-2">
-														<h5 class="mb-sm-0">
-															Milan Gbah <small class="text-muted ml-3">about 3 days ago</small>
-														</h5>
-														<div class="media-reply__link">
-															<button class="btn btn-transparent p-0 mr-3">
-																<i class="fa fa-thumbs-up"></i>
-															</button>
-															<button class="btn btn-transparent p-0 mr-3">
-																<i class="fa fa-thumbs-down"></i>
-															</button>
-															<button class="btn btn-transparent p-0 ml-3 font-weight-bold">Reply</button>
-														</div>
+											<c:forEach var="comment" items="${commentsVO}">
+											<div id="del${comment.commentNO}">
+												<div class="d-sm-flex justify-content-between mb-2">
+													<h5 class="mb-sm-0">
+														<c:choose>
+															<c:when test="${comment.MEMBERDISTINCT eq 0}"> ${comment.memberName} (학생)</c:when>
+															<c:when test="${comment.MEMBERDISTINCT eq 1}"> ${comment.memberName} (교수)</c:when>
+															<c:when test="${comment.MEMBERDISTINCT eq 2}"> ${comment.memberName} (관리자)</c:when>
+														</c:choose>
+														<small class="text-muted ml-3">${comment.commentDate}</small>
+													</h5>
+													<div class="media-reply__link">
+														<button class="btn btn-transparent p-0 mr-3"></button>
+														<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>
+														<c:if test="${member.memberNO eq comment.MEMBERNO}">
+														<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment(${comment.commentNO});">삭제</button>
+														</c:if>
 													</div>
-													<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum
-														nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
 												</div>
-											</div>
+												<p>${comment.commentContent}</p>
+												<hr>
+												</div>
+											</c:forEach>
 										</div>
 									</div>
 								</div>
@@ -167,36 +166,39 @@
 						<div class="col-lg-12">
 							<div class="card">
 								<div class="card-body">
-									<form action="#" class="form-profile">
-										<div class="form-group">
-											<textarea class="form-control" name="textarea" id="textarea" cols="30" rows="2" placeholder="Post a new message"></textarea>
-										</div>
-										<div class="d-flex align-items-center">
-											<ul class="mb-0 form-profile__icons">
-												<li class="d-inline-block">
-													<button class="btn btn-transparent p-0 mr-3">
-														<i class="fa fa-user"></i>
-													</button>
-												</li>
-												<li class="d-inline-block">
-													<button class="btn btn-transparent p-0 mr-3">
-														<i class="fa fa-paper-plane"></i>
-													</button>
-												</li>
-												<li class="d-inline-block">
-													<button class="btn btn-transparent p-0 mr-3">
-														<i class="fa fa-camera"></i>
-													</button>
-												</li>
-												<li class="d-inline-block">
-													<button class="btn btn-transparent p-0 mr-3">
-														<i class="fa fa-smile"></i>
-													</button>
-												</li>
-											</ul>
-											<button class="btn btn-primary px-3 ml-4">Send</button>
-										</div>
-									</form>
+									<div class="form-group">
+										<c:if test="${empty member}">
+											<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="로그인이 필요한 기능입니다" readonly></input>
+										</c:if>
+										<c:if test="${!empty member}">
+											<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="댓글을 입력하세요" onkeydown="JavaScript:Enter_Check();"></input>
+										</c:if>
+									</div>
+									<div class="d-flex align-items-center">
+										<ul class="mb-0 form-profile__icons">
+											<li class="d-inline-block">
+												<button class="btn btn-transparent p-0 mr-3">
+													<i class="fa fa-user"></i>
+												</button>
+											</li>
+											<li class="d-inline-block">
+												<button class="btn btn-transparent p-0 mr-3">
+													<i class="fa fa-paper-plane"></i>
+												</button>
+											</li>
+											<li class="d-inline-block">
+												<button class="btn btn-transparent p-0 mr-3">
+													<i class="fa fa-camera"></i>
+												</button>
+											</li>
+											<li class="d-inline-block">
+												<button class="btn btn-transparent p-0 mr-3">
+													<i class="fa fa-smile"></i>
+												</button>
+											</li>
+										</ul>
+										<button class="btn btn-primary px-3 ml-4" onclick=insertComment();>Send</button>
+									</div>
 								</div>
 							</div>
 						</div>

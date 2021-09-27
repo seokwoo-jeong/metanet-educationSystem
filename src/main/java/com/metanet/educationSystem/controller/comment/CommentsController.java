@@ -1,5 +1,7 @@
 package com.metanet.educationSystem.controller.comment;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
@@ -20,13 +22,34 @@ public class CommentsController {
 	private CommentsService commentService;
 
 	@RequestMapping("/notice/getCommentsList")
-	public List<CommentsVO> noticeCommentsList(HttpServletRequest request, 
+	public List<HashMap<String, Object>> noticeCommentsList(HttpServletRequest request, 
 			@RequestParam(value="no") String noticeNO) throws Exception {
-		System.out.println("코멘트 컨트롤러 찍힘");
-		List<CommentsVO> commentsList = commentService.getCommentsList(noticeNO);
-		for (CommentsVO commentsVO : commentsList) {
-			System.out.println(commentsVO.toString());
-		}
+		System.out.println("/notice/getCommentsList, no="+noticeNO);
+		List<HashMap<String, Object>> commentsList = commentService.getCommentsList(noticeNO);
 		return commentsList;
+	}
+	
+	@RequestMapping("/notice/insertComment")
+	public List<HashMap<String, Object>> insertComment(HttpServletRequest request, 
+			String commentContent, String noticeNO, String memberNO) throws Exception {
+		System.out.println("/notice/insertComment, content="+commentContent+memberNO+noticeNO);
+		commentService.insertComments(noticeNO, memberNO, commentContent);
+		List<HashMap<String, Object>> commentsList = commentService.getCommentsList(noticeNO);
+		System.out.println(commentsList);
+		return commentsList;
+	}
+	
+	@RequestMapping("/notice/deleteComment")
+	public String deleteComment(HttpServletRequest request, 
+			String commentNO) throws Exception {
+		System.out.println("/notice/deleteComment, content=");
+		String message=null;
+		int result = commentService.deleteComments(commentNO);
+		if(result==1) {
+	        message = "success";
+	    }else {
+	        message ="fail";
+	    }	
+		return message;
 	}
 }
