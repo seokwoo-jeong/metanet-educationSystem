@@ -48,9 +48,10 @@
 								<br>
 								<div class="basic-form">
 									<form action="/admin/studentInsertCheck" id="studentInsertCheck" method="Post">
+										
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>학번</label> 
+												<label>학생번호</label> 
 												<input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="Student Number">
 											</div>	
 											<div class="form-group col-md-6">	
@@ -60,50 +61,51 @@
 	                                   			<span class="msg">중복확인을 해주세요.</span>
 	                               				</p>
 											</div>
-										</div>	
-
-											<%-- 이름
-											<div class="form-group mb-5">
-												<label class="label mb-0" for="userName">
-												<h5>NAME</h5></label> 
-												<input type="text" id="userName" class="form-control" onpaste="return false;" placeholder="이름(한글만 입력가능)" name="userName"
-													onkeypress="koreanCheck()">
-											</div>
- 											--%>
+										</div>
+										
  										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>비밀번호</label> 
 												<input type="password" id="memberPassword" name="memberPassword" class="form-control" name="memberPassword" placeholder="Password">
+												<p>
 											</div>
+										</div>	
+											
+										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>이름</label> 
 												<input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요" name="memberName">
+												<p>
 											</div>
+										</div>
+										
+										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>이메일</label> 
 												<input type="text" id="memberEmail" name="memberEmail" class="form-control" name="memberEmail" placeholder="이메일을 입력하세요">
+												<p>
 											</div>
+										</div>
+										
+										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label>핸드폰번호</label> 
 												<input type="text" id="memberPhoneNO" name="memberPhoneNO" class="form-control" name="memberPhoneNO" placeholder="핸드폰 번호를 입력하세요">
+												<p>
 											</div>
+										</div>
+										
+										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label>구분</label>
 												<select id="inputState" class="form-control" name="memberDistinct">
 													<option selected="selected" value="0">학생</option>
 												</select>
 											</div>
+										</div>
 
-										</div>
-										<div class="form-group">
-											<!-- 
-												<div class="form-check">
-															<input class="form-check-input" type="checkbox"> 
-															<label class="form-check-label">Check me out</label>
-												</div> 
-											-->
-										</div>
 										<button class="btn mb-1 btn-primary btn-sm" onclick="return studentInsert();">학생 등록</button>
+										
 									</form>
 								</div>
 							</div>
@@ -130,15 +132,15 @@
         
         //console.log($("#memberNO").val());
         if (userIdCheck.test($('#memberNO').val())){
-        	$(".result .msg").text("학번은 숫자로만 입력할 수 있습니다.");
+        	$(".result .msg").text("학생번호는 숫자로만 입력할 수 있습니다.");
             $(".result .msg").attr("style", "color:#f00");
             $("#submit").attr("disabled", "disabled");
         }else if($("#memberNO").val() == ""){
-        	$(".result .msg").text("학번을 입력해주세요.");
+        	$(".result .msg").text("학생번호를 입력해주세요.");
             $(".result .msg").attr("style", "color:#f00");
             $("#submit").attr("disabled", "disabled");
         }else if(a.length != 10){
-        	$(".result .msg").text("학번은 10자리의 숫자로만 입력할 수 있습니다.");
+        	$(".result .msg").text("학생번호는 10자리의 숫자로만 입력할 수 있습니다.");
             $(".result .msg").attr("style", "color:#f00");
             $("#submit").attr("disabled", "disabled");    
         } else {		
@@ -150,14 +152,17 @@
 	            	
 	            	if (data == 1) { 
 	                	zbCheckPass = false;
-	                    $(".result .msg").text("사용불가");
+	                    $(".result .msg").text("이미 존재하는 학생번호입니다.");
 	                    $(".result .msg").attr("style", "color:#f00");
 	                    $("#submit").attr("disabled", "disabled");
 	                } else {
 	                	zbCheckPass = true;
-	                    $(".result .msg").text("사용가능");
+	                    $(".result .msg").text("사용 가능한 학생번호입니다.");
 	                    $(".result .msg").attr("style", "color:#00f");
 	                    $("#submit").removeAttr("disabled");
+	                    $("#zbCheckPassButton").focus(this).css("background-color","#7B68EE");
+	                    $("#zbCheckPassButton").focus(this).css("border-color","#7B68EE");
+	            		$("#memberNO").focus(this).css("background-color","white");
 	                }
 	            }
 	        });
