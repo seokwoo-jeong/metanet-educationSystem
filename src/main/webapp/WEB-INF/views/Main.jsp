@@ -104,7 +104,7 @@
 												<tfoot>
 													<tr>
 														<a href="/student/studentShowClass">
-															<button type="submit" class="btn mb-1 btn-primary ">내 강의실로 이동하기</button>
+															<button type="submit" class="btn mb-1 btn-primary ">강의실 가기</button>
 														</a>
 													</tr>
 												</tfoot>
@@ -130,7 +130,7 @@
 												<tfoot>
 													<tr>
 														<a href="/professor/professorShowMyclass?professorID=${member.memberNO}">
-															<button type="submit" class="btn mb-1 btn-primary ">내 강의실로 이동하기</button>
+															<button type="submit" class="btn mb-1 btn-primary ">강의실 가기</button>
 														</a>
 													</tr>
 												</tfoot>
@@ -145,9 +145,7 @@
 												</thead>
 												<tbody>
 													<tr>
-													<td>
-													학생 등록하기
-													</td>
+														<td>학생 등록하기</td>
 														<td><a href="/admin/studentInsert">
 																<button type="submit" class="btn mb-1 btn-primary ">이동</button>
 														</a></td>
@@ -155,27 +153,21 @@
 													</tr>
 
 													<tr>
-													<td>
-													교수 등록하기
-													</td>
+														<td>교수 등록하기</td>
 														<td><a href="/admin/professorInsert">
 																<button type="submit" class="btn mb-1 btn-primary ">이동</button>
 														</a></td>
 
 													</tr>
 													<tr>
-													<td>
-													수업 등록하기
-													</td>
+														<td>수업 등록하기</td>
 														<td><a href="/admin/classInsert">
 																<button type="submit" class="btn mb-1 btn-primary ">이동</button>
 														</a></td>
 
 													</tr>
 													<tr>
-													<td>
-													공지사항 등록하기
-													</td>
+														<td>공지사항 등록하기</td>
 														<td><a href="/admin/noticeInsert">
 																<button type="submit" class="btn mb-1 btn-primary ">이동</button>
 														</a></td>
