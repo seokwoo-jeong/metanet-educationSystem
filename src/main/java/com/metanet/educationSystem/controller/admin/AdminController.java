@@ -142,11 +142,11 @@ public class AdminController {
 	// 공지사항 등록 페이지
 	// 1. URL맵핑, 파라미터 맵핑
 	@RequestMapping("/noticeInsertCheck")
-	public String NoticeInsertCheck(HttpServletRequest request, MultipartHttpServletRequest multipartHttpServeltRequest, NoticeVO noticeVO) throws Exception {
+	public String NoticeInsertCheck(HttpServletRequest request, MultipartHttpServletRequest multipartHttpServletRequest, NoticeVO noticeVO) throws Exception {
 		//2. 비즈니스 로직(Insert)
 		System.out.println(noticeVO);
 		
-		adminService.noticeInsert(noticeVO,request,multipartHttpServeltRequest);
+		adminService.noticeInsert(noticeVO,request,multipartHttpServletRequest);
 		
 		return "admin/NoticeInsert";
 	}

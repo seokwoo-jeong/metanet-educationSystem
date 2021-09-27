@@ -40,9 +40,11 @@
 									</div>
 
 									<div class="form-group">
-										<input type="file" id="files" name="files" multiple="multiple">
-									</div>
 
+										<div class="fallback">
+											<input class="l-border-1" id="files" name="files" type="file" multiple="multiple">
+										</div>
+									</div>
 
 									<button class="btn mb-1 btn-primary btn-sm" onclick="return noticeInsert();">공지사항 등록</button>
 

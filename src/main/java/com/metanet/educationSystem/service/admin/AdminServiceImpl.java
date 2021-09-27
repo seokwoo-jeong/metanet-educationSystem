@@ -2,7 +2,6 @@ package com.metanet.educationSystem.service.admin;
 
 import java.util.List;
 
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,22 +60,20 @@ public class AdminServiceImpl implements AdminService {
 	public void noticeInsert(NoticeVO noticeVO, HttpServletRequest request,
 			MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception {
 		String noticeNO = adminMapper.getNoticeNO();
-		
-		noticeVO.setNoticeNO(noticeNO);
 
+		noticeVO.setNoticeNO(noticeNO);
+		this.adminMapper.noticeInsert(noticeVO);
 		List<NoticeFileVO> noticeFileList = fileUtils.parseFileInfo(noticeVO.getNoticeNO(), request,
 				multipartHttpServeltRequest);
 		if (CollectionUtils.isEmpty(noticeFileList) == false) {
+			System.out.println(noticeFileList.size());
 			String fileNO = adminMapper.getFileNO();
 			for (NoticeFileVO list : noticeFileList) {
 				list.setFileNO(fileNO);
-				fileNO = Integer.toString((Integer.parseInt(fileNO)+1));
+				fileNO = Integer.toString((Integer.parseInt(fileNO) + 1));
 			}
-
-			
+			this.adminMapper.insertNoticeFileList(noticeFileList);
 		}
-		 adminMapper.noticeInsert(noticeVO);
-		 adminMapper.insertNoticeFileList(noticeFileList);
 	}
 
 	@Override
