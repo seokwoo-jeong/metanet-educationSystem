@@ -47,29 +47,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT nvl(MAX(to_number(fileNO)), 0) + 1 as fileNO FROM noticeFile
 	</select>
 	
+	
 	<insert id="insertNoticeFileList" parameterType="NoticeFileVO">
-    <![CDATA[
-    	INSERT INTO noticeFile
-    	(
+	<foreach item="item" index="index" collection="list" separator=" " open="INSERT ALL" close = "select * from dual">
+	INTO noticeFile(
     	fileNO,
     	noticeNO,
     	originFileName,
     	storedFilePath,
     	fileSize
-    	
-    		)
+    	)
     		values
-    ]]>
-		<foreach collection="list" item="item" separator=",">
-			(
+	(
 			#{item.fileNO},
 			#{item.noticeNO},
 			#{item.originFileName},
 			#{item.storedFilePath},
 			#{item.fileSize}
 			)
-		</foreach>
-	</insert>
+	</foreach>
+	
+</insert>
+	
 	
 
 </mapper>
