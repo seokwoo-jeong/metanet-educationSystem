@@ -13,4 +13,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select * from notice where noticeNO=${noticeNO}
 	</select>
 	
+	<select id="getNoticeFile" parameterType="string" resultType="NoticeFileVO">
+		<![CDATA[
+		SELECT
+			fileNO,
+			noticeNO,
+			originFileName,
+			round(fileSize/1024,0) as fileSize
+		FROM
+			noticeFile
+		WHERE
+			noticeNO = #{noticeNO}
+			AND deleteFile = 'N'
+		]]>
+	</select>
+	
+	<select id="downloadNoticeFile" parameterType="NoticeFileVO" resultType="NoticeFileVO">
+		<![CDATA[
+			SELECT
+				originFileName,
+				storedFilePath,
+				fileSize
+			FROM
+				noticeFile
+			WHERE
+				noticeNO = #{noticeNO}
+				AND
+				fileNO = #{fileNO}
+				AND
+				deleteFile = 'N'
+		]]>
+	</select>
+	
 </mapper>

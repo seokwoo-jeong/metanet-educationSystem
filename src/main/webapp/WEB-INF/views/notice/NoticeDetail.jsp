@@ -41,14 +41,14 @@
 	}
 	
 	function Enter_Check(){
-        // ¿£ÅÍÅ°ÀÇ ÄÚµå´Â 13ÀÔ´Ï´Ù.
+        // ï¿½ï¿½ï¿½ï¿½Å°ï¿½ï¿½ ï¿½Úµï¿½ï¿½ 13ï¿½Ô´Ï´ï¿½.
 	    if(event.keyCode == 13){
-	    	insertComment();  // ½ÇÇàÇÒ ÀÌº¥Æ®
+	    	insertComment();  // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®
 	    }   
 	}
 	
     function deleteComment(commentNO){
-    	if (!confirm("»èÁ¦ÇÏ½Ã°Ú½À´Ï±î?")) {
+    	if (!confirm("ï¿½ï¿½ï¿½ï¿½ï¿½Ï½Ã°Ú½ï¿½ï¿½Ï±ï¿½?")) {
             return;
         }
     	$.ajax({
@@ -58,7 +58,7 @@
 			success : function(resp) {
 				if (resp=="success") {
 	                $("#del"+commentNO).remove();
-	                alert("»èÁ¦µÇ¾ú½À´Ï´Ù.");
+	                alert("ï¿½ï¿½ï¿½ï¿½ï¿½Ç¾ï¿½ï¿½ï¿½ï¿½Ï´ï¿½.");
 	            }
 			}
 		})
@@ -86,7 +86,7 @@
 									<div class="read-content">
 										<div class="media pt-5">
 											<div class="media-body">
-												<h5 class="m-b-3">°øÁö»çÇ× ${noticeVO.noticeNO}${param.no }¹ø</h5>
+												<h5 class="m-b-3">ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ${noticeVO.noticeNO}${param.no }ï¿½ï¿½</h5>
 												<p class="m-b-2">${noticeVO.noticeDate}</p>
 											</div>
 
@@ -99,7 +99,7 @@
 											</div>
 										</div>
 										${noticeVO.noticeContent }
-										<!-- º»¹® ºÎºÐ -->
+										<!-- ï¿½ï¿½ï¿½ï¿½ ï¿½Îºï¿½ -->
 										<!-- <h5 class="m-b-15">Hi,Ingredia,</h5>
 										<p>
 											<strong>Ingredia Nutrisha,</strong> A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture
@@ -114,21 +114,20 @@
 
 										<hr>
 										<h6 class="p-t-15">
-											<i class="fa fa-download mb-2"></i> Ã·ºÎÆÄÀÏ <span>(3)</span>
+											<i class="fa fa-download mb-2"></i> Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ <span>(${noticeFileList.size()})</span>
 										</h6>
 										<div class="row m-b-30">
-											<div class="col-auto">
-												<a href="#" class="text-muted">My-Photo.png</a>
-											</div>
-											<div class="col-auto">
-												<a href="#" class="text-muted">My-File.docx</a>
-											</div>
-											<div class="col-auto">
-												<a href="#" class="text-muted">My-Resume.pdf</a>
-											</div>
-										</div>
-										<hr>
+											<c:forEach var="noticeFileList" items="${noticeFileList}">
+												<div class="col-auto">
+													<a href="/notice/downloadNoticeFile?fileNO=${noticeFileList.fileNO}&noticeNO=${noticeFileList.noticeNO}">${noticeFileList.originFileName}(${noticeFileList.fileSize} kb)</a>
+
+												</div>
+											</c:forEach>
+
+											
+										
 									</div>
+									<hr>
 								</div>
 								<div class="card-body">
 									<div class="media media-reply">
@@ -140,9 +139,9 @@
 												<div class="d-sm-flex justify-content-between mb-2">
 													<h5 class="mb-sm-0">
 														<c:choose>
-															<c:when test="${comment.MEMBERDISTINCT eq 0}"> ${comment.memberName} (ÇÐ»ý)</c:when>
-															<c:when test="${comment.MEMBERDISTINCT eq 1}"> ${comment.memberName} (±³¼ö)</c:when>
-															<c:when test="${comment.MEMBERDISTINCT eq 2}"> ${comment.memberName} (°ü¸®ÀÚ)</c:when>
+															<c:when test="${comment.MEMBERDISTINCT eq 0}"> ${comment.memberName} (ï¿½Ð»ï¿½)</c:when>
+															<c:when test="${comment.MEMBERDISTINCT eq 1}"> ${comment.memberName} (ï¿½ï¿½ï¿½ï¿½)</c:when>
+															<c:when test="${comment.MEMBERDISTINCT eq 2}"> ${comment.memberName} (ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)</c:when>
 														</c:choose>
 														<small class="text-muted ml-3">${comment.commentDate}</small>
 													</h5>
@@ -150,7 +149,7 @@
 														<button class="btn btn-transparent p-0 mr-3"></button>
 														<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>
 														<c:if test="${member.memberNO eq comment.MEMBERNO}">
-														<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment(${comment.commentNO});">»èÁ¦</button>
+														<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment(${comment.commentNO});">ï¿½ï¿½ï¿½ï¿½</button>
 														</c:if>
 													</div>
 												</div>
@@ -168,10 +167,10 @@
 								<div class="card-body">
 									<div class="form-group">
 										<c:if test="${empty member}">
-											<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="·Î±×ÀÎÀÌ ÇÊ¿äÇÑ ±â´ÉÀÔ´Ï´Ù" readonly></input>
+											<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ô´Ï´ï¿½" readonly></input>
 										</c:if>
 										<c:if test="${!empty member}">
-											<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="´ñ±ÛÀ» ÀÔ·ÂÇÏ¼¼¿ä" onkeydown="JavaScript:Enter_Check();"></input>
+											<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ï¿½Ï¼ï¿½ï¿½ï¿½" onkeydown="JavaScript:Enter_Check();"></input>
 										</c:if>
 									</div>
 									<div class="d-flex align-items-center">
@@ -206,6 +205,7 @@
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<jsp:include page="/incl/DeepFooter.jsp" />
 </body>

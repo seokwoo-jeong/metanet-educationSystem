@@ -40,13 +40,22 @@
 						<li><a href="./app-profile.html">Profile</a></li>
 						<li><a href="./app-calender.html">Calender</a></li>
 					</ul></li>
-				<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"> <i class="icon-graph menu-icon"></i> <span class="nav-text">Charts</span>
-				</a>
-					<ul aria-expanded="false">
-						<li><a href="./chart-flot.html">Flot</a></li>
-						<li><a href="./chart-morris.html">Morris</a></li>
-					</ul></li>
-
+				
+				<c:choose>
+					<c:when test="${member.memberDistinct eq 2}">
+						<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
+						<i class="icon-graph menu-icon"></i>
+						<span class="nav-text">관리자 메뉴</span>
+						</a>
+							<ul aria-expanded="false">
+								<li><a href="/admin/studentInsert">학생 등록</a></li>
+								<li><a href="/admin/professorInsert">교수 등록</a></li>
+								<li><a href="/admin/classInsert">수업 등록</a></li>
+								<li><a href="/admin/noticeInsert">공지사항 등록</a></li>
+							</ul></li>
+					</c:when>
+				</c:choose>
+				
 				<li><a href="widgets.html" aria-expanded="false"> <i class="icon-badge menu-icon"></i><span class="nav-text">Widget</span>
 				</a></li>
 			</ul>
