@@ -1,5 +1,6 @@
 package com.metanet.educationSystem.mapper;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -11,6 +12,10 @@ import com.metanet.educationSystem.model.CommentsVO;
 @Mapper
 public interface CommentsMapper {
 
-	List<CommentsVO> getCommentsList(String noticeNO);
+	List<HashMap<String, Object>> getCommentsList(String noticeNO);
+
+	int insertComments(String noticeNO, String memberNO, String commentContent);
+
+	int deleteComments(String commentNO);
 
 }

@@ -15,7 +15,7 @@ public class NoticeVO {
 	private String noticeSubject;
 	private String noticeContent;
 	
-	@DateTimeFormat(pattern = "yyyy-MM-dd HH:MM:SS") 
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
 	private String noticeDate;
 	
 	public NoticeVO(){

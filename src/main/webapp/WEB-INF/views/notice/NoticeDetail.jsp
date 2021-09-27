@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <head>
 <jsp:include page="/incl/DeepHead.jsp" />
@@ -10,44 +11,95 @@
 
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-	$(document)
-			.ready(
-					function() {
-						var noticeNO = $
-						{
-							param.no
-						}
-						var result = "";
-						sendData = {
-							"no" : noticeNO
-						}
-						console.log("docµÈæÓø»");
-						$
-								.ajax({
-									url : "/notice/getCommentsList",
-									type : "get",
-									data : sendData,
-									success : function(resp) {
-										console.log("successµÈæÓø»");
-										$
-												.each(
-														resp,
-														function(index, item) {
-															result += '<div class="d-sm-flex justify-content-between mb-2"><h5 class="mb-sm-0">'
-															result += item.memberNO
-																	+ '<small class="text-muted ml-3">'
-																	+ item.commentDate
-																	+ '</small></h5>'
-															result += '<div class="media-reply__link"><button class="btn btn-transparent p-0 mr-3"></button><button class="btn btn-transparent p-0 mr-3"><i class="fa fa-thumbs-down"></i></button><button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button></div></div><p>ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.</p><hr>'
-															console.log(index);
-															console.log(item);
-															console.log(result);
-														})
-										console.log(result);
-										$("#media-body").html(result)
-									}
-								})
-					})
+$(document).ready(function() {
+	$.ajax({
+		url : "/notice/getCommentsList",
+		type : "get",
+		data : {'noticeNO':${param.no}},
+		success : function(resp) {
+			var result='';
+			$.each(resp, function(index, item) {
+			result+='<div id=del'+item.commentNO+'>';
+				result+='<div class="d-sm-flex justify-content-between mb-2">'+'<h5 class="mb-sm-0">';
+				if (item.MEMBERDISTINCT == 0){
+					result+=item.memberName+' (ÌïôÏÉù)'
+				}else if(item.MEMBERDISTINCT == 1){
+					result+=item.memberName+' (ÍµêÏàò)'
+				}else if(item.MEMBERDISTINCT == 1){
+					result+=item.memberName+' (Í¥ÄÎ¶¨Ïûê)'
+				}
+				result+='<small class="text-muted ml-3">'+item.commentDate+'</small>'+'</h5>'+'<div class="media-reply__link">'+'<button class="btn btn-transparent p-0 mr-3"></button>'+'<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>';
+				if(item.MEMBERNO == ${member.memberNO}){
+					result+='<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment('+item.commentNO+');">ÏÇ≠Ï†ú</button>';
+				}
+				result+='</div>'+'</div>'+'<p>'+item.commentContent+'</p>'+'<hr>'+'</div>' 
+			})
+			$("#comment").html(result);
+			$("#commentContent").val('');
+		}
+	})
+})
+	function insertComment(){
+		if( !$("#commentContent").val() ){
+			alert("ÎåìÍ∏ÄÏùÑ ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî");
+			$("#commentContent").focus();
+			return false;
+			}
+			
+		var formData = {
+				'commentContent':$("#commentContent").val(),
+				'noticeNO':${param.no},
+				'memberNO':${member.memberNO}
+				}
+		$.ajax({
+			url : "/notice/insertComment",
+			type : "post",
+			data : formData,
+			success : function(resp) {
+				var result='';
+				$.each(resp, function(index, item) {
+				result+='<div id=del'+item.commentNO+'>';
+					result+='<div class="d-sm-flex justify-content-between mb-2">'+'<h5 class="mb-sm-0">';
+					if (item.MEMBERDISTINCT == 0){
+						result+=item.memberName+' (ÌïôÏÉù)'
+					}else if(item.MEMBERDISTINCT == 1){
+						result+=item.memberName+' (ÍµêÏàò)'
+					}else if(item.MEMBERDISTINCT == 1){
+						result+=item.memberName+' (Í¥ÄÎ¶¨Ïûê)'
+					}
+					result+='<small class="text-muted ml-3">'+item.commentDate+'</small>'+'</h5>'+'<div class="media-reply__link">'+'<button class="btn btn-transparent p-0 mr-3"></button>'+'<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>';
+					if(item.MEMBERNO == ${member.memberNO}){
+						result+='<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment('+item.commentNO+');">ÏÇ≠Ï†ú</button>';
+					}
+					result+='</div>'+'</div>'+'<p>'+item.commentContent+'</p>'+'<hr>'+'</div>' 
+				})
+				$("#comment").html(result);
+				$("#commentContent").val('');
+			}
+		})
+	}
+	function Enter_Check(){
+	    if(event.keyCode == 13){
+	    	insertComment(); 
+	    }   
+	}
+	
+    function deleteComment(commentNO){
+    	if (!confirm("ÏÇ≠Ï†ú ÌïòÏãúÍ≤†ÏäµÎãàÍπå??")) {
+            return;
+        }
+    	$.ajax({
+			url : "/notice/deleteComment",
+			type : "post",
+			data : {'commentNO':commentNO},
+			success : function(resp) {
+				if (resp=="success") {
+	                $("#del"+commentNO).remove();
+	                alert("ÎåìÍ∏ÄÏù¥ ÏÇ≠Ï†úÎêòÏóàÏäµÎãàÎã§");
+	            }
+			}
+		})
+    }
 </script>
 </head>
 
@@ -71,7 +123,7 @@
 									<div class="read-content">
 										<div class="media pt-5">
 											<div class="media-body">
-												<h5 class="m-b-3">∞¯¡ˆªÁ«◊ ${noticeVO.noticeNO}${param.no }π¯</h5>
+												<h5 class="m-b-3">Í≥µÏßÄÏÇ¨Ìï≠ ${param.no }Î≤à</h5>
 												<p class="m-b-2">${noticeVO.noticeDate}</p>
 											</div>
 
@@ -84,7 +136,7 @@
 											</div>
 										</div>
 										${noticeVO.noticeContent }
-										<!-- ∫ªπÆ ∫Œ∫– -->
+										<!-- Âç†ÏèôÏòôÂç†ÏèôÏòô Âç†Ïã∏Î∏ùÏòô -->
 										<!-- <h5 class="m-b-15">Hi,Ingredia,</h5>
 										<p>
 											<strong>Ingredia Nutrisha,</strong> A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture
@@ -99,7 +151,7 @@
 
 										<hr>
 										<h6 class="p-t-15">
-											<i class="fa fa-download mb-2"></i> √∑∫Œ∆ƒ¿œ <span>(${noticeFileList.size()})</span>
+											<i class="fa fa-download mb-2"></i> Ï≤®Î∂ÄÌååÏùº <span>(${noticeFileList.size()})</span>
 										</h6>
 										<div class="row m-b-30">
 											<c:forEach var="noticeFileList" items="${noticeFileList}">
@@ -109,114 +161,88 @@
 												</div>
 											</c:forEach>
 
-											
-										
+
+
+										</div>
+										<hr>
 									</div>
-									<hr>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="media media-reply">
-									<div class="media-body">
+									<div class="card-body">
+										<div class="media media-reply">
 
-										<div class="d-sm-flex justify-content-between mb-2">
-											<h5 class="mb-sm-0">
-												¥Ò±€ ¿€º∫¿⁄ ¿Ã∏ß <small class="text-muted ml-3">≥Ø¬•</small>
-											</h5>
-											<div class="media-reply__link">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-thumbs-up"></i>
-												</button>
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-thumbs-down"></i>
-												</button>
-												<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>
-											</div>
-										</div>
-										<p>ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.</p>
-										<hr>
+											<div class="media-body" id="comment">
 
-										<div class="d-sm-flex justify-content-between mb-2">
-											<h5 class="mb-sm-0">
-												¥Ò±€ ¿€º∫¿⁄ ¿Ã∏ß <small class="text-muted ml-3">≥Ø¬•</small>
-											</h5>
-											<div class="media-reply__link">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-thumbs-up"></i>
-												</button>
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-thumbs-down"></i>
-												</button>
-												<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>
-											</div>
-										</div>
-										<p>ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.ø©±‚ø°¥¬ ∫ªπÆ¿Ã æ≤¿œ øπ¡§¿‘¥œ¥Ÿ.</p>
-										<hr>
-
-										<div class="media mt-3">
-											<div class="media-body">
-												<div class="d-sm-flex justify-content-between mb-2">
-													<h5 class="mb-sm-0">
-														Milan Gbah <small class="text-muted ml-3">about 3 days ago</small>
-													</h5>
-													<div class="media-reply__link">
-														<button class="btn btn-transparent p-0 mr-3">
-															<i class="fa fa-thumbs-up"></i>
-														</button>
-														<button class="btn btn-transparent p-0 mr-3">
-															<i class="fa fa-thumbs-down"></i>
-														</button>
-														<button class="btn btn-transparent p-0 ml-3 font-weight-bold">Reply</button>
+												<%-- <c:forEach var="comment" items="${commentsVO}">
+													<div id="del${comment.commentNO}">
+														<div class="d-sm-flex justify-content-between mb-2">
+															<h5 class="mb-sm-0">
+																<c:choose>
+																	<c:when test="${comment.MEMBERDISTINCT eq 0}"> ${comment.memberName} (ÌïôÏÉù)</c:when>
+																	<c:when test="${comment.MEMBERDISTINCT eq 1}"> ${comment.memberName} (ÍµêÏàò)</c:when>
+																	<c:when test="${comment.MEMBERDISTINCT eq 2}"> ${comment.memberName} (Í¥ÄÎ¶¨Ïûê)</c:when>
+																</c:choose>
+																<small class="text-muted ml-3">${comment.commentDate}</small>
+															</h5>
+															<div class="media-reply__link">
+																<button class="btn btn-transparent p-0 mr-3"></button>
+																<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2">Reply</button>
+																<c:if test="${member.memberNO eq comment.MEMBERNO}">
+																	<button class="btn btn-transparent text-dark font-weight-bold p-0 ml-2" onclick="deleteComment(${comment.commentNO});">ÏÇ≠Ï†ú</button>
+																</c:if>
+															</div>
+														</div>
+														<p>${comment.commentContent}</p>
+														<hr>
 													</div>
-												</div>
-												<p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.</p>
+												</c:forEach> --%>
 											</div>
 										</div>
 									</div>
 								</div>
 							</div>
-						</div>
-					</div>
-					<div class="col-lg-12">
-						<div class="card">
-							<div class="card-body">
-								<form action="#" class="form-profile">
-									<div class="form-group">
-										<textarea class="form-control" name="textarea" id="textarea" cols="30" rows="2" placeholder="Post a new message"></textarea>
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-body">
+										<div class="form-group">
+											<c:if test="${empty member}">
+												<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="Î°úÍ∑∏Ïù∏Ïù¥ ÌïÑÏöîÌïú Í∏∞Îä•ÏûÖÎãàÎã§" readonly></input>
+											</c:if>
+											<c:if test="${!empty member}">
+												<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="ÎåìÍ∏ÄÏùÑ ÏûÖÎ†•Ìï¥Ï£ºÏÑ∏Ïöî" onkeydown="JavaScript:Enter_Check();"></input>
+											</c:if>
+										</div>
+										<div class="d-flex align-items-center">
+											<ul class="mb-0 form-profile__icons">
+												<li class="d-inline-block">
+													<button class="btn btn-transparent p-0 mr-3">
+														<i class="fa fa-user"></i>
+													</button>
+												</li>
+												<li class="d-inline-block">
+													<button class="btn btn-transparent p-0 mr-3">
+														<i class="fa fa-paper-plane"></i>
+													</button>
+												</li>
+												<li class="d-inline-block">
+													<button class="btn btn-transparent p-0 mr-3">
+														<i class="fa fa-camera"></i>
+													</button>
+												</li>
+												<li class="d-inline-block">
+													<button class="btn btn-transparent p-0 mr-3">
+														<i class="fa fa-smile"></i>
+													</button>
+												</li>
+											</ul>
+											<button class="btn btn-primary px-3 ml-4" onclick=insertComment();>ÏûÖÎ†•</button>
+										</div>
 									</div>
-									<div class="d-flex align-items-center">
-										<ul class="mb-0 form-profile__icons">
-											<li class="d-inline-block">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-user"></i>
-												</button>
-											</li>
-											<li class="d-inline-block">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-paper-plane"></i>
-												</button>
-											</li>
-											<li class="d-inline-block">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-camera"></i>
-												</button>
-											</li>
-											<li class="d-inline-block">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-smile"></i>
-												</button>
-											</li>
-										</ul>
-										<button class="btn btn-primary px-3 ml-4">Send</button>
-									</div>
-								</form>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 	</div>
 	<jsp:include page="/incl/DeepFooter.jsp" />
 </body>

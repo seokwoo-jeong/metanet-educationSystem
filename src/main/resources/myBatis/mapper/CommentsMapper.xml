@@ -4,7 +4,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 
 <mapper namespace="com.metanet.educationSystem.mapper.CommentsMapper">
-<select id="getCommentsList" parameterType="String" resultType="CommentsVO">
-	select * from comments where noticeNO = ${noticeNO}
-</select>
+
+	<resultMap type="java.util.HashMap" id="noticeComment">
+		<id column="commentNO" property="commentNO" />
+		<result column="memberName" property="memberName" />
+		<result column="commentContent" property="commentContent" />
+		<result column="commentDate" property="commentDate" />
+		<result column="noticeNO" property="noticeNO" />
+	</resultMap>
+
+	<select id="getCommentsList" parameterType="String" resultMap="noticeComment">
+		select * from comments JOIN member
+		ON (member.memberNO=comments.memberNO) WHERE comments.noticeNO=#{noticeNO}
+		order by comments.commentDate
+	</select>
+
+	<insert id="insertComments" parameterType="String">
+		INSERT INTO comments(commentNO, commentContent, commentDate, memberNO, noticeNO) VALUES(Comment_seq.NEXTVAL,#{arg2},sysdate,#{arg1},#{arg0})
+	</insert>
+	
+	<delete id="deleteComments" parameterType="String">
+		delete from comments where commentNO=#{commentNO}	
+	</delete>
 </mapper>
