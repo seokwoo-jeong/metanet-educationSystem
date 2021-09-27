@@ -14,6 +14,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeVO;
+import com.metanet.educationSystem.constant.Constant;
 import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.service.admin.AdminService;
 
@@ -130,6 +131,16 @@ public class AdminController {
 		return "admin/ClassInsert";
 	}
 	
+    // 학생 회원가입 진행 Check
+    @ResponseBody
+    @PostMapping(value = "/checkClassNO")
+    public int checkClassNO(HttpServletRequest request) throws Exception {
+        String memberNO = request.getParameter("memberNO");
+        int idExist = this.adminService.checkClassNO(memberNO);
+
+        return idExist;
+    }
+	
 //Notice/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     @RequestMapping("/noticeInsert")
@@ -151,4 +162,27 @@ public class AdminController {
 		return "admin/NoticeInsert";
 	}
     
+//ClassPage/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    @RequestMapping("/classPage")
+	public String ClassPage(Model model, HttpServletRequest request, HttpSession session,
+			RedirectAttributes rttr) throws Exception {
+	// session에서 get memberNO
+		MemberVO memberVO = (MemberVO) session.getAttribute("member");
+    	
+	// 수강신청하기위한 강의 리스트 보내는 것
+		model.addAttribute("classVOList", adminService.getClassList());	
+    	
+		return "admin/ClassPage";
+	}
+    
+	@RequestMapping("/adminDeleteClass")
+	public String adminDeleteClass(Model model, HttpServletRequest request, HttpSession session,
+			RedirectAttributes rttr) throws Exception {
+		String classNO = request.getParameter("classNO");
+		this.adminService.adminDeleteClass(classNO);
+
+		return "redirect:classPage";
+	}
+
 }

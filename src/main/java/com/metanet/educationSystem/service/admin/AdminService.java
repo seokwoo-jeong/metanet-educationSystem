@@ -4,6 +4,7 @@ import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeVO;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -26,4 +27,7 @@ public interface AdminService {
 	int checkNoticeNO(String noticeVO) throws Exception;
 	 
 	
+//ClassPage
+	public List<HashMap<String, Object>> getClassList() throws Exception;
+	public void adminDeleteClass(String classNO) throws Exception;
 }
