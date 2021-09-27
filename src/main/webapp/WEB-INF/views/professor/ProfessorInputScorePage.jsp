@@ -102,13 +102,14 @@
 												<div class="form-group col-md-6">
 													<label>최종 성적</label> <select id="grade"
 														class="form-control" name="grade">
-														<option selected="selected">최종 성적을 입력하세요.</option>
+														<option selected="selected">${getstudentScore.grade}</option>
 														<option value="A+">A+</option>
 														<option value="A0">A0</option>
 														<option value="B+">B+</option>
 														<option value="B0">B0</option>
 														<option value="C+">C+</option>
 														<option value="C0">C0</option>
+														<option value="D">D</option>
 														<option value="F">F</option>
 													</select>
 												</div>
@@ -126,17 +127,54 @@
 
 
 										<script>
-											function InputScore() {
+										function InputScore() {
+											var classNO = $("#classNO");
+											var memberNO = $("#memberNO");
+											var midtermScore = $("#midtermScore");
+											var finalsScore = $("#finalsScore");
+											var assignmentScore = $("#assignmentScore");
+											var attendanceScore = $("#attendanceScore");
+											if (classNO.val() == '') {
+												alert('학수번호를 입력해주세요');
+												return false;
+											}
+											if (memberNO.val() == '') {
+												alert('학번을 입력해주세요');
+												return false;
+											}
+											if (midtermScore.val() == '') {
+												alert('중간고사 성적 입력! 성적 미공개 시 0점으로 입력 해주세요.');
+												return false;
+											}
+											if (finalsScore.val() == '') {
+												alert('기말고사 성적 입력! 성적 미공개 시 0점으로 입력 해주세요.');
+												return false;
+											}
+											if (assignmentScore.val() == '') {
+												alert('과제 성적 입력! 성적 미공개 시 0점으로 입력 해주세요.');
+												return false;
+											}
+											if (attendanceScore.val() == '') {
+												alert('출석 성적 입력! 성적 미공개 시 0점으로 입력 해주세요.');
+												return false;
+											}
+
+											if (!confirm("해당 정보로 학생을 등록 하시겠습니까?")) {
+												return false;
+											} else {
 												alert("성적 입력이 완료되었습니다.");
 												document
-														.getElementById(
-																'professorInputScoreCheck')
-														.submit();
+													.getElementById(
+														'professorInputScoreCheck')
+													.submit();
+													
+
 
 											}
+										}
 										</script>
 										<button class="btn mb-1 btn-primary btn-sm"
-											onclick="javascript:InputScore()">성적 입력</button>
+											onclick="return InputScore()">성적 입력</button>
 									</form>
 
 									<!-- <form action="/professor/professorInputScoreCheck">	<input type="hidden" name="classID" value="${classNO}" /></form> -->

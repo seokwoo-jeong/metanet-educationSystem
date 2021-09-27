@@ -43,13 +43,7 @@ public class ProfessorController {
 		model.addAttribute("studentVOList", professorService.professorGetStudentList(classNO));
 		return "professor/ProfessorShowStudentPage";
 	}
-//	//모달로 학생 성적 input
-//	@ResponseBody
-//    @RequestMapping(value = "/professor/professorInputScore", method = RequestMethod.POST)
-//    public List<ScoreVO> professorInputScore(HttpServletRequest request) throws Exception {
-//		String studentNO = request.getParameter("studentinfo");
-//        return professorService.inputStudentScore(studentNO);
-//    }
+
 
 	@RequestMapping("/professor/professorInputScore")
 	public String professorInputScore(Model model, HttpServletRequest request) throws Exception {
