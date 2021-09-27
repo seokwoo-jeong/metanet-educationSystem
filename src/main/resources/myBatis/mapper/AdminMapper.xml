@@ -47,20 +47,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT nvl(MAX(to_number(fileNO)), 0) + 1 as fileNO FROM noticeFile
 	</select>
 	
-	<resultMap type="java.util.HashMap" id="adminInfo">
-		<id column="memberNO" property="memberNO" />
-		<result column="memberName" property="memberName" />
-		<result column="memberEmail" property="memberEmail" />
-		<result column="memberPhoneNO" property="memberPhoneNO" />
-		<association property="adminVO" javaType="adminVO">
-			<result column="adminDepartment " property="adminDepartment " />
-			</association>
-	</resultMap>
-	
-	
-	
-
-
 	<insert id="insertNoticeFileList" parameterType="NoticeFileVO">
 		<foreach item="item" index="index" collection="list" separator=" " open="INSERT ALL" close="select * from dual">
 			INTO noticeFile
@@ -80,9 +66,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			#{item.fileSize}
 			)
 		</foreach>
-
 	</insert>
-
-
 
 </mapper>

@@ -24,10 +24,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</association>
 	</resultMap>
 
-
-
 	<!-- Select Start -->
-
 	<select id="getClassList" resultMap="classInfo">
 		select class.*,member.memberName, nvl(a.classCurrentPersonnel,0)AS classCurrentPersonnel
 		from class
@@ -36,7 +33,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		LEFT JOIN (SELECT classNO, COUNT(classNO)as classCurrentPersonnel FROM score GROUP BY CLASSNO) a
 		ON
 		a.classNO = class.classNO
-
 	</select>
 
 	<select id="getStudentClassList" parameterType="string" resultMap="classInfo">
@@ -71,11 +67,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT count(*)
 		FROM score
 		WHERE classNO = #{classNO}
-
 	</select>
 
 	<select id="getCurrentStudentCredit" parameterType="string" resultType="int">
-
 		SELECT NVL(SUM(class.classCredit),0)
 		FROM class INNER JOIN score
 		ON class.classNO = score.CLASSNO
@@ -99,7 +93,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<resultMap type="java.util.HashMap" id="scoreInfo">
 		<association property="ScoreVO" javaType="ScoreVO">
-			<result column="classNO" property="classNO"/>
+			<result column="classNO" property="classNO" />
 			<result column="midtermScore" property="midtermScore" />
 			<result column="finalsScore" property="finalsScore" />
 			<result column="assignmentScore" property="assignmentScore" />
@@ -116,10 +110,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SELECT score.classNO, nvl(midtermScore,0), nvl(finalsScore,0),
 		nvl(assignmentScore,0), nvl(attendanceScore,0), nvl(grade,'-') as grade, class.className
 		FROM score ,class
-		WHERE score.classNO = class.classNO AND score.memberNO = #{memberNO}
+		WHERE score.classNO = class.classNO AND score.memberNO =
+		#{memberNO}
 	</select>
-
-
 	<!-- Select Finish -->
 
 	<!-- Insert Start -->
