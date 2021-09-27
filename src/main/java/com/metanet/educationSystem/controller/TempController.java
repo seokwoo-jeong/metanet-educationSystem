@@ -31,7 +31,7 @@ public class TempController {
 	@RequestMapping("/fileTemp")
 	public String fileTemp(Model model) throws Exception {
 		NoticeVO noticeVO = new NoticeVO();
-		noticeVO.setNoticeNO("7");
+		noticeVO.setNoticeNO("8");
 		
 		
 		model.addAttribute("fileList",this.tempService.getFile(noticeVO.getNoticeNO()));
@@ -43,7 +43,7 @@ public class TempController {
 	public String insertNotice(HttpServletRequest request,MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception {
 		NoticeVO noticeVO = new NoticeVO();
 		
-		noticeVO.setNoticeNO("7");
+		noticeVO.setNoticeNO("8");
 		
 		tempService.insertNotice(noticeVO,request,multipartHttpServeltRequest);
 
