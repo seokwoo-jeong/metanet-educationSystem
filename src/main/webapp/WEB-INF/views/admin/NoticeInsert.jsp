@@ -8,7 +8,7 @@
 <html>
 <jsp:include page="/incl/DeepHead.jsp" />
 
-<title>NoticeInsert</title>
+<title>공지사항 글쓰기</title>
 <body>
 	<jsp:include page="/incl/Header.jsp" />
 	<jsp:include page="/incl/Sidebar.jsp" />

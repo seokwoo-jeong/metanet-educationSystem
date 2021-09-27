@@ -8,7 +8,7 @@
 <html>
 <jsp:include page="/incl/DeepHead.jsp" />
 
-<title>ProfessorInsert</title>
+<title>교수등록</title>
 <body>
 	<jsp:include page="/incl/Header.jsp" />
 	<jsp:include page="/incl/Sidebar.jsp" />

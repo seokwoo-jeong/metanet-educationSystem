@@ -8,7 +8,7 @@
 <html>
 <jsp:include page="/incl/DeepHead.jsp" />
 
-<title>ClassInsert</title>
+<title>수업등록</title>
 <body>
 	<jsp:include page="/incl/Header.jsp" />
 	<jsp:include page="/incl/Sidebar.jsp" />
@@ -79,6 +79,11 @@
 										<label class="col-lg-4 col-form-label">교수번호</label>
 										<div class="col-lg-6">
 											<input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="교수번호를 입력해주세요">
+												<br><br>
+												<p class="result">
+												<button type="button" id="zbCheckPassButton" class="checkMemberNO btn mb-1 btn-primary btn-sm">교수번호 확인</button>
+	                                   			<span class="msg">교수번호 확인을 해주세요.</span>
+	                               				</p>
 										</div>
 									</div>
 
