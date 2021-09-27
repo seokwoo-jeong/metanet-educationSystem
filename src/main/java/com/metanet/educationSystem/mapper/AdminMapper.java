@@ -23,5 +23,6 @@ public interface AdminMapper {
 //notice Insert
 	void noticeInsert(NoticeVO noticeVO) throws Exception;
 	String checkNoticeNO(String noticeNO) throws Exception;
+	String getNoticeNO()throws Exception;
 
 }
