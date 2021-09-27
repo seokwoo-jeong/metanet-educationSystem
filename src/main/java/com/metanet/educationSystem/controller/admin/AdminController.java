@@ -8,11 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.metanet.educationSystem.constant.Constant;
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeVO;
 import com.metanet.educationSystem.model.ClassVO;
@@ -143,10 +142,11 @@ public class AdminController {
 	// 공지사항 등록 페이지
 	// 1. URL맵핑, 파라미터 맵핑
 	@RequestMapping("/noticeInsertCheck")
-	public String NoticeInsertCheck(HttpServletRequest request, HttpSession session, NoticeVO noticeVO) throws Exception {
+	public String NoticeInsertCheck(HttpServletRequest request, MultipartHttpServletRequest multipartHttpServeltRequest, NoticeVO noticeVO) throws Exception {
 		//2. 비즈니스 로직(Insert)
 		System.out.println(noticeVO);
-		adminService.noticeInsert(noticeVO);
+		
+		adminService.noticeInsert(noticeVO,request,multipartHttpServeltRequest);
 		
 		return "admin/NoticeInsert";
 	}

@@ -2,6 +2,11 @@ package com.metanet.educationSystem.service.admin;
 
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeVO;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 import com.metanet.educationSystem.model.ClassVO;
 
 public interface AdminService {
@@ -15,7 +20,7 @@ public interface AdminService {
 	int checkClassNO(String classVO) throws Exception;
 	
 //Notice Insert
-	void noticeInsert(NoticeVO noticeVO) throws Exception;
+	void noticeInsert(NoticeVO noticeVO, HttpServletRequest request, MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception;
 	int checkNoticeNO(String noticeVO) throws Exception;
 	
 }

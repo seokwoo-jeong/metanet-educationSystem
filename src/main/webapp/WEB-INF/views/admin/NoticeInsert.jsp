@@ -31,16 +31,21 @@
 					<div class="card">
 						<div class="card-body">
 							<div class="form-validation">
-								<form action="/admin/noticeInsertCheck" id="noticeInsertCheck" method="post">
-									
+								<form action="/admin/noticeInsertCheck" id="noticeInsertCheck" method="post" enctype="multipart/form-data">
+
 									<input type="text" id="noticeSubject" name="noticeSubject" class="form-control mt-4 mb-2" placeholder="제목을 입력해주세요." required>
 
 									<div class="form-group">
 										<textarea class="form-control" rows="10" id="noticeContent" name="noticeContent" placeholder="내용을 입력해주세요" required></textarea>
 									</div>
 
+									<div class="form-group">
+										<input type="file" id="files" name="files" multiple="multiple">
+									</div>
+
+
 									<button class="btn mb-1 btn-primary btn-sm" onclick="return noticeInsert();">공지사항 등록</button>
-									
+
 								</form>
 							</div>
 						</div>
