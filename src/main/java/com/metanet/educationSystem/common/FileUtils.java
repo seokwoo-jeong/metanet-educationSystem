@@ -19,8 +19,8 @@ import com.metanet.educationSystem.model.NoticeFileVO;
 
 @Component
 public class FileUtils {
-	public List<NoticeFileVO> parseFileInfo(String noticeNO, HttpServletRequest request,MultipartHttpServletRequest multipartHttpServletRequest)
-			throws Exception {
+	public List<NoticeFileVO> parseFileInfo(String noticeNO, HttpServletRequest request,
+			MultipartHttpServletRequest multipartHttpServletRequest) throws Exception {
 		if (ObjectUtils.isEmpty(multipartHttpServletRequest)) {
 			return null;
 		}
@@ -45,7 +45,7 @@ public class FileUtils {
 				if (multipartFile.isEmpty() == false) {
 					contentType = multipartFile.getContentType();
 					if (ObjectUtils.isEmpty(contentType)) {
-						
+
 						break;
 					} else {
 						if (contentType.contains("image/jpeg")) {
@@ -56,10 +56,9 @@ public class FileUtils {
 							originalFileExtension = ".gif";
 						} else if (contentType.contains("text/plain")) {
 							originalFileExtension = ".txt";
-						}else if (contentType.contains("application/x-zip-compressed")) {
+						} else if (contentType.contains("application/x-zip-compressed")) {
 							originalFileExtension = ".zip";
-						} 
-						else {
+						} else {
 							break;
 						}
 					}
@@ -70,9 +69,9 @@ public class FileUtils {
 					noticeFile.setOriginFileName(multipartFile.getOriginalFilename());
 					noticeFile.setStoredFilePath(path + "/" + newFileName);
 					fileList.add(noticeFile);
-					
+
 					file = new File(noticeFile.getStoredFilePath());
-					
+
 					multipartFile.transferTo(file.getAbsoluteFile()); // 파일을 위에 지정 경로로 업로드
 				}
 			}

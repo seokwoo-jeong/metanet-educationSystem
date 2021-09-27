@@ -21,9 +21,6 @@
         <mapper resource="myBatis/mapper/StudentMapper.xml"/>
         <mapper resource="myBatis/mapper/NoticeMapper.xml"/>
         <mapper resource="myBatis/mapper/CommentsMapper.xml"/>
-        <mapper resource="myBatis/mapper/TempMapper.xml"/>
-
-
     </mappers>
 
 </configuration>
