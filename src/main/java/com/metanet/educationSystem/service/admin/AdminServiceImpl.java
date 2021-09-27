@@ -2,6 +2,7 @@ package com.metanet.educationSystem.service.admin;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -59,24 +60,30 @@ public class AdminServiceImpl implements AdminService {
 
 	public void noticeInsert(NoticeVO noticeVO, HttpServletRequest request,
 			MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception {
-		System.out.println(noticeVO.toString() + "공지사항 입력입니다.");
-		
-		
-		List<NoticeFileVO> noticeFileList = fileUtils.parseFileInfo(noticeVO.getNoticeNO(), request,multipartHttpServeltRequest);
-		if(CollectionUtils.isEmpty(noticeFileList) == false) {
+		String noticeNO = adminMapper.getNoticeNO();
+		if (noticeNO == null) {
+			noticeNO = "1";
+		} else {
+			noticeNO = Integer.toString(Integer.parseInt(noticeNO) + 1);
+		}
+		noticeVO.setNoticeNO(noticeNO);
+
+		List<NoticeFileVO> noticeFileList = fileUtils.parseFileInfo(noticeVO.getNoticeNO(), request,
+				multipartHttpServeltRequest);
+		if (CollectionUtils.isEmpty(noticeFileList) == false) {
 			String fileNO = adminMapper.getFileNO();
 			if (fileNO == null) {
 				fileNO = "1";
-			}else {
+			} else {
 				fileNO = Integer.toString(Integer.parseInt(fileNO) + 1);
 			}
-			for (NoticeFileVO list: noticeFileList) {
+			for (NoticeFileVO list : noticeFileList) {
 				list.setFileNO(fileNO);
 				System.out.println(list.getOriginFileName());
 			}
-			
-			//adminMapper.noticeInsert(noticeVO);
-			//adminMapper.insertNoticeFileList(noticeFileList);
+
+			// adminMapper.noticeInsert(noticeVO);
+			// adminMapper.insertNoticeFileList(noticeFileList);
 		}
 	}
 

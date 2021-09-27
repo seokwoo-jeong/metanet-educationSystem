@@ -11,6 +11,11 @@
 	<form id="frm" name="frm" action="/student/insertNotice" method="post" enctype="multipart/form-data">
 		<input type="file" id="files" name="files" multiple="multiple"> <input type="submit" id="submit" value="저장" class="btn">
 
+
+	<input type="text">
+	<input type="text">
+	<input type = "text">
+	
 	</form>
 	<table>
 	
