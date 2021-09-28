@@ -62,15 +62,19 @@
 											</div>
 										</div>
 										<p>
+										
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>교수번호</label><input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="교수번호를 입력해주세요"> <br>
-												<p class="result">
-													<button type="button" id="zbCheckPassButton" class="checkMemberNO btn mb-1 btn-primary btn-sm">교수번호 확인</button>
-													<span class="msg">교수번호 확인을 해주세요.</span>
-												</p>
+												<label>교수번호</label> <select id="memberNO" class="form-control" name="memberNO">
+												<c:forEach var="professorNO" items="${professorNOList}">
+												
+													<option value="${professorNO}">${professorNO}</option>
+												</c:forEach>
+												
+												</select>
 											</div>
 										</div>
+										
 
 										<button class="btn mb-1 btn-primary btn-sm" onclick="return classInsert();">수업 등록</button>
 									</form>

@@ -29,7 +29,7 @@
 								<br>
 								<div class="basic-form">
 									<form action="/admin/studentInsertCheck" id="studentInsertCheck" method="Post">
-										
+										 <input type="hidden" id="memberDistinct" name="memberDistinct" value="0">
 										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label>학생번호</label> 
@@ -47,16 +47,14 @@
  										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>비밀번호</label> 
-												<input type="password" id="memberPassword" name="memberPassword" class="form-control" name="memberPassword" placeholder="Password">
-												
+												<input type="password" id="memberPassword" name="memberPassword" class="form-control"  placeholder="Password">	
 											</div>
-											
 										</div>	
 											
 										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>이름</label> 
-												<input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요" name="memberName">
+												<input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요">
 												
 											</div>
 										</div>
@@ -64,7 +62,7 @@
 										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>이메일</label> 
-												<input type="text" id="memberEmail" name="memberEmail" class="form-control" name="memberEmail" placeholder="이메일을 입력하세요">
+												<input type="text" id="memberEmail" name="memberEmail" class="form-control" placeholder="이메일을 입력하세요">
 												<p>
 											</div>
 										</div>
@@ -72,13 +70,18 @@
 										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label>핸드폰번호</label> 
-												<input type="text" id="memberPhoneNO" name="memberPhoneNO" class="form-control" name="memberPhoneNO" placeholder="핸드폰 번호를 입력하세요">
+												<input type="text" id="memberPhoneNO" name="memberPhoneNO" class="form-control"  placeholder="핸드폰 번호를 입력하세요">
 												<p>
 											</div>
 										</div>
 										
-									
-
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>전공</label> 
+												<input type="text" id="studentMajor" name="studentMajor" class="form-control"  placeholder="전공을 입력하세요">
+												<p>
+											</div>
+										</div>
 										<button class="btn mb-1 btn-primary btn-sm" onclick="return studentInsert();">학생 등록</button>
 										
 									</form>

@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.*;
 
 import com.metanet.educationSystem.controller.login.CommenceEntryPoint;
+import com.metanet.educationSystem.controller.login.ForbiddenErrorHandler;
 import com.metanet.educationSystem.controller.login.LoginFailHandler;
 import com.metanet.educationSystem.controller.login.LoginSuccessHandler;
 
@@ -16,6 +17,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	
 	@Autowired
 	private CommenceEntryPoint unauthorizedHandler;
+	@Autowired
+	private ForbiddenErrorHandler forbiddenErrorHandler;
 	
 	@Override
 	public void configure(WebSecurity web) throws Exception {
@@ -41,6 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.logoutUrl("/doLogout")
 			.logoutSuccessUrl("/")
 		.and().exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+		.accessDeniedHandler(forbiddenErrorHandler)
 		.and().csrf().disable();
 	}
 	
