@@ -14,7 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeVO;
-import com.metanet.educationSystem.constant.Constant;
+import com.metanet.educationSystem.model.ProfessorVO;
+import com.metanet.educationSystem.model.StudentVO;
 import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.service.admin.AdminService;
 
@@ -38,21 +39,26 @@ public class AdminController {
 	public String studentInsertCheck(HttpServletRequest request, HttpSession session, MemberVO memberVO)
 			throws Exception {
 		// 2. 비즈니스 로직(Insert)
-		System.out.println(memberVO);
-		adminService.memberInsert(memberVO);
+		String studentMajor = request.getParameter("studentMajor");
+		memberVO.setMemberDistinct(request.getParameter("memberDistinct"));
+		StudentVO studentVO = new StudentVO();
+		studentVO.setStudentNO(memberVO.getMemberNO());
+		studentVO.setStudentMajor(studentMajor);
 
+		adminService.memberInsert(memberVO);
+		adminService.studentInsert(studentVO);
 		return "admin/StudentInsert";
 	}
 
-	// 학생번호 중복 체크
-	@RequestMapping("/memberNOCheck")
-	public String memberNOCheck(HttpServletRequest request, HttpSession session, MemberVO memberVO) throws Exception {
-		System.out.println(memberVO);
-
-		adminService.memberInsert(memberVO);
-
-		return "admin/StudentInsert";
-	}
+//	// 학생번호 중복 체크
+//	@RequestMapping("/memberNOCheck")
+//	public String memberNOCheck(HttpServletRequest request, HttpSession session, MemberVO memberVO) throws Exception {
+//		System.out.println(memberVO);
+//
+//		adminService.memberInsert(memberVO);
+//
+//		return "admin/StudentInsert";
+//	}
 
 	// 학생 회원가입 진행 Check
 	@ResponseBody
@@ -66,32 +72,37 @@ public class AdminController {
 
 	// 교수 등록 페이지
 	@RequestMapping("/professorInsert")
-	public String professorInsert(Model model, HttpServletRequest request, HttpSession session, RedirectAttributes rttr)
-			throws Exception {
-
+	public String professorInsert(Model model) throws Exception {
 		return "admin/ProfessorInsert";
 	}
 
 	// 교수 등록 페이지
 	// 1. URL맵핑, 파라미터 맵핑
 	@RequestMapping("/professorInsertCheck")
-	public String professorInsert(HttpServletRequest request, HttpSession session, MemberVO memberVO) throws Exception {
-		// 2. 비즈니스 로직(Insert)
-		System.out.println(memberVO);
-		adminService.memberInsert(memberVO);
+	public String professorInsert(HttpServletRequest request, MemberVO memberVO) throws Exception {
+		String professorMajor = request.getParameter("professorMajor");
+		String professorRank = request.getParameter("professorRank");
+		memberVO.setMemberDistinct(request.getParameter("memberDistinct"));
+		ProfessorVO professorVO = new ProfessorVO();
+		professorVO.setProfessorNO(memberVO.getMemberNO());
+		professorVO.setProfessorMajor(professorMajor);
+		professorVO.setProfessorRank(professorRank);
+		
+		this.adminService.memberInsert(memberVO);
+		this.adminService.professorInsert(professorVO);
 
 		return "admin/ProfessorInsert";
 	}
 
-	// 교수번호 중복 체크
-	@RequestMapping("/memberNOCheck2")
-	public String memberNOCheck2(HttpServletRequest request, HttpSession session, MemberVO memberVO) throws Exception {
-		System.out.println(memberVO);
-
-		adminService.memberInsert(memberVO);
-
-		return "admin/ProfessorInsert";
-	}
+//	// 교수번호 중복 체크
+//	@RequestMapping("/memberNOCheck2")
+//	public String memberNOCheck2(HttpServletRequest request, HttpSession session, MemberVO memberVO) throws Exception {
+//		System.out.println(memberVO);
+//
+//		adminService.memberInsert(memberVO);
+//
+//		return "admin/ProfessorInsert";
+//	}
 
 	// 교수 회원가입 진행 Check
 	@ResponseBody
@@ -105,7 +116,8 @@ public class AdminController {
 	@RequestMapping("/classInsert")
 	public String ClassInsert(Model model, HttpServletRequest request, HttpSession session, RedirectAttributes rttr)
 			throws Exception {
-
+		model.addAttribute("professorNOList",this.adminService.getProfessorNOList());
+		
 		return "admin/ClassInsert";
 	}
 
@@ -117,7 +129,7 @@ public class AdminController {
 		System.out.println(classVO);
 		adminService.classInsert(classVO);
 
-		return "admin/ClassInsert";
+		return "redirect:classInsert";
 	}
 
 	// 학생 회원가입 진행 Check

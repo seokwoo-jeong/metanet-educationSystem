@@ -2,6 +2,8 @@ package com.metanet.educationSystem.service.admin;
 
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeVO;
+import com.metanet.educationSystem.model.ProfessorVO;
+import com.metanet.educationSystem.model.StudentVO;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,6 +18,7 @@ public interface AdminService {
 
 //member Insert - student, professor
 	public void memberInsert(MemberVO memberVO) throws Exception;
+	public void studentInsert(StudentVO studentVO) throws Exception;
 	public int checkMemberNO(String memberNO) throws Exception;
 
 //Class Insert
@@ -30,4 +33,7 @@ public interface AdminService {
 //ClassPage
 	public List<HashMap<String, Object>> getClassList() throws Exception;
 	public void adminDeleteClass(String classNO) throws Exception;
+	public void professorInsert(ProfessorVO professorVO) throws Exception;
+	public List<String> getProfessorNOList() throws Exception;
+	
 }

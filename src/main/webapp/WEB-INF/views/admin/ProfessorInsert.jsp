@@ -23,6 +23,7 @@
 								<br>
 								<div class="basic-form">
 									<form action="/admin/professorInsertCheck" id="professorInsertCheck" method="Post">
+										<input type="hidden" id="memberDistinct" name="memberDistinct" value="1">
 										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label>교수번호</label> <input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="Professor Number">
@@ -38,35 +39,48 @@
 
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>비밀번호</label> <input type="password" id="memberPassword" name="memberPassword" class="form-control" name="memberPassword" placeholder="Password">
+												<label>비밀번호</label> <input type="password" id="memberPassword" name="memberPassword" class="form-control" placeholder="Password">
 											</div>
 
 										</div>
 
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>이름</label> <input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요" name="memberName">
-												<p>
+												<label>이름</label> <input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요">
 											</div>
 										</div>
 
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>이메일</label> <input type="text" id="memberEmail" name="memberEmail" class="form-control" name="memberEmail" placeholder="이메일을 입력하세요">
-												<p>
+												<label>이메일</label> <input type="text" id="memberEmail" name="memberEmail" class="form-control" placeholder="이메일을 입력하세요">
 											</div>
-											<p>
 										</div>
 
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>핸드폰번호</label> <input type="text" id="memberPhoneNO" name="memberPhoneNO" class="form-control" name="memberPhoneNO" placeholder="핸드폰 번호를 입력하세요">
+												<label>핸드폰번호</label> <input type="text" id="memberPhoneNO" name="memberPhoneNO" class="form-control" placeholder="핸드폰 번호를 입력하세요">
 											</div>
-											<p>
+										</div>
+
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>전공</label> <input type="text" id="professorMajor" name="professorMajor" class="form-control" placeholder="전공을 입력하세요">
+											</div>
+										</div>
+
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>직위</label> <select id="professorRank" class="form-control" name="professorRank">
+													<option selected="selected">직위를 선택하세요</option>
+													<option value="주임교수">주임교수</option>
+													<option value="주교수">교수</option>
+													<option value="부교수">조교수</option>
+												</select>
+											</div>
 										</div>
 
 										
-										<input type = "hidden" id="memberDistinct" name ="memberDistince" value="1">
+
 										<button class="btn mb-1 btn-primary btn-sm" onclick="return professorInsert();">교수 등록</button>
 									</form>
 								</div>
@@ -75,11 +89,8 @@
 					</div>
 				</div>
 			</div>
-			<!-- container fluid -->
 		</div>
-		<!-- contentbody -->
 	</div>
-	<!-- mainwrapper -->
 	<jsp:include page="/incl/DeepFooter.jsp" />
 
 </body>
