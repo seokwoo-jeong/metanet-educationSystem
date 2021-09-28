@@ -10,7 +10,7 @@
 
 
 <!-- Favicon icon -->
-<link rel="icon" type="${pageContext.request.contextPath }/resources/image/png" sizes="16x16" href="${pageContext.request.contextPath }/resources/images/eclass.png">
+<link rel="icon" type="${pageContext.request.contextPath }/resources/image/png" sizes="16x16" href="${pageContext.request.contextPath }/resources/images/meta4.png">
 <!-- Custom Stylesheet -->
 <link href="${pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/chartist/css/chartist.min.css">
