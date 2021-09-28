@@ -19,9 +19,9 @@ public interface ProfessorMapper {
 	public List<HashMap<String, Object>> professorGetStudentList(String classNO) throws Exception;
 
 	//public List<ScoreVO> inputStudentScore(ScoreVO scoreVO) throws Exception;
-	void inputStudentScore(ScoreVO scoreVO) throws Exception;
+	public void inputStudentScore(ScoreVO scoreVO) throws Exception;
 
-	public List<ScoreVO> getstudentScore(@Param("classNOO") String classNOO, @Param("studentNO") String studentNO) throws Exception;
+	public List<ScoreVO> getstudentScore(@Param("classNO") String classNO, @Param("studentNO") String studentNO) throws Exception;
 
 
 }

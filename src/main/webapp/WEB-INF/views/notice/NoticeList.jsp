@@ -10,10 +10,9 @@
 	<div id="main-wrapper">
 		<jsp:include page="/incl/Header.jsp" />
 		<jsp:include page="/incl/Sidebar.jsp" />
-		
+
 		<div class="content-body">
 			<div class="container-fluid">
-
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card">
@@ -29,31 +28,23 @@
 											</tr>
 										</thead>
 										<tbody>
-
 											<c:forEach var="noticeVO" items="${noticeVOList}">
 												<tr>
 													<td>${noticeVO.noticeNO}</td>
-													
 													<td><a href="/notice/detail?no=${noticeVO.noticeNO}">${noticeVO.noticeSubject}</a></td>
-													
 													<td>${noticeVO.noticeDate }</td>
 												</tr>
 											</c:forEach>
-
 										</tbody>
-
 									</table>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-
-
-				</div>
 			</div>
 		</div>
+	</div>
 	<jsp:include page="/incl/DeepFooter.jsp" />
 
 </body>

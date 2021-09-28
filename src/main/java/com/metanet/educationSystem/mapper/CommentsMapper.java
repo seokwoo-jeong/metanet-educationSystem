@@ -12,10 +12,10 @@ import com.metanet.educationSystem.model.CommentsVO;
 @Mapper
 public interface CommentsMapper {
 
-	List<HashMap<String, Object>> getCommentsList(String noticeNO);
+	public List<HashMap<String, Object>> getCommentsList(String noticeNO) throws Exception;
 
-	int insertComments(String noticeNO, String memberNO, String commentContent);
+	public int insertComments(String noticeNO, String memberNO, String commentContent) throws Exception;
 
-	int deleteComments(String commentNO);
+	public int deleteComments(String commentNO) throws Exception;
 
 }

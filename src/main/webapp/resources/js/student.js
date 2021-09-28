@@ -32,7 +32,7 @@ function getClassSyllabus(classNO){
 			var memberEmail = data.MemberVO.memberEmail;
 			var memberPhoneNO = data.MemberVO.memberPhoneNO;
 			var professorMajor = data.ProfessorVO.professorMajor;
-			var professorRank = data.ProfessorVO.professorRank;
+			
 			$("#syllabusClassNO").val(classNO);
 			$("#syllabusClassName").val(className);
 			$("#syllabusClassGoal").val(classGoal);
@@ -43,7 +43,7 @@ function getClassSyllabus(classNO){
 			$("#syllabusMemberEmail").val(memberEmail);
 			$("#syllabusMemberPhoneNO").val(memberPhoneNO);
 			$("#syllabusProfessorMajor").val(professorMajor);
-			$("#syllabusProfessorRank").val(professorRank);
+			
 		}
 	});
 }

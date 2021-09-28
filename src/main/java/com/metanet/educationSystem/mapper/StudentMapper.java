@@ -13,8 +13,6 @@ import com.metanet.educationSystem.model.ScoreVO;
 @Repository
 @Mapper
 public interface StudentMapper {
-
-
 	public List<HashMap<String, Object>> getClassList() throws Exception;
 
 	public int checkClassApply(HashMap<String, Object> classNOAndMemberNO) throws Exception;
