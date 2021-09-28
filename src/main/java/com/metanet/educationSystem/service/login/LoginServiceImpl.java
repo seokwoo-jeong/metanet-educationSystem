@@ -17,11 +17,10 @@ import com.metanet.educationSystem.model.MemberVO;
 public class LoginServiceImpl implements LoginService {
 
 	@Autowired
-	LoginMapper loginMapper;
-//	private PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+	private LoginMapper loginMapper;
 
 	@Override
-	public UserDetails loadUserByUsername(String memberNO) throws UsernameNotFoundException {
+	public UserDetails loadUserByUsername(String memberNO) throws UsernameNotFoundException{
 		MemberVO member = loginMapper.readMember(memberNO);
 		member.setMemberPassword("{noop}" + member.getMemberPassword());
 		member.setAuthorities(Arrays.asList(new SimpleGrantedAuthority(member.getMemberDistinct())));
@@ -29,9 +28,5 @@ public class LoginServiceImpl implements LoginService {
 		return member;
 	}
 
-//	@Override
-//	public PasswordEncoder passwordEncoder() {
-//		return this.passwordEncoder;
-//	}
 
 }

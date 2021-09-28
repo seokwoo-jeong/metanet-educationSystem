@@ -68,9 +68,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		NVL(assignmentScore,'0') AS
 		assignmentScore,
 		NVL(attendanceScore,'0') AS attendanceScore,
-		NVL(grade,'0') AS grade
+		NVL(grade,'-') AS grade
 		FROM score
-		WHERE classNO=#{classNOO} AND
+		WHERE classNO=#{classNO} AND
 		memberNO= #{studentNO}
 
 	</select>

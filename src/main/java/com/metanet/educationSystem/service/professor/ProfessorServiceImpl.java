@@ -28,7 +28,7 @@ public class ProfessorServiceImpl implements ProfessorService{
 	}
 	@Override
 	public List<HashMap<String, Object>> professorGetStudentList(String classNO) throws Exception {
-		System.out.println(professorMapper.professorGetStudentList(classNO).size() + "dsf");
+		
 		return professorMapper.professorGetStudentList(classNO);
 	}
 
@@ -48,10 +48,10 @@ public class ProfessorServiceImpl implements ProfessorService{
 
 	}
 	@Override
-	public List<ScoreVO> getstudentScore(String classNOO, String studentNO) throws Exception {
-		System.out.println(professorMapper.getstudentScore(classNOO,  studentNO)+"scoreVO불러오기 서비스임플 실행됨");
+	public List<ScoreVO> getstudentScore(String classNO, String studentNO) throws Exception {
+		System.out.println(professorMapper.getstudentScore(classNO,  studentNO)+"scoreVO불러오기 서비스임플 실행됨");
 		// TODO Auto-generated method stub
-		return professorMapper.getstudentScore(classNOO, studentNO);
+		return professorMapper.getstudentScore(classNO, studentNO);
 	}
 
 }

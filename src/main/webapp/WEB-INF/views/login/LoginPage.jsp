@@ -24,25 +24,6 @@ window.onload = function() {
 </head>
 
 <body class="h-100">
-
-	<!--*******************
-        Preloader start
-    ********************-->
-	<div id="preloader">
-		<div class="loader">
-			<svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-            </svg>
-		</div>
-	</div>
-	<!--*******************
-        Preloader end
-    ********************-->
-
-
-
-
-
 	<div class="login-form-bg h-100">
 		<div class="container h-100">
 			<div class="row justify-content-center h-100">
@@ -53,7 +34,6 @@ window.onload = function() {
 								<a class="text-center">
 									<h4>로그인</h4>
 								</a>
-
 								<form class="mt-5 mb-5 login-input" action="/doLogin" method="post">
 									<div class="form-group">
 										<input type="text" class="form-control" placeholder="Id" name="memberNO">
@@ -71,9 +51,6 @@ window.onload = function() {
 			</div>
 		</div>
 	</div>
-
-
-
 	<footer>
 		<jsp:include page="/incl/Footer.jsp" />
 	</footer>

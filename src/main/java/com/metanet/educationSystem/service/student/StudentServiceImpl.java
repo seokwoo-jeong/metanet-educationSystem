@@ -19,7 +19,6 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public List<HashMap<String, Object>> getClassList() throws Exception {
-		
 		return studentMapper.getClassList();
 	}
 	
@@ -105,6 +104,7 @@ public class StudentServiceImpl implements StudentService{
 
 	@Override
 	public HashMap<String, Object> getClassInfo(String classNO) throws Exception {
+		System.out.println(this.studentMapper.getClassInfo(classNO).toString());
 		return this.studentMapper.getClassInfo(classNO);
 		// TODO Auto-generated method stub
 		
@@ -114,10 +114,4 @@ public class StudentServiceImpl implements StudentService{
 	public List<HashMap<String, Object>> getStudentScoreList(String memberNO) throws Exception {
 		return this.studentMapper.getStudentScoreList(memberNO);
 	}
-
-	
-
-	
-	
-
 }
