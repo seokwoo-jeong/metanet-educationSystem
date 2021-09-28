@@ -265,49 +265,7 @@ function classInsert() {
 
 //notice///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-function noticeInsert() {
-	
-	//객체 string 변환
-	var noticeSubjectstr = $("#noticeSubject");
-	var noticeContentstr = $("#noticeContent");
-	
-	var reg_noticeSubject = /^.{5,20}$/     //모든 글자 5글자이상 20글자 이하
-	var reg_noticeContent = /^.{10,500}$/     //모든 글자 10글자이상 20글자 이하
-	
-	if (noticeSubjectstr.val() == '') {
-		alert('제목을 입력해주세요');
-		return false;
-	}
-	
-	if (!reg_noticeSubject.test(noticeSubjectstr.val())) {
-		alert('제목은 5글자 이상, 20글자 이하로 입력해주세요');
-		$("#noticeSubject").focus(this).css("background-color","#CCE1FF");
-		$("#noticeSubject").focus();
-		return false;
-	} else{
-		$("#noticeSubject").focus(this).css("background-color","white");
-	}
-	
-	if (noticeContentstr.val() == '') {
-		alert('공지사항 내용을 입력해주세요');
-		return false;
-	}
-	
-	if (!reg_noticeContent.test(noticeContentstr.val())) {
-		alert('공지사항 내용은 10글자 이상, 500글자 이내로 입력해주세요');
-		$("#noticeContent").focus(this).css("background-color","#CCE1FF");
-		$("#noticeContent").focus();
-		return false;
-	} else{
-		$("#noticeContent").focus(this).css("background-color","white");
-	}
 
-	if (!confirm("공지사항을 등록 하시겠습니까?")) {
-		return false;
-	} else {
-		document.getElementById('noticeInsertCheck').submit();
-	}
-}
 
 //classPage/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
