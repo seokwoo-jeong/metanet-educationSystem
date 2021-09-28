@@ -1,6 +1,5 @@
 package com.metanet.educationSystem.controller.notice;
 
-import java.util.HashMap;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.List;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.metanet.educationSystem.model.NoticeFileVO;
 import com.metanet.educationSystem.model.NoticeVO;
-import com.metanet.educationSystem.service.comment.CommentsService;
 import com.metanet.educationSystem.service.notice.NoticeService;
 
 
@@ -44,8 +42,8 @@ public class NoticeController {
 		
 		NoticeVO noticeVO = new NoticeVO();
 		noticeVO = noticeService.getNoticedetail(noticeNO);
-		request.setAttribute("noticeFileList",this.noticeService.getNoticeFile(noticeNO));
 		request.setAttribute("noticeVO", noticeVO);
+		request.setAttribute("noticeFileList",this.noticeService.getNoticeFile(noticeNO));
 		return "/notice/NoticeDetail";
 	}
 	

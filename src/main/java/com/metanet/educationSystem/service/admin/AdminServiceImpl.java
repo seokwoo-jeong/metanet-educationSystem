@@ -50,7 +50,7 @@ public class AdminServiceImpl implements AdminService {
 		adminMapper.classInsert(classVO);
 
 	}
-	
+
 	@Override
 	public int checkClassNO(String classNO) throws Exception {
 		String checkClassNO = this.adminMapper.checkClassNO(classNO);
@@ -62,7 +62,6 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 //noticeInsert
-
 	public void noticeInsert(NoticeVO noticeVO, HttpServletRequest request,
 			MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception {
 		String noticeNO = adminMapper.getNoticeNO();
@@ -87,20 +86,18 @@ public class AdminServiceImpl implements AdminService {
 		return 0;
 	}
 
-
 //classPage
-	
 	@Override
 	public List<HashMap<String, Object>> getClassList() throws Exception {
-		
+
 		return adminMapper.getClassList();
 	}
 
 	@Override
 	public void adminDeleteClass(String classNO) throws Exception {
-		
+
 		this.adminMapper.adminDeleteClass(classNO);
-		
+
 	}
-	
+
 }

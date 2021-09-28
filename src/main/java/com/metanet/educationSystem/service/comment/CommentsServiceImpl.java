@@ -10,15 +10,13 @@ import org.springframework.stereotype.Service;
 
 import com.metanet.educationSystem.mapper.CommentsMapper;
 
-
 @Service
-public class CommentsServiceImpl implements CommentsService{
+public class CommentsServiceImpl implements CommentsService {
 	@Autowired
 	private CommentsMapper commentsMapper;
 
-
 	@Override
-	public List<HashMap<String, Object>> getCommentsList(String noticeNO) {
+	public List<HashMap<String, Object>> getCommentsList(String noticeNO) throws Exception{
 		List<HashMap<String, Object>> parseData = commentsMapper.getCommentsList(noticeNO);
 		for (HashMap<String, Object> entry : parseData) {
 			Date commentDate = (Date) entry.get("commentDate");
@@ -30,12 +28,12 @@ public class CommentsServiceImpl implements CommentsService{
 	}
 
 	@Override
-	public int insertComments(String noticeNO, String memberNO, String commentContent) {
-		return commentsMapper.insertComments(noticeNO,memberNO,commentContent);
+	public int insertComments(String noticeNO, String memberNO, String commentContent) throws Exception{
+		return commentsMapper.insertComments(noticeNO, memberNO, commentContent);
 	}
 
 	@Override
-	public int deleteComments(String commentNO) {
+	public int deleteComments(String commentNO) throws Exception{
 		return commentsMapper.deleteComments(commentNO);
 	}
 

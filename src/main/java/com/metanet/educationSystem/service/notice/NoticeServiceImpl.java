@@ -26,7 +26,7 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 	
 	@Override
-	public int deleteNotice(String noticeNO) {
+	public int deleteNotice(String noticeNO) throws Exception{
 		return this.noticeMapper.deleteNotice(noticeNO);
 	}
 	
