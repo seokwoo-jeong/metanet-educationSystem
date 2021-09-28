@@ -8124,6 +8124,11 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
   letter-spacing: 0.05rem;
   color: #abafb3; }
 
+.matismenu:hover {
+	background-color: white;
+	color: black;
+}
+
 .nav-badge {
   position: absolute;
   right: 2.8125rem;
@@ -8210,7 +8215,8 @@ Fixing Order => Base + Typography >> General Layout + Grid >> Page Layout + Comp
       transition: all 0.4s ease-in-out; }
       .nk-sidebar .metismenu a:hover, .nk-sidebar .metismenu a:active, .nk-sidebar .metismenu a.active {
         text-decoration: none;
-        background-color: #F3F1FA; }
+        background-color: #F3F1FA; 
+        }
     .nk-sidebar .metismenu .has-arrow:after {
       position: absolute;
       content: "";

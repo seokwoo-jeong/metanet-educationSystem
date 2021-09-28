@@ -60,8 +60,8 @@
 						<span class="nav-text" style="color: white">수업</span>
 						</a></li>
 							<ul style="background-color: rgb(150, 103, 243);">
-								<li><a class="has-arrow" href="/admin/classInsert" style="color: white;">수업 등록</a></li>
-								<li><a class="has-arrow" href="/admin/classPage" style="color: white;">수업 목록</a></li>
+								<li><a class="has-arrow" href="/admin/classInsert" style="background-color: rgb(150, 103, 243); color: white;">수업 등록</a></li>
+								<li><a class="has-arrow" href="/admin/classPage" style="background-color: rgb(150, 103, 243); color: white;">수업 목록</a></li>
 							</ul>
 
 						<li style="background-color: rgb(150, 103, 243);">
@@ -70,8 +70,8 @@
 						<span class="nav-text" style="color: white;">인원 등록</span>
 						</a></li>
 							<ul style="background-color: rgb(150, 103, 243);">
-								<li><a class="has-arrow" href="/admin/studentInsert" style="color: white;">학생 등록</a></li>
-							<li><a class="has-arrow" href="/admin/professorInsert" style="color: white;">교수 등록</a></li>
+								<li><a class="has-arrow" href="/admin/studentInsert" style="background-color: rgb(150, 103, 243); color: white;">학생 등록</a></li>
+							<li><a class="has-arrow" href="/admin/professorInsert" style="background-color: rgb(150, 103, 243); color: white;">교수 등록</a></li>
 							</ul>
 					</c:when>
 				</c:choose>
