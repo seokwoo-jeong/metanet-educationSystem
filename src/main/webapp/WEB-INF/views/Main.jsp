@@ -62,19 +62,19 @@ window.onload = function() {
 								<div class="row mb-3">
                                     <div class="col">
                                         <div class="card card-profile text-center">
-                                            <span class="mb-1 text-primary"><i class="icon-people"></i>&nbsp;&nbsp;${getStudentInfo.studentSemester }&nbsp;학기</span>
+                                            <span class="mb-1 text-primary"><i class="icon-people"></i>&nbsp;&nbsp;${studentInfo.STUDENTSEMESTER }&nbsp;학기</span>
                                             <p class="text-muted px-3">이수 학기</p>
                                         </div>
                                     </div>
                                 </div>
                                 <p class="text-muted"></p>
                                 <ul class="card-profile__info">
-                                    <li class="mb-1">&nbsp;<i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;<strong class="text-dark mr-4">Major&nbsp;&nbsp;</strong> <span>${getStudentInfo.studentMajor }</span></li>
-                                    <li class="mb-1"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;<strong class="text-dark mr-4">Mobile</strong><span>${member.memberPhoneNO }</span></li>
-                                    <li class="mb-1"><i class="fa fa-envelope gradient-4-text"></i>&nbsp;&nbsp;<strong class="text-dark mr-4">Email&nbsp;&nbsp;</strong> <span>${member.memberEmail }</span></li>
+                                    <li class="mb-1">&nbsp;<i class="fa fa-user"></i>&nbsp;&nbsp;&nbsp;<strong class="text-dark mr-4">Major</strong><p><span>${studentInfo.STUDENTMAJOR }</span></li>
+                                    <li class="mb-1"><i class="fa fa-paper-plane"></i>&nbsp;&nbsp;<strong class="text-dark mr-4">Mobile</strong><p><span>${member.memberPhoneNO }</span></li>
+                                    <li class="mb-1"><i class="fa fa-envelope gradient-4-text"></i>&nbsp;&nbsp;<strong class="text-dark mr-4">Email</strong><p><span>${member.memberEmail }</span></li>
                                 </ul>
                             </div>
-                        </div>  
+                        </div>
                     		</div>
 				<div class="col-lg-8">
 					<div class="card">

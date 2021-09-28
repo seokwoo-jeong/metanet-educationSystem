@@ -130,7 +130,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</delete>
 	<!-- Delete Finish -->
 	
-	<select id="getStudentInfo" parameterType="String" resultType="String">
+	<select id="getStudentInfo" parameterType="String" resultType="java.util.HashMap">
 		select * from student where studentNO=#{memberNO}
 	</select>
+	
 </mapper>
