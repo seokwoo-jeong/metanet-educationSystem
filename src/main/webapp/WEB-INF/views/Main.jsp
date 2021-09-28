@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 
@@ -8,6 +8,13 @@
 <head>
 <jsp:include page="/incl/Head.jsp" />
 <title>Main</title>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+window.onload = function() {
+	if(${error}=="403")
+		alert("Й╤▄М∙°Л²╢ Л≈├Л┼╣К▀┬К▀╓");
+	};
+</script>
 </head>
 
 
@@ -41,7 +48,7 @@
 									<table class="table table-xs mb-0">
 										<thead>
 											<tr>
-												<th>╟ЬаЖ╩Ггв</th>
+												<th>ЙЁ╣Л╖─Л┌╛М∙╜</th>
 											</tr>
 										</thead>
 
@@ -49,7 +56,7 @@
 											<c:choose>
 												<c:when test="${empty member.memberDistinct}">
 													<tr>
-														<td>╥н╠вюн хд юл©К ╟║╢игу╢о╢ы.</td>
+														<td>К║°Й╥╦Л²╦ М⌡└ Л²╢Л ╘ Й╟─К┼╔М∙╘К▀┬К▀╓.</td>
 													</tr>
 												</c:when>
 												<c:when test="${not empty member.memberDistinct}">
@@ -86,10 +93,10 @@
 											<c:when test="${member.memberDistinct eq 0}">
 												<thead>
 													<tr>
-														<th>╟╜аб╧Ьхё</th>
-														<th>╟╜абюл╦╖</th>
-														<th>гпа║</th>
-														<th>╠Ё╪Жюл╦╖</th>
+														<th>Й╟∙Л╒▄К╡┬М≤╦</th>
+														<th>Й╟∙Л╒▄Л²╢К╕└</th>
+														<th>М∙≥Л═░</th>
+														<th>Й╣░Л┬≤Л²╢К╕└</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -105,7 +112,7 @@
 												<tfoot>
 													<tr>
 														<a href="/student/studentShowClass">
-															<button type="submit" class="btn mb-1 btn-primary ">Ё╩ ╪Ж╬В╨╦╠Б</button>
+															<button type="submit" class="btn mb-1 btn-primary ">К┌╢ Л┬≤Л≈┘КЁ╢Й╦╟</button>
 														</a>
 													</tr>
 												</tfoot>
@@ -114,9 +121,9 @@
 
 												<thead>
 													<tr>
-														<th>╟╜аб╧Ьхё</th>
-														<th>╟╜абюл╦╖</th>
-														<th>гпа║</th>
+														<th>Й╟∙Л╒▄К╡┬М≤╦</th>
+														<th>Й╟∙Л╒▄Л²╢К╕└</th>
+														<th>М∙≥Л═░</th>
 													</tr>
 												</thead>
 												<tbody>
@@ -131,7 +138,7 @@
 												<tfoot>
 													<tr>
 														<a href="/professor/professorShowMyclass?professorID=${member.memberNO}">
-															<button type="submit" class="btn mb-1 btn-primary ">Ё╩ ╪Ж╬В╨╦╠Б</button>
+															<button type="submit" class="btn mb-1 btn-primary ">К┌╢ Л┬≤Л≈┘КЁ╢Й╦╟</button>
 														</a>
 													</tr>
 												</tfoot>
@@ -140,37 +147,37 @@
 											<c:when test="${member.memberDistinct eq 2}">
 												<thead>
 													<tr>
-														<th>╣Н╥ого╠Б</th>
+														<th>К⌠╠К║²М∙≤Й╦╟</th>
 
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td>гп╩Щ ╣Н╥ого╠Б</td>
+														<td>М∙≥Л┐² К⌠╠К║²М∙≤Й╦╟</td>
 														<td><a href="/admin/studentInsert">
-																<button type="submit" class="btn mb-1 btn-primary ">юл╣©</button>
+																<button type="submit" class="btn mb-1 btn-primary ">Л²╢К▐≥</button>
 														</a></td>
 
 													</tr>
 
 													<tr>
-														<td>╠Ё╪Ж ╣Н╥ого╠Б</td>
+														<td>Й╣░Л┬≤ К⌠╠К║²М∙≤Й╦╟</td>
 														<td><a href="/admin/professorInsert">
-																<button type="submit" class="btn mb-1 btn-primary ">юл╣©</button>
+																<button type="submit" class="btn mb-1 btn-primary ">Л²╢К▐≥</button>
 														</a></td>
 
 													</tr>
 													<tr>
-														<td>╪Ж╬В ╣Н╥ого╠Б</td>
+														<td>Л┬≤Л≈┘ К⌠╠К║²М∙≤Й╦╟</td>
 														<td><a href="/admin/classInsert">
-																<button type="submit" class="btn mb-1 btn-primary ">юл╣©</button>
+																<button type="submit" class="btn mb-1 btn-primary ">Л²╢К▐≥</button>
 														</a></td>
 
 													</tr>
 													<tr>
-														<td>╟ЬаЖ╩Ггв ╣Н╥ого╠Б</td>
+														<td>ЙЁ╣Л╖─Л┌╛М∙╜ К⌠╠К║²М∙≤Й╦╟</td>
 														<td><a href="/admin/noticeInsert">
-																<button type="submit" class="btn mb-1 btn-primary ">юл╣©</button>
+																<button type="submit" class="btn mb-1 btn-primary ">Л²╢К▐≥</button>
 														</a></td>
 
 													</tr>
@@ -181,12 +188,12 @@
 											<c:when test="${empty member.memberDistinct}">
 												<thead>
 													<tr>
-														<th>╪Ж╟╜ ╦Я╥о</th>
+														<th>Л┬≤Й╟∙ К╙╘К║²</th>
 													</tr>
 												</thead>
 												<tbody>
 													<tr>
-														<td>╥н╠вюн хд юл©К ╟║╢игу╢о╢ы.</td>
+														<td>К║°Й╥╦Л²╦ М⌡└ Л²╢Л ╘ Й╟─К┼╔М∙╘К▀┬К▀╓.</td>
 													</tr>
 												</tbody>
 											</c:when>
