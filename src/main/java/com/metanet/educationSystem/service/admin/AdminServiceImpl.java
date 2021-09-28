@@ -16,6 +16,8 @@ import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeFileVO;
 import com.metanet.educationSystem.model.NoticeVO;
+import com.metanet.educationSystem.model.ProfessorVO;
+import com.metanet.educationSystem.model.StudentVO;
 
 @Service
 public class AdminServiceImpl implements AdminService {
@@ -98,6 +100,24 @@ public class AdminServiceImpl implements AdminService {
 
 		this.adminMapper.adminDeleteClass(classNO);
 
+	}
+
+	@Override
+	public void studentInsert(StudentVO studentVO) throws Exception {
+		this.adminMapper.studentInsert(studentVO);
+		
+	}
+
+	@Override
+	public void professorInsert(ProfessorVO professorVO) throws Exception {
+		this.adminMapper.professorInsert(professorVO);
+		
+	}
+
+	@Override
+	public List<String> getProfessorNOList() throws Exception {
+		
+		return this.adminMapper.getProfessorNOList();
 	}
 
 }

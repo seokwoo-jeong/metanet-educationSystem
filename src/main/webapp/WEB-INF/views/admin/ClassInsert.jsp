@@ -62,15 +62,19 @@
 											</div>
 										</div>
 										<p>
+										
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>교수번호</label><input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="교수번호를 입력해주세요"> <br>
-												<p class="result">
-													<button type="button" id="zbCheckPassButton" class="checkMemberNO btn mb-1 btn-primary btn-sm">교수번호 확인</button>
-													<span class="msg">교수번호 확인을 해주세요.</span>
-												</p>
+												<label>교수번호</label> <select id="memberNO" class="form-control" name="memberNO">
+												<c:forEach var="professorNO" items="${professorNOList}">
+												
+													<option value="${professorNO}">${professorNO}</option>
+												</c:forEach>
+												
+												</select>
 											</div>
 										</div>
+										
 
 										<button class="btn mb-1 btn-primary btn-sm" onclick="return classInsert();">수업 등록</button>
 									</form>
@@ -85,59 +89,5 @@
 </body>
 
 <jsp:include page="/incl/DeepFooter.jsp" />
-
-
-<script>
-	var zbCheckPass = false; //중복 확인 여부
-	var userIdCheck = RegExp(/[^0-9]$/);
-
-	$(".checkMemberNO").click(
-			function() {
-				var query = {
-					memberNO : $("#memberNO").val()
-				};
-				var a = $("#memberNO").val();
-
-				//console.log($("#memberNO").val());
-				if (userIdCheck.test($('#memberNO').val())) {
-					$(".result .msg").text("교수번호는 숫자로만 입력할 수 있습니다.");
-					$(".result .msg").attr("style", "color:#f00");
-					$("#submit").attr("disabled", "disabled");
-				} else if ($("#memberNO").val() == "") {
-					$(".result .msg").text("교수번호를 입력해주세요.");
-					$(".result .msg").attr("style", "color:#f00");
-					$("#submit").attr("disabled", "disabled");
-				} else if (a.length != 10) {
-					$(".result .msg").text("교수번호는 10자리의 숫자로만 입력할 수 있습니다.");
-					$(".result .msg").attr("style", "color:#f00");
-					$("#submit").attr("disabled", "disabled");
-				} else {
-					$.ajax({
-						url : "/admin/checkClassNO",
-						type : "post",
-						data : query,
-						success : function(data) {
-							if (data == 1) {
-								zbCheckPass = true;
-								$(".result .msg").text("수업 등록이 가능합니다.");
-								$(".result .msg").attr("style", "color:#00f");
-								$("#submit").removeAttr("disabled");
-								$("#zbCheckPassButton").focus(this).css(
-										"background-color", "#7B68EE");
-								$("#zbCheckPassButton").focus(this).css(
-										"border-color", "#7B68EE");
-								$("#memberNO").focus(this).css(
-										"background-color", "white");
-							} else {
-								zbCheckPass = false;
-								$(".result .msg").text("존재하지 않는 교수번호입니다.");
-								$(".result .msg").attr("style", "color:#f00");
-								$("#submit").attr("disabled", "disabled");
-							}
-						}
-					});
-				}
-			});
-</script>
 
 </html>

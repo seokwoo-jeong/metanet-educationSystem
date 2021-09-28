@@ -10,6 +10,8 @@ import com.metanet.educationSystem.model.ClassVO;
 import com.metanet.educationSystem.model.MemberVO;
 import com.metanet.educationSystem.model.NoticeFileVO;
 import com.metanet.educationSystem.model.NoticeVO;
+import com.metanet.educationSystem.model.ProfessorVO;
+import com.metanet.educationSystem.model.StudentVO;
 
 @Repository
 @Mapper
@@ -34,6 +36,9 @@ public interface AdminMapper {
 //classPage
 	public List<HashMap<String, Object>> getClassList() throws Exception;
 	public void adminDeleteClass(String classNO) throws Exception;
+	public void studentInsert(StudentVO studentVO) throws Exception;
+	public void professorInsert(ProfessorVO professorVO) throws Exception;
+	public List<String> getProfessorNOList() throws Exception;
 
 
 
