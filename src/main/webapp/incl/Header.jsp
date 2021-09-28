@@ -8,8 +8,8 @@
 <body>
 	<!-- Nav header start -->
 	<div class="nav-header">
-		<div class="brand-logo" style="background-color: white">
-			<a href="/"> <b class="logo-abbr"><img src="${pageContext.request.contextPath }/resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img src="${pageContext.request.contextPath }/resources/images/meta3.png"
+		<div class="brand-logo" style="background-color: rgb(150, 103, 243);">
+			<a href="/"> <b class="logo-abbr"><img src="${pageContext.request.contextPath }/resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img src="${pageContext.request.contextPath }/resources/images/meta2.png"
 					width="200" height="50" alt="">
 			</span>
 			</a>
