@@ -202,15 +202,6 @@ function professorInsert() {
 //class///////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 function classInsert() {
-
-	if (!zbCheckPass) {
-		alert('교수번호 체크를 해주세요');
-		$("#memberNO").focus(this).css("background-color","#CCE1FF");
-		$("#memberNO").focus();
-		$("#zbCheckPassButton").focus(this).css("background-color","#FF5675");
-		$("#zbCheckPassButton").focus(this).css("border-color","#FF5675");
-		return false;
-	}
 	
 	//객체 string 변환
 	var classNOstr = $("#classNO");
@@ -271,8 +262,8 @@ function noticeInsert() {
 	var noticeSubjectstr = $("#noticeSubject");
 	var noticeContentstr = $("#noticeContent");
 	
-	var reg_noticeSubject = /^.{5,20}$/     //모든 글자 5글자이상 20글자 이하
-	var reg_noticeContent = /^.{10,500}$/     //모든 글자 10글자이상 20글자 이하
+	var reg_noticeSubject = /^.{5,100}$/     //모든 글자 5글자이상 100글자 이하
+	var reg_noticeContent = /^.{10,500}$/     //모든 글자 10글자이상 500글자 이하
 	
 	if (noticeSubjectstr.val() == '') {
 		alert('제목을 입력해주세요');
@@ -280,7 +271,7 @@ function noticeInsert() {
 	}
 	
 	if (!reg_noticeSubject.test(noticeSubjectstr.val())) {
-		alert('제목은 5글자 이상, 20글자 이하로 입력해주세요');
+		alert('제목은 5글자 이상, 100글자 이하로 입력해주세요');
 		$("#noticeSubject").focus(this).css("background-color","#CCE1FF");
 		$("#noticeSubject").focus();
 		return false;

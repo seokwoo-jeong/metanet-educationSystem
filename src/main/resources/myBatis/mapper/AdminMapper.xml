@@ -32,9 +32,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		memberName,memberPassword,memberEmail,memberPhoneNO,memberDistinct,isAccountNonExpired,isAccountNonLocked,isCredentialsNonExpired,isEnabled)
 		values(#{memberNO},#{memberName},#{memberPassword},#{memberEmail},#{memberPhoneNO},#{memberDistinct},0,0,0,0)
 	</insert>
+	
+	<insert id="studentInsert" parameterType="StudentVO">
+		insert into student values (#{studentNO}, #{studentMajor}, 0)
+	</insert>
+	
+	<insert id="professorInsert" parameterType="ProfessorVO">
+		insert into professor values (#{professorNO}, #{professorMajor}, #{professorRank})
+	</insert>
 
 	<select id="checkMemberNO" parameterType="String" resultType="String">
 		select memberNO from member where memberNO = #{memberNO}
+	</select>
+	
+	<select id ="getProfessorNOList" resultType="string">
+		select memberNO from member where memberDistinct = '1'
 	</select>
 
 <!-- classInsert -->
