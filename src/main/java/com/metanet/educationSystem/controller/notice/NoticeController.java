@@ -1,6 +1,5 @@
 package com.metanet.educationSystem.controller.notice;
 
-import java.util.HashMap;
 import java.io.File;
 import java.net.URLEncoder;
 import java.util.List;
@@ -17,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.metanet.educationSystem.model.NoticeFileVO;
 import com.metanet.educationSystem.model.NoticeVO;
-import com.metanet.educationSystem.service.comment.CommentsService;
 import com.metanet.educationSystem.service.notice.NoticeService;
 
 
@@ -27,14 +25,12 @@ public class NoticeController {
     
 	@Autowired
 	private NoticeService noticeService;
-	@Autowired
-	private CommentsService commentsService;
 	
 	@RequestMapping("")
 	public String notice(HttpServletRequest request) throws Exception {
 		
 		List<NoticeVO> noticeList = noticeService.getNoticeList();
-		
+		System.out.println(noticeList);
 		request.setAttribute("noticeVOList", noticeList);
 		return "/notice/NoticeList";
 	}
@@ -45,13 +41,18 @@ public class NoticeController {
 			@RequestParam(value="no") String noticeNO) throws Exception {
 		
 		NoticeVO noticeVO = new NoticeVO();
-		List<HashMap<String, Object>> commentsVO;
 		noticeVO = noticeService.getNoticedetail(noticeNO);
-		commentsVO = commentsService.getCommentsList(noticeNO);
-		request.setAttribute("noticeFileList",this.noticeService.getNoticeFile(noticeNO));
 		request.setAttribute("noticeVO", noticeVO);
-		request.setAttribute("commentsVO", commentsVO);
+		request.setAttribute("noticeFileList",this.noticeService.getNoticeFile(noticeNO));
 		return "/notice/NoticeDetail";
+	}
+	
+	@RequestMapping("/delete")
+	public String delete(HttpServletRequest request, 
+			@RequestParam(value="noticeNO") String noticeNO) throws Exception {
+		
+		int result = noticeService.deleteNotice(noticeNO);
+		return "redirect:";
 	}
 	
 	@RequestMapping("/downloadNoticeFile")
@@ -77,4 +78,6 @@ public class NoticeController {
 		}
 		return "redirect:detail";
 	}
+	
+	
 }

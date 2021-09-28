@@ -44,7 +44,7 @@
 						</c:if>
 						<c:if test="${!empty member}">
 							<form action="/doLogout" method="post">
-								<button class="btn btn-primary px-3 ml-4">logout</button>
+								<button class="btn login-form__btn submit w-70">logout</button>
 							</form>
 						</c:if>
 					</div>

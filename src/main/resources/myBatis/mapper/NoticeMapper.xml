@@ -6,13 +6,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 <mapper namespace="com.metanet.educationSystem.mapper.NoticeMapper">
 
 	<select id="getNoticeList" resultType="NoticeVO">
-		select * from notice
+		select * from notice order by noticeDate desc
 	</select>
 	
 	<select id="getNotice" parameterType="String" resultType="NoticeVO">
 		select * from notice where noticeNO=${noticeNO}
 	</select>
-	
+	<delete id="deleteNotice" parameterType="String">
+		delete from notice where noticeNO=#{noticeNO}
+	</delete>
 	<select id="getNoticeFile" parameterType="string" resultType="NoticeFileVO">
 		<![CDATA[
 		SELECT

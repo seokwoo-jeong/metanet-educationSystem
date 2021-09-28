@@ -12,77 +12,69 @@
 <body>
 	<jsp:include page="/incl/Header.jsp" />
 	<jsp:include page="/incl/Sidebar.jsp" />
-<body>
 
-	<div class="content-body">
-
-		
-
-		<div class="container-fluid">
-			<div class="row justify-content-center">
-				<div class="col-lg-12">
-					<div class="card">
-						<div class="card-body">
-							<div class="form-validation">
-								<form action="/admin/classInsertCheck" id="classInsertCheck" method="Post">
-
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label">수업번호</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="classNO" name="classNO" placeholder="수업번호를 입력해주세요">
+	<div id="main-wrapper">
+		<div class="content-body">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="card">
+							<div class="card-body">
+								<h4 class="card-title">수업 등록</h4>
+								<br>
+								<div class="basic-form">
+									<form action="/admin/classInsertCheck" id="classInsertCheck" method="Post">
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>수업번호</label> <input type="text" class="form-control" id="classNO" name="classNO" placeholder="수업번호를 입력해주세요">
+											</div>
 										</div>
-									</div>
+										<p>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>수업명</label> <input type="text" class="form-control" id="className" name="className" placeholder="수업명을 입력해주세요">
 
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label">수업명</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="className" name="className" placeholder="수업명을 입력해주세요">
+											</div>
 										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label">수업목표</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="classGoal" name="classGoal" placeholder="수업목표를 입력해주세요">
+										<p>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>수업목표</label> <input type="text" class="form-control" id="classGoal" name="classGoal" placeholder="수업목표를 입력해주세요">
+											</div>
 										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label">수업요약</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="classSummary" name="classSummary" placeholder="수업요약을 입력해주세요">
+										<p>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>수업내용</label> <input type="text" class="form-control" id="classSummary" name="classSummary" placeholder="수업내용을 입력해주세요">
+											</div>
 										</div>
-									</div>
+										<p>
+										<div class="form-row">
+											<div class="form-group col-md-6">
 
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label">수업인원</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="classPersonnel" name="classPersonnel" placeholder="수업인원을 입력해주세요">
+												<label>수업인원</label><input type="number" class="form-control" id="classPersonnel" name="classPersonnel" placeholder="수업인원을 입력해주세요">
+											</div>
 										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label">수업학점</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="classCredit" name="classCredit" placeholder="수업학점을 입력해주세요">
+										<p>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>수업학점</label> <input type="number" class="form-control" id="classCredit" name="classCredit" placeholder="수업학점을 입력해주세요">
+											</div>
 										</div>
-									</div>
-
-									<div class="form-group row">
-										<label class="col-lg-4 col-form-label">교수번호</label>
-										<div class="col-lg-6">
-											<input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="교수번호를 입력해주세요">
-												<br>
+										<p>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label>교수번호</label><input type="text" class="form-control" id="memberNO" name="memberNO" placeholder="교수번호를 입력해주세요"> <br>
 												<p class="result">
-												<button type="button" id="zbCheckPassButton" class="checkMemberNO btn mb-1 btn-primary btn-sm">교수번호 확인</button>
-	                                   			<span class="msg">교수번호 확인을 해주세요.</span>
-	                               				</p>
+													<button type="button" id="zbCheckPassButton" class="checkMemberNO btn mb-1 btn-primary btn-sm">교수번호 확인</button>
+													<span class="msg">교수번호 확인을 해주세요.</span>
+												</p>
+											</div>
 										</div>
-									</div>
 
-									<button class="btn mb-1 btn-primary btn-sm" onclick="return classInsert();">수업 등록</button>
-									
-								</form>
+										<button class="btn mb-1 btn-primary btn-sm" onclick="return classInsert();">수업 등록</button>
+									</form>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -90,59 +82,62 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 
 <jsp:include page="/incl/DeepFooter.jsp" />
 
-</body>
 
 <script>
 	var zbCheckPass = false; //중복 확인 여부
 	var userIdCheck = RegExp(/[^0-9]$/);
 
-	$(".checkMemberNO").click(function () {
-        var query = {memberNO: $("#memberNO").val()};
-        var a =$("#memberNO").val();
-        
-        //console.log($("#memberNO").val());
-        if (userIdCheck.test($('#memberNO').val())){
-        	$(".result .msg").text("교수번호는 숫자로만 입력할 수 있습니다.");
-            $(".result .msg").attr("style", "color:#f00");
-            $("#submit").attr("disabled", "disabled");
-        }else if($("#memberNO").val() == ""){
-        	$(".result .msg").text("교수번호를 입력해주세요.");
-            $(".result .msg").attr("style", "color:#f00");
-            $("#submit").attr("disabled", "disabled");
-        }else if(a.length != 10){
-        	$(".result .msg").text("교수번호는 10자리의 숫자로만 입력할 수 있습니다.");
-            $(".result .msg").attr("style", "color:#f00");
-            $("#submit").attr("disabled", "disabled");    
-        } else {		
-	        $.ajax({
-	            url: "/admin/checkClassNO",
-	            type: "post",
-	            data: query,
-	            success: function (data) { 
-	            	if (data == 1) { 
-	                	zbCheckPass = true;
-	                	$(".result .msg").text("수업 등록이 가능합니다.");
-	                    $(".result .msg").attr("style", "color:#00f");
-	                    $("#submit").removeAttr("disabled");
-	                    $("#zbCheckPassButton").focus(this).css("background-color","#7B68EE");
-	                    $("#zbCheckPassButton").focus(this).css("border-color","#7B68EE");
-	            		$("#memberNO").focus(this).css("background-color","white");
-	                } else {
-	                	zbCheckPass = false;
-	                	$(".result .msg").text("존재하지 않는 교수번호입니다.");
-	                    $(".result .msg").attr("style", "color:#f00");
-	                    $("#submit").attr("disabled", "disabled");
-	                }
-	            }
-	        });
-        }
-    });
+	$(".checkMemberNO").click(
+			function() {
+				var query = {
+					memberNO : $("#memberNO").val()
+				};
+				var a = $("#memberNO").val();
 
+				//console.log($("#memberNO").val());
+				if (userIdCheck.test($('#memberNO').val())) {
+					$(".result .msg").text("교수번호는 숫자로만 입력할 수 있습니다.");
+					$(".result .msg").attr("style", "color:#f00");
+					$("#submit").attr("disabled", "disabled");
+				} else if ($("#memberNO").val() == "") {
+					$(".result .msg").text("교수번호를 입력해주세요.");
+					$(".result .msg").attr("style", "color:#f00");
+					$("#submit").attr("disabled", "disabled");
+				} else if (a.length != 10) {
+					$(".result .msg").text("교수번호는 10자리의 숫자로만 입력할 수 있습니다.");
+					$(".result .msg").attr("style", "color:#f00");
+					$("#submit").attr("disabled", "disabled");
+				} else {
+					$.ajax({
+						url : "/admin/checkClassNO",
+						type : "post",
+						data : query,
+						success : function(data) {
+							if (data == 1) {
+								zbCheckPass = true;
+								$(".result .msg").text("수업 등록이 가능합니다.");
+								$(".result .msg").attr("style", "color:#00f");
+								$("#submit").removeAttr("disabled");
+								$("#zbCheckPassButton").focus(this).css(
+										"background-color", "#7B68EE");
+								$("#zbCheckPassButton").focus(this).css(
+										"border-color", "#7B68EE");
+								$("#memberNO").focus(this).css(
+										"background-color", "white");
+							} else {
+								zbCheckPass = false;
+								$(".result .msg").text("존재하지 않는 교수번호입니다.");
+								$(".result .msg").attr("style", "color:#f00");
+								$("#submit").attr("disabled", "disabled");
+							}
+						}
+					});
+				}
+			});
 </script>
 
 </html>

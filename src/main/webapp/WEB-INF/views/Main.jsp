@@ -105,7 +105,7 @@
 												<tfoot>
 													<tr>
 														<a href="/student/studentShowClass">
-															<button type="submit" class="btn mb-1 btn-primary ">강의실 가기</button>
+															<button type="submit" class="btn mb-1 btn-primary ">내 수업보기</button>
 														</a>
 													</tr>
 												</tfoot>
@@ -131,7 +131,7 @@
 												<tfoot>
 													<tr>
 														<a href="/professor/professorShowMyclass?professorID=${member.memberNO}">
-															<button type="submit" class="btn mb-1 btn-primary ">강의실 가기</button>
+															<button type="submit" class="btn mb-1 btn-primary ">내 수업보기</button>
 														</a>
 													</tr>
 												</tfoot>

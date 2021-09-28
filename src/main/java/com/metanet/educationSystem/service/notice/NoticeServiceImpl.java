@@ -24,16 +24,23 @@ public class NoticeServiceImpl implements NoticeService{
 	public NoticeVO getNoticedetail(String noticeNO) throws Exception{
 		return noticeMapper.getNotice(noticeNO);
 	}
+	
+	@Override
+	public int deleteNotice(String noticeNO) throws Exception{
+		return this.noticeMapper.deleteNotice(noticeNO);
+	}
+	
 
 	@Override
 	public List<NoticeFileVO> getNoticeFile(String noticeNO) throws Exception {
 		return this.noticeMapper.getNoticeFile(noticeNO);
 	}
-
+	
 	@Override
 	public NoticeFileVO downloadNoticeFile(NoticeFileVO noticeFileVO) throws Exception {
 		return this.noticeMapper.downloadNoticeFile(noticeFileVO);
 	}
-	
+
+
 	
 }

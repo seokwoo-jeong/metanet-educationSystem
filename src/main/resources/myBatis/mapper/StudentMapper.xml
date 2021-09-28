@@ -14,13 +14,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result column="classCredit" property="classCredit" />
 		<result column="classCurrentPersonnel" property="classCurrentPersonnel" />
 		<association property="MemberVO" javaType="MemberVO">
+			<result column="memberNO" property="memberNO"/>
 			<result column="memberName" property="memberName" />
 			<result column="memberEmail" property="memberEmail" />
 			<result column="memberPhoneNO" property="memberPhoneNO" />
 		</association>
 		<association property="ProfessorVO" javaType="ProfessorVO">
 			<result column="professorMajor" property="professorMajor" />
-			<result column="professorRank" property="professorRank" />
 		</association>
 	</resultMap>
 
@@ -85,10 +85,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<select id="getClassInfo" parameterType="string" resultMap="classInfo">
-		SELECT class.*, member.*, professor.*
-		FROM class, member, PROFESSOR
-		WHERE class.memberNO = member.memberNO AND member.memberNO = professor.professorNO
-		AND classNO = #{classNO}
+		SELECT class.*, member.memberName, member.memberEmail, member.memberPhoneNO, nvl(professor.professorMajor,'교수')as professorMajor
+		FROM class left join member on class.memberNO = member.memberNO left join PROFESSOR
+		on member.memberNO = professor.professorNO
+		where classNO = #{classNO}
 	</select>
 
 	<resultMap type="java.util.HashMap" id="scoreInfo">

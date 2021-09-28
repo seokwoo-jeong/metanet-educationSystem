@@ -27,11 +27,9 @@
 											<tr>
 												<th>강좌번호</th>
 												<th>강좌이름</th>
-
 											</tr>
 										</thead>
 										<tbody>
-
 											<c:forEach var="classVO" items="${classVOList}">
 												<tr>
 													<td>${classVO.classNO}</td>
@@ -47,7 +45,7 @@
 						</div>
 					</div>
 				</div>
-	
+
 			</div>
 		</div>
 	</div>

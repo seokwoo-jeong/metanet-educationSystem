@@ -15,16 +15,16 @@ import com.metanet.educationSystem.model.ClassVO;
 public interface AdminService {
 
 //member Insert - student, professor
-	void memberInsert(MemberVO memberVO) throws Exception;
-	int checkMemberNO(String memberNO) throws Exception;
+	public void memberInsert(MemberVO memberVO) throws Exception;
+	public int checkMemberNO(String memberNO) throws Exception;
 
 //Class Insert
-	void classInsert(ClassVO classVO) throws Exception;
-	int checkClassNO(String classVO) throws Exception;
+	public void classInsert(ClassVO classVO) throws Exception;
+	public int checkClassNO(String classVO) throws Exception;
 	
 //Notice Insert
-	void noticeInsert(NoticeVO noticeVO, HttpServletRequest request, MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception;
-	int checkNoticeNO(String noticeVO) throws Exception;
+	public void noticeInsert(NoticeVO noticeVO, HttpServletRequest request, MultipartHttpServletRequest multipartHttpServeltRequest) throws Exception;
+	public int checkNoticeNO(String noticeVO) throws Exception;
 	 
 	
 //ClassPage

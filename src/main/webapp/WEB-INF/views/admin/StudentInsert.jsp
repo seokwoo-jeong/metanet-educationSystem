@@ -18,33 +18,14 @@
 			alert(message);
 		}
 	</script>
-
-	<div id="preloader">
-		<div class="loader">
-			<svg class="circular" viewBox="25 25 50 50">
-                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
-            </svg>
-		</div>
-	</div>
-
 	<div id="main-wrapper">
 		<div class="content-body">
-
-			<div class="row page-titles mx-0">
-				<div class="col p-md-0">
-					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-						<li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
-					</ol>
-				</div>
-			</div>
-
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">학생 등록 페이지</h4>
+								<h4 class="card-title">학생 등록</h4>
 								<br>
 								<div class="basic-form">
 									<form action="/admin/studentInsertCheck" id="studentInsertCheck" method="Post">
@@ -67,15 +48,16 @@
 											<div class="form-group col-md-6">
 												<label>비밀번호</label> 
 												<input type="password" id="memberPassword" name="memberPassword" class="form-control" name="memberPassword" placeholder="Password">
-												<p>
+												
 											</div>
+											
 										</div>	
 											
 										<div class="form-row">	
 											<div class="form-group col-md-6">
 												<label>이름</label> 
 												<input type="text" id="memberName" name="memberName" class="form-control" placeholder="이름을 입력하세요" name="memberName">
-												<p>
+												
 											</div>
 										</div>
 										
@@ -95,14 +77,7 @@
 											</div>
 										</div>
 										
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label>구분</label>
-												<select id="inputState" class="form-control" name="memberDistinct">
-													<option selected="selected" value="0">학생</option>
-												</select>
-											</div>
-										</div>
+									
 
 										<button class="btn mb-1 btn-primary btn-sm" onclick="return studentInsert();">학생 등록</button>
 										
@@ -174,7 +149,4 @@
         $("#submit").attr("disabled", "disabled");
     });
 </script>
-
-
-
 </html>

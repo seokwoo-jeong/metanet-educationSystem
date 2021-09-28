@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -12,10 +10,9 @@
 	<div id="main-wrapper">
 		<jsp:include page="/incl/Header.jsp" />
 		<jsp:include page="/incl/Sidebar.jsp" />
-		
+
 		<div class="content-body">
 			<div class="container-fluid">
-
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card">
@@ -28,38 +25,26 @@
 												<th>공지번호</th>
 												<th>제 목</th>
 												<th>작성일</th>
-												<th>조회수</th>
-												<th>첨부파일</th>
 											</tr>
 										</thead>
 										<tbody>
-
 											<c:forEach var="noticeVO" items="${noticeVOList}">
 												<tr>
 													<td>${noticeVO.noticeNO}</td>
-													
 													<td><a href="/notice/detail?no=${noticeVO.noticeNO}">${noticeVO.noticeSubject}</a></td>
-													
 													<td>${noticeVO.noticeDate }</td>
-													<td>${noticeVO.noticeNO}</td>
-													<td>${noticeVO.noticeNO}</td>
 												</tr>
 											</c:forEach>
-
 										</tbody>
-
 									</table>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				
-
-
-				</div>
 			</div>
 		</div>
+	</div>
 	<jsp:include page="/incl/DeepFooter.jsp" />
 
 </body>
