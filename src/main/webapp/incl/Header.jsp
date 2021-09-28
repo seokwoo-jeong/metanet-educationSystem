@@ -9,8 +9,8 @@
 	<!-- Nav header start -->
 	<div class="nav-header">
 		<div class="brand-logo">
-			<a href="/"> <b class="logo-abbr"><img src="${pageContext.request.contextPath }/resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img src="${pageContext.request.contextPath }/resources/images/meta.png"
-					width="200" height="50" alt="">
+			<a href="/"> <b class="logo-abbr"><img src="${pageContext.request.contextPath }/resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img
+					src="${pageContext.request.contextPath }/resources/images/meta.png" width="200" height="50" alt="">
 			</span>
 			</a>
 		</div>
@@ -20,36 +20,33 @@
 	<!-- Header start -->
 	<div class="header">
 		<div class="header-content clearfix">
-			<div class="header-left">
-				<div class="input-group icons">
-					 <h3 class="mb-0">
-					<c:choose>
-						<c:when test="${member.memberDistinct eq 0}"> ${member.memberName}(${member.memberNO}) 학생님, 안녕하세요.</c:when>
-						<c:when test="${member.memberDistinct eq 1}"> ${member.memberName}(${member.memberNO}) 교수님, 안녕하세요.</c:when>
-						<c:when test="${member.memberDistinct eq 2}"> ${member.memberName}(${member.memberNO}) 관리자님, 안녕하세요.</c:when>
-					</c:choose>
-					</h3>
-					
-				</div>
-			</div>
 			<div class="header-right">
 				<div class="input-group icons">
-				
-				
-					<div class="col-12 text-center">
-						<c:if test="${empty member}">
-							<a href="/checkLogin">
-								<button class="btn login-form__btn submit w-70">login</button>
-							</a>
-						</c:if>
-						<c:if test="${!empty member}">
-							<form action="/doLogout" method="post">
-								<button class="btn login-form__btn submit w-70">logout</button>
-							</form>
-						</c:if>
-					</div>
-
-
+					<c:choose>
+						<c:when test="${member.memberDistinct eq 0}">
+							<h3 class="mb-0">${member.memberName} 학생님&nbsp;&nbsp;</h3>
+							<h5 class="mb-0">(${member.memberNO})</h5>
+						</c:when>
+						<c:when test="${member.memberDistinct eq 1}">
+							<h3 class="mb-0">${member.memberName} 교수님&nbsp;&nbsp;</h3>
+							<h5 class="mb-0">(${member.memberNO})</h5>
+						</c:when>
+						<c:when test="${member.memberDistinct eq 2}">
+							<h3 class="mb-0">${member.memberName} 관리자님&nbsp;&nbsp;</h3>
+							<h5 class="mb-0">(${member.memberNO})</h5>
+						</c:when>
+					</c:choose>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<c:if test="${empty member}">
+						<a href="/checkLogin">
+							<button class="btn login-form__btn submit w-70">login</button>
+						</a>
+					</c:if>
+					<c:if test="${!empty member}">
+						<form action="/doLogout" method="post">
+							<button class="btn login-form__btn submit w-70">logout</button>
+						</form>
+					</c:if>
 				</div>
 			</div>
 		</div>

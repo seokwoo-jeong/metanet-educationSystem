@@ -33,6 +33,8 @@ public interface StudentMapper {
 
 	public HashMap<String, Object> getClassInfo(String classNO) throws Exception;
 
-	public List<HashMap<String, Object>> getStudentScoreList(String memberNO) throws Exception; 
+	public List<HashMap<String, Object>> getStudentScoreList(String memberNO) throws Exception;
+
+	public HashMap<String, Object> getStudentInfo(String memberNO); 
 
 }
