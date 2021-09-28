@@ -39,12 +39,14 @@ public class MainController {
 			switch (memberVO.getMemberDistinct()) {
 			case "0":
 				model.addAttribute("studentClassVOList", this.studentService.getStudentClassList(memberVO.getMemberNO()));
+				model.addAttribute("studentClassCnt", this.studentService.getStudentClassList(memberVO.getMemberNO()).size());
+				model.addAttribute("studentInfo", this.studentService.getStudentInfo(memberVO.getMemberNO()));
+				System.out.println(this.studentService.getStudentInfo(memberVO.getMemberNO()));
 				break;
 			case "1":
 				model.addAttribute("classVOList", professorService.professorGetClassList(memberVO.getMemberNO()));
 				break;
 			}
-
 		}
 		return "Main";
 	}

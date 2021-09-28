@@ -57,7 +57,7 @@
 										</div>
 										<div class="form-row">
 											<div class="form-group col-md-12">
-												<label>수업목표</label> <input type="text" class="form-control" id="syllabusClassGoal" name="syllabusClassGoal" readonly>
+												<label>수업목표</label> <textarea class="form-control" id="syllabusClassGoal" name="syllabusClassGoal" rows="4" readonly></textarea>
 											</div>
 										</div>
 										<div class="form-row">

@@ -14,6 +14,8 @@
 	<jsp:include page="/incl/Sidebar.jsp" />
 <body>
 
+
+
 	<div class="content-body">
 		<div class="container-fluid">
 			<div class="row justify-content-center">
@@ -28,7 +30,7 @@
 									<input type="text" id="noticeSubject" name="noticeSubject" class="form-control mt-4 mb-2" placeholder="제목을 입력해주세요." required>
 
 									<div class="form-group">
-										<textarea class="form-control" rows="10" id="noticeContent" name="noticeContent" placeholder="내용을 입력해주세요" required></textarea>
+										<textarea class="form-control" rows="10" id="noticeContent" name="noticeContent"></textarea>
 									</div>
 
 									<div class="form-group">
@@ -112,6 +114,11 @@
 		$(".result .msg").attr("style", "color:#000");
 		$("#submit").attr("disabled", "disabled");
 	});
+	
+	 CKEDITOR.replace('noticeContent'
+	                , {height: 500                                                  
+	                 });
+	
 </script>
 
 </html>

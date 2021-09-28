@@ -13,7 +13,8 @@
 	
 	<script src="${pageContext.request.contextPath }/resources/js/student.js" charset="utf-8" type="text/javascript"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/admin.js" charset="utf-8" type="text/javascript"></script>
-
+	<script src="${pageContext.request.contextPath }/resources/ckeditor/ckeditor.js" charset="utf-8" type="text/javascript"></script>
+	
 	<script src="${pageContext.request.contextPath }/resources/plugins/chartist/js/chartist.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js"></script>
 	<script src="${pageContext.request.contextPath }/resources/js/plugins-init/chartist.init.js"></script>
