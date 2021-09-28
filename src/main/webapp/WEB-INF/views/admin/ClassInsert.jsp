@@ -125,7 +125,7 @@
 	            data: query,
 	            success: function (data) { 
 	            	if (data == 1) { 
-	                	zbCheckPass = false;
+	                	zbCheckPass = true;
 	                	$(".result .msg").text("수업 등록이 가능합니다.");
 	                    $(".result .msg").attr("style", "color:#00f");
 	                    $("#submit").removeAttr("disabled");
@@ -133,7 +133,7 @@
 	                    $("#zbCheckPassButton").focus(this).css("border-color","#7B68EE");
 	            		$("#memberNO").focus(this).css("background-color","white");
 	                } else {
-	                	zbCheckPass = true;
+	                	zbCheckPass = false;
 	                	$(".result .msg").text("존재하지 않는 교수번호입니다.");
 	                    $(".result .msg").attr("style", "color:#f00");
 	                    $("#submit").attr("disabled", "disabled");
@@ -142,6 +142,7 @@
 	        });
         }
     });
+
 </script>
 
 </html>
