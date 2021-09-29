@@ -13,6 +13,13 @@
 	<jsp:include page="/incl/Header.jsp" />
 	<jsp:include page="/incl/Sidebar.jsp" />
 
+	<script>
+		var message = "${message}";
+		if (message != "") {
+			alert(message);
+		}
+	</script>
+
 	<div id="main-wrapper">
 		<div class="content-body">
 			<div class="container-fluid">
@@ -26,7 +33,7 @@
 									<form action="/admin/classInsertCheck" id="classInsertCheck" method="Post">
 										<div class="form-row">
 											<div class="form-group col-md-6">
-												<label>수업번호</label> <input type="text" class="form-control" id="classNO" name="classNO" placeholder="수업번호를 입력해주세요">
+												<label>수업번호</label> <input type="text" class="form-control" id="classNO" name="classNO" value ="${classNO}" readonly>
 											</div>
 										</div>
 										<p>
@@ -62,19 +69,18 @@
 											</div>
 										</div>
 										<p>
-										
 										<div class="form-row">
 											<div class="form-group col-md-6">
 												<label>교수번호</label> <select id="memberNO" class="form-control" name="memberNO">
-												<c:forEach var="professorNO" items="${professorNOList}">
-												
-													<option value="${professorNO}">${professorNO}</option>
-												</c:forEach>
-												
+													<c:forEach var="professorNO" items="${professorNOList}">
+
+														<option value="${professorNO}">${professorNO}</option>
+													</c:forEach>
+
 												</select>
 											</div>
 										</div>
-										
+
 
 										<button class="btn mb-1 btn-primary btn-sm" onclick="return classInsert();">수업 등록</button>
 									</form>

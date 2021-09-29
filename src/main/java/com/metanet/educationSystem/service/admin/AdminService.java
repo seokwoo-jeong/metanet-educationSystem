@@ -35,5 +35,6 @@ public interface AdminService {
 	public void adminDeleteClass(String classNO) throws Exception;
 	public void professorInsert(ProfessorVO professorVO) throws Exception;
 	public List<String> getProfessorNOList() throws Exception;
+	public String getClassNO() throws Exception;
 	
 }

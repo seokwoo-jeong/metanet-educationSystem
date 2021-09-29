@@ -10,7 +10,12 @@
 	<div id="main-wrapper">
 		<jsp:include page="/incl/Header.jsp" />
 		<jsp:include page="/incl/Sidebar.jsp" />
-
+		<script>
+			var message = "${message}";
+			if (message != "") {
+				alert(message);
+			}
+		</script>
 		<div class="content-body">
 			<div class="container-fluid">
 				<div class="row">
