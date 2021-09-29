@@ -97,26 +97,24 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void adminDeleteClass(String classNO) throws Exception {
-
 		this.adminMapper.adminDeleteClass(classNO);
-
 	}
 
 	@Override
 	public void studentInsert(StudentVO studentVO) throws Exception {
 		this.adminMapper.studentInsert(studentVO);
-		
+
 	}
 
 	@Override
 	public void professorInsert(ProfessorVO professorVO) throws Exception {
 		this.adminMapper.professorInsert(professorVO);
-		
+
 	}
 
 	@Override
 	public List<String> getProfessorNOList() throws Exception {
-		
+
 		return this.adminMapper.getProfessorNOList();
 	}
 
@@ -125,6 +123,7 @@ public class AdminServiceImpl implements AdminService {
 		// TODO Auto-generated method stub
 		return this.adminMapper.getClassNO();
 	}
+
 	@Override
 	public HashMap<String, Object> getAdminInfo(String memberNO) {
 		return this.adminMapper.getAdminInfo(memberNO);
