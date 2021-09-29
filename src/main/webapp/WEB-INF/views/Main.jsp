@@ -46,7 +46,7 @@ function loginCheck(){
 
 		<div class="container-fluid">
 			<div class="row">
-			
+
 				<!-- 비 로그인시 프로필 -->
 				<c:if test="${empty member}">
 					<div class="col-lg-4 col-xl-3">
@@ -60,8 +60,7 @@ function loginCheck(){
 									</div>
 								</div>
 								<div class="media align-items-center mb-4">
-									<img class="mr-3" src="/resources/images/profile_sample.png" width="80" height="80" alt="">
-									로그인 후 이용 가능합니다.
+									<img class="mr-3" src="/resources/images/profile_sample.png" width="80" height="80" alt=""> 로그인 후 이용 가능합니다.
 									<div class="media-body">
 										<h3 class="mb-0">${member.memberName}</h3>
 										<p class="text-muted mb-0">${member.memberNO }</p>
@@ -305,25 +304,25 @@ function loginCheck(){
 												<tbody>
 													<tr>
 														<td>학생 등록하기</td>
-														<td><a href="/admin/studentInsert">
+														<td align = "right"><a href="/admin/studentInsert">
 																<button type="submit" class="btn mb-1 btn-primary ">이동</button>
 														</a></td>
 													</tr>
 													<tr>
 														<td>교수 등록하기</td>
-														<td><a href="/admin/professorInsert">
+														<td align = "right"><a href="/admin/professorInsert">
 																<button type="submit" class="btn mb-1 btn-primary ">이동</button>
 														</a></td>
 													</tr>
 													<tr>
 														<td>수업 등록하기</td>
-														<td><a href="/admin/classInsert">
+														<td align = "right"><a href="/admin/classInsert">
 																<button type="submit" class="btn mb-1 btn-primary ">이동</button>
 														</a></td>
 													</tr>
 													<tr>
 														<td>공지사항 등록하기</td>
-														<td><a href="/admin/noticeInsert">
+														<td align = "right"><a href="/admin/noticeInsert">
 																<button type="submit" class="btn mb-1 btn-primary ">이동</button>
 														</a></td>
 													</tr>

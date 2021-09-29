@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 
 <!-- Favicon icon -->
-<link rel="icon" type="image/png" sizes="16x16" href="resources/images/favicon.png">
+<link rel="icon" type="image/png" sizes="16x16" href="resources/images/LOGO2.png">
 <!-- Custom Stylesheet -->
 <link href="${pageContext.request.contextPath }/resources/css/style.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/plugins/chartist/css/chartist.min.css">
