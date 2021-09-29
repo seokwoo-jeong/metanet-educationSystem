@@ -10,7 +10,7 @@
 
 		<div class="brand-logo" style="background-color: rgb(150, 103, 243);">
 			<a href="/"> <b class="logo-abbr"><img src="${pageContext.request.contextPath }/resources/images/logo.png" alt=""> </b> <span class="brand-title"> <img
-					src="${pageContext.request.contextPath }/resources/images/meta2.png" width="200" height="50" alt="">
+					src="${pageContext.request.contextPath }/resources/images/LOGO4.png" width="200" height="50" alt="">
 			</span>
 			</a>
 		</div>
