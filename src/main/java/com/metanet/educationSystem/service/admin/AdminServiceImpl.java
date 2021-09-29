@@ -120,4 +120,10 @@ public class AdminServiceImpl implements AdminService {
 		return this.adminMapper.getProfessorNOList();
 	}
 
+	@Override
+	public String getClassNO() throws Exception {
+		// TODO Auto-generated method stub
+		return this.adminMapper.getClassNO();
+	}
+
 }

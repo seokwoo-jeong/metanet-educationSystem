@@ -13,7 +13,12 @@
 	<jsp:include page="/incl/Header.jsp" />
 	<jsp:include page="/incl/Sidebar.jsp" />
 <body>
-
+	<script>
+		var message = "${message}";
+		if (message != "") {
+			alert(message);
+		}
+	</script>
 
 
 	<div class="content-body">

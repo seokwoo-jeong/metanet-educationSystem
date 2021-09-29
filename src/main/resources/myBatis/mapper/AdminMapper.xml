@@ -58,6 +58,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<select id="checkClassNO" parameterType="String" resultType="String">
 		select memberNO from member where memberDistinct = '1' and memberNO = #{memberNO}
 	</select>
+	
+	<select id="getClassNO" resultType="string">
+		SELECT nvl(MAX(to_number(classNO)), 999) + 1 as classNO FROM class
+	</select>
 
 <!-- noticeInsert -->
 	<select id="getNoticeNO" resultType="string">
