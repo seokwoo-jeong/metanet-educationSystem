@@ -10,14 +10,19 @@
 	<div id="main-wrapper">
 		<jsp:include page="/incl/Header.jsp" />
 		<jsp:include page="/incl/Sidebar.jsp" />
-
+		<script>
+			var message = "${message}";
+			if (message != "") {
+				alert(message);
+			}
+		</script>
 		<div class="content-body">
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">공지사항</h4>
+								<h3>공지사항</h3>
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>

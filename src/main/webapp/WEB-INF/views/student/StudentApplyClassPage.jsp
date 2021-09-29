@@ -28,7 +28,7 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">수강신청리스트</h4>
+								<h3>개설 과목 조회</h3>
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>
@@ -75,7 +75,8 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="active-member">
-									<h4 class="card-title">책가방</h4>
+									<h3>내 수강 목록</h3>
+									<br>
 									<div class="table-responsive">
 										<table class="table table-xs mb-0">
 											<thead>
@@ -111,8 +112,8 @@
 											</tbody>
 											<tfoot>
 												<tr>
-													<td>현재 신청학점: ${studentCurrentCredit} 학점</td>
-													<td>총 학점: ${studentAllowCredit} 학점</td>
+													<td colspan="2">현재 신청학점: <font size="4em" color="black">${studentCurrentCredit} 학점</font></td>
+													<td colspan="3">총 학점: <font size="4em" color="black">${studentAllowCredit} 학점</font></td>
 												</tr>
 											</tfoot>
 										</table>

@@ -31,11 +31,12 @@ dependencies {
 	// Spring Security
 	implementation "org.springframework.boot:spring-boot-starter-security"
 	
-	//file upload
+	//file upload && download
 	implementation 'commons-io:commons-io:2.8.0'
 	implementation 'commons-fileupload:commons-fileupload:1.4'
 	
-
+	//ckeditor json use
+	implementation 'com.google.code.gson:gson:2.8.8'
 }	
 
 

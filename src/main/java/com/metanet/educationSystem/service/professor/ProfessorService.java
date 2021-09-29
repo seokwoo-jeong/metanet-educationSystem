@@ -21,6 +21,8 @@ public interface ProfessorService {
 	void inputStudentScore(ScoreVO scoreVO) throws Exception;
 
 	public List<ScoreVO> getstudentScore(String classNOO, String studentNO) throws Exception;
+
+	public HashMap<String, Object> getProfessorInfo(String memberNO);
 	
 	
 

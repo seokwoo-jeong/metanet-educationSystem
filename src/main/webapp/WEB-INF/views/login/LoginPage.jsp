@@ -41,7 +41,7 @@ window.onload = function() {
 									<div class="form-group">
 										<input type="password" class="form-control" placeholder="Password" name="memberPassword">
 									</div>
-									<button class="btn login-form__btn submit w-100" type="submit" onclick="doLogin();">Sign In</button>
+									<button class="btn login-form__btn submit w-100" type="submit">Sign In</button>
 								</form>
 								<p class="mt-5 login-form__footer" align="center" style="color:blue;">${requestScope.loginFailMsg}</p>
 							</div>
