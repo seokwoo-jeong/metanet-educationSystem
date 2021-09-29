@@ -1,10 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
 <head>
 <jsp:include page="/incl/DeepHead.jsp" />
 <title>NoticeDetail</title>
@@ -124,20 +122,17 @@ $(document).ready(function() {
 								<div class="read-content">
 									<div class="media pt-5">
 										<div class="media-body">
-											<h5 class="m-b-3">공지사항 ${param.no}번</h5>
-											<p class="m-b-2">${noticeVO.noticeDate}</p>
 											<form id="deleteNotice" method="post" action="/notice/delete">
 												<input type="hidden" id="noticeNO" name="noticeNO" value="${param.no}" /> <span class="float-right"><button class="btn btn-primary px-3 ml-4" onclick="deleteNotice()">삭제</button></span>
 											</form>
+											<form action="/notice" method="post">
+												<span class="float-right"><button class="btn btn-primary px-3 ml-4">목록</button></span>
+											</form>
+											<h3 class="m-0 text-primary" align="center">${noticeVO.noticeSubject}</h3>
+
 										</div>
 									</div>
 									<hr>
-									<div class="media mb-4 mt-1">
-										<div class="media-body">
-											<span class="float-right">${noticeVO.noticeDate}</span>
-											<h4 class="m-0 text-primary">${noticeVO.noticeSubject}</h4>
-										</div>
-									</div>
 									${noticeVO.noticeContent }
 									<hr>
 									<h6 class="p-t-15">
@@ -151,6 +146,7 @@ $(document).ready(function() {
 										</c:forEach>
 									</div>
 									<hr>
+
 								</div>
 								<div class="card-body">
 									<div class="media media-reply">
@@ -164,37 +160,17 @@ $(document).ready(function() {
 							<div class="card">
 								<div class="card-body">
 									<div class="form-group">
+										<h4 class="m-0 text-primary">댓글 입력</h4>
+										<br>
 										<c:if test="${empty member}">
-											<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="로그인이 필요한 기능입니다" readonly></input>
+											<input type="text" class="form-control" name="commentContent" id="commentContent" placeholder="로그인이 필요한 기능입니다" readonly></input>
 										</c:if>
 										<c:if test="${!empty member}">
-											<input type="text" class="form-control" name="commentContent" id="commentContent" cols="30" rows="2" placeholder="댓글을 입력해주세요" onkeydown="JavaScript:Enter_Check();"></input>
+											<input type="text" class="form-control" name="commentContent" id="commentContent" placeholder="댓글을 입력해주세요" onkeydown="JavaScript:Enter_Check();"></input>
 										</c:if>
 									</div>
-									<div class="d-flex align-items-center">
-										<ul class="mb-0 form-profile__icons">
-											<li class="d-inline-block">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-user"></i>
-												</button>
-											</li>
-											<li class="d-inline-block">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-paper-plane"></i>
-												</button>
-											</li>
-											<li class="d-inline-block">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-camera"></i>
-												</button>
-											</li>
-											<li class="d-inline-block">
-												<button class="btn btn-transparent p-0 mr-3">
-													<i class="fa fa-smile"></i>
-												</button>
-											</li>
-										</ul>
-										<button class="btn btn-primary px-3 ml-4" onclick=insertComment();>입력</button>
+									<div class="form-group">
+										<button class="btn btn-primary" onclick=insertComment();>입력</button>
 									</div>
 								</div>
 							</div>

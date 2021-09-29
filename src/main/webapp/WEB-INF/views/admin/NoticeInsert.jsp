@@ -22,8 +22,8 @@
 				<div class="col-lg-12">
 					<div class="card">
 						<div class="card-body">
-						<h4 class="card-title">공지사항 등록</h4>
-								<br>
+							<h4 class="card-title">공지사항 등록</h4>
+							<br>
 							<div class="form-validation">
 								<form action="/admin/noticeInsertCheck" id="noticeInsertCheck" method="post" enctype="multipart/form-data">
 
@@ -114,11 +114,15 @@
 		$(".result .msg").attr("style", "color:#000");
 		$("#submit").attr("disabled", "disabled");
 	});
-	
-	 CKEDITOR.replace('noticeContent'
-	                , {height: 500                                                  
-	                 });
-	
+	$(function() {
+		CKEDITOR
+				.replace(
+						'noticeContent',
+						{
+							filebrowserUploadUrl : '${pageContext.request.contextPath}/notice/imageUpload',
+							height : 500
+						});
+	});
 </script>
 
 </html>

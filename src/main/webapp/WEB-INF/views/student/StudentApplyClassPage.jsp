@@ -28,7 +28,7 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">수강신청리스트</h4>
+								<h4 class="card-title">수강 신청 리스트</h4>
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>

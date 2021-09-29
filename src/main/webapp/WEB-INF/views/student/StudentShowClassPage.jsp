@@ -21,7 +21,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="active-member">
-									<h4 class="card-title">책가방</h4>
+									<h4 class="card-title">내 수업 리스트</h4>
 									<div class="table-responsive">
 										<table class="table table-xs mb-0">
 											<thead>
