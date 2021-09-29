@@ -114,4 +114,9 @@ public class StudentServiceImpl implements StudentService{
 	public List<HashMap<String, Object>> getStudentScoreList(String memberNO) throws Exception {
 		return this.studentMapper.getStudentScoreList(memberNO);
 	}
+
+	@Override
+	public HashMap<String, Object> getStudentInfo(String memberNO) {
+		return this.studentMapper.getStudentInfo(memberNO);
+	}
 }

@@ -21,6 +21,7 @@ public class MemberVO implements UserDetails{
 	private String memberEmail;
 	private String memberPhoneNO;
 	private String memberDistinct; //parameter ��Ȯ�� ����...
+	private String memberMajor;
 	
 	//security fields
 	private Collection<GrantedAuthority> authorities;
