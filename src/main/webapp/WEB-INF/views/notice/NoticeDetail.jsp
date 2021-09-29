@@ -124,18 +124,19 @@ $(document).ready(function() {
 								<div class="read-content">
 									<div class="media pt-5">
 										<div class="media-body">
-											<h5 class="m-b-3">공지사항 ${param.no}번</h5>
-											<p class="m-b-2">${noticeVO.noticeDate}</p>
+										<h4 class="m-0 text-primary">${noticeVO.noticeSubject}</h4>
+											<c:if test="${member.memberDistinct eq 2}">
 											<form id="deleteNotice" method="post" action="/notice/delete">
 												<input type="hidden" id="noticeNO" name="noticeNO" value="${param.no}" /> <span class="float-right"><button class="btn btn-primary px-3 ml-4" onclick="deleteNotice()">삭제</button></span>
 											</form>
+											</c:if>
+											<span class="float-right"><a href="/notice"><button class="btn btn-primary px-3 ml-4">목록</button></a></span>
 										</div>
 									</div>
 									<hr>
 									<div class="media mb-4 mt-1">
 										<div class="media-body">
 											<span class="float-right">${noticeVO.noticeDate}</span>
-											<h4 class="m-0 text-primary">${noticeVO.noticeSubject}</h4>
 										</div>
 									</div>
 									${noticeVO.noticeContent }

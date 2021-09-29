@@ -120,4 +120,9 @@ public class AdminServiceImpl implements AdminService {
 		return this.adminMapper.getProfessorNOList();
 	}
 
+	@Override
+	public HashMap<String, Object> getAdminInfo(String memberNO) {
+		return this.adminMapper.getAdminInfo(memberNO);
+	}
+
 }

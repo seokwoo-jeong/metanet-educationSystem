@@ -118,6 +118,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where classNO = #{classNO}
 	</delete>
 
+<!-- MainPage -->
+<select id="getAdminInfo" parameterType="String" resultType="java.util.HashMap">
+	select * from admin where adminNO=#{memberNO}
+</select>
 
 
 </mapper>

@@ -39,6 +39,7 @@ public interface AdminMapper {
 	public void studentInsert(StudentVO studentVO) throws Exception;
 	public void professorInsert(ProfessorVO professorVO) throws Exception;
 	public List<String> getProfessorNOList() throws Exception;
+	public HashMap<String, Object> getAdminInfo(String memberNO);
 
 
 

@@ -73,4 +73,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE classNO=#{classNO} AND
 		memberNO= #{studentNO}
 	</select>
+	
+	<select id="getProfessorInfo" parameterType="String" resultType="java.util.HashMap">
+		select * from professor where professorNO=#{memberNO}
+	</select>
 </mapper>

@@ -53,5 +53,9 @@ public class ProfessorServiceImpl implements ProfessorService{
 		// TODO Auto-generated method stub
 		return professorMapper.getstudentScore(classNO, studentNO);
 	}
+	@Override
+	public HashMap<String, Object> getProfessorInfo(String memberNO) {
+		return professorMapper.getProfessorInfo(memberNO);
+	}
 
 }

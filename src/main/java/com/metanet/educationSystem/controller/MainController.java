@@ -26,7 +26,7 @@ public class MainController {
 
 	@Autowired
 	private ProfessorService professorService;
-	
+
 	@Autowired
 	private AdminService adminService;
 
@@ -38,13 +38,21 @@ public class MainController {
 		if (memberVO != null) {
 			switch (memberVO.getMemberDistinct()) {
 			case "0":
-				model.addAttribute("studentClassVOList", this.studentService.getStudentClassList(memberVO.getMemberNO()));
-				model.addAttribute("studentClassCnt", this.studentService.getStudentClassList(memberVO.getMemberNO()).size());
+				model.addAttribute("studentClassVOList",
+						this.studentService.getStudentClassList(memberVO.getMemberNO()));
+				model.addAttribute("studentClassCnt",
+						this.studentService.getStudentClassList(memberVO.getMemberNO()).size());
 				model.addAttribute("studentInfo", this.studentService.getStudentInfo(memberVO.getMemberNO()));
-				System.out.println(this.studentService.getStudentInfo(memberVO.getMemberNO()));
 				break;
 			case "1":
 				model.addAttribute("classVOList", professorService.professorGetClassList(memberVO.getMemberNO()));
+				model.addAttribute("professorClassCnt", this.professorService.professorGetClassList(memberVO.getMemberNO()).size());
+				model.addAttribute("professorInfo", this.professorService.getProfessorInfo(memberVO.getMemberNO()));
+				System.out.println(professorService.getProfessorInfo(memberVO.getMemberNO()));
+				break;
+			case "2":
+				model.addAttribute("adminInfo", this.adminService.getAdminInfo(memberVO.getMemberNO()));
+				System.out.println(adminService.getAdminInfo(memberVO.getMemberNO()));
 				break;
 			}
 		}

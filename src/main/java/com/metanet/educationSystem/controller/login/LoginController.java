@@ -3,15 +3,17 @@ package com.metanet.educationSystem.controller.login;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 @Controller
 public class LoginController {
     
+	@RequestMapping("/checkLoginModal")
+	public String checkLoginModal(HttpServletRequest request) {
+		return "/login/LoginModal";
+	}
 	
 	@RequestMapping("/checkLogin")
 	public String checkLogin(HttpServletRequest request) {

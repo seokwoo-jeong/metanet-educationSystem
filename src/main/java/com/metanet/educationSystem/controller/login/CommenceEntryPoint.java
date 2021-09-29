@@ -18,9 +18,8 @@ public class CommenceEntryPoint implements AuthenticationEntryPoint, Serializabl
 	public void commence(HttpServletRequest request, HttpServletResponse response,
 			AuthenticationException authException) throws IOException, ServletException {
 		System.out.println("401에러 핸들링"+authException);
-		request.setAttribute("errors", authException);
-
-        response.sendRedirect("/checkLogin?error=401");
+		request.setAttribute("error", "401");
+		request.getRequestDispatcher("/Main").forward(request, response);
 	}
 
 }
