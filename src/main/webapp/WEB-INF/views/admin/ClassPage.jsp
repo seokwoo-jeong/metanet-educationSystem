@@ -28,7 +28,7 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">수강신청리스트</h4>
+								<h4 class="card-title">전체 수업 목록</h4>
 								<div class="table-responsive">
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>
@@ -39,7 +39,7 @@
 												<th>전체인원</th>
 												<th>학점</th>
 												<th>교수이름</th>
-												<th>수강신청</th>
+												<th>강의삭제</th>
 											</tr>
 										</thead>
 										<tbody>
