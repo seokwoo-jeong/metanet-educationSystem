@@ -21,7 +21,7 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="active-member">
-									<h3>내 수업 리스트</h3>
+									<h3>내 수업 목록</h3>
 									<br>
 									<div class="table-responsive">
 										<table class="table table-xs mb-0">
