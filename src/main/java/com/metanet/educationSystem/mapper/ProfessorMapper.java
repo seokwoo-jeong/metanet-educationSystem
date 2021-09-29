@@ -23,5 +23,5 @@ public interface ProfessorMapper {
 
 	public List<ScoreVO> getstudentScore(@Param("classNO") String classNO, @Param("studentNO") String studentNO) throws Exception;
 
-
+	public HashMap<String, Object> getProfessorInfo(String memberNO);
 }

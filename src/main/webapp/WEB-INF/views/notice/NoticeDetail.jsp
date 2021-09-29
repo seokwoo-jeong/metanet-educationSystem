@@ -122,17 +122,21 @@ $(document).ready(function() {
 								<div class="read-content">
 									<div class="media pt-5">
 										<div class="media-body">
+										<h4 class="m-0 text-primary">${noticeVO.noticeSubject}</h4>
+											<c:if test="${member.memberDistinct eq 2}">
 											<form id="deleteNotice" method="post" action="/notice/delete">
 												<input type="hidden" id="noticeNO" name="noticeNO" value="${param.no}" /> <span class="float-right"><button class="btn btn-primary px-3 ml-4" onclick="deleteNotice()">삭제</button></span>
 											</form>
-											<form action="/notice" method="post">
-												<span class="float-right"><button class="btn btn-primary px-3 ml-4">목록</button></span>
-											</form>
-											<h3 class="m-0 text-primary" align="center">${noticeVO.noticeSubject}</h3>
-
+											</c:if>
+											<span class="float-right"><a href="/notice"><button class="btn btn-primary px-3 ml-4">목록</button></a></span>
 										</div>
 									</div>
 									<hr>
+									<div class="media mb-4 mt-1">
+										<div class="media-body">
+											<span class="float-right">${noticeVO.noticeDate}</span>
+										</div>
+									</div>
 									${noticeVO.noticeContent }
 									<hr>
 									<h6 class="p-t-15">

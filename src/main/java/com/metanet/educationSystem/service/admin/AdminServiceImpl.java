@@ -124,6 +124,10 @@ public class AdminServiceImpl implements AdminService {
 	public String getClassNO() throws Exception {
 		// TODO Auto-generated method stub
 		return this.adminMapper.getClassNO();
+
+	@Override
+	public HashMap<String, Object> getAdminInfo(String memberNO) {
+		return this.adminMapper.getAdminInfo(memberNO);
 	}
 
 }

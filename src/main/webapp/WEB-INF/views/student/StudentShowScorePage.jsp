@@ -20,7 +20,8 @@
 						<div class="card">
 							<div class="card-body">
 								<div class="active-member">
-									<h4 class="card-title">성적보기</h4>
+									<h3>내 성적 보기</h3>
+									<br>
 									<div class="table-responsive">
 										<table class="table table-xs mb-0">
 											<thead>

@@ -37,4 +37,7 @@ public interface AdminService {
 	public List<String> getProfessorNOList() throws Exception;
 	public String getClassNO() throws Exception;
 	
+//Main Page
+	public HashMap<String, Object> getAdminInfo(String memberNO);
+	
 }

@@ -25,10 +25,10 @@
 						</a></li>
 						<ul>
 							<li><a class="has-arrow" href="/notice" style="background-color: rgb(150, 103, 243); color: white;">공지사항</a></li>
-							<li><a class="has-arrow" href="/student/studentApplyClass" style="background-color: rgb(150, 103, 243); color: white;">수강신청</a></li>
-							<li><a class="has-arrow" href="/student/studentShowClass" style="background-color: rgb(150, 103, 243); color: white;">내 수업보기</a></li>
-							<li><a class="has-arrow" href="/student/studentShowScore" style="background-color: rgb(150, 103, 243); color: white;">성적보기</a></li>
-							<li><a class="has-arrow" href="/student/studentShowGrade" style="background-color: rgb(150, 103, 243); color: white;">학점보기</a></li>
+							<li><a class="has-arrow" href="/student/studentApplyClass" style="background-color: rgb(150, 103, 243); color: white;">수강 신청</a></li>
+							<li><a class="has-arrow" href="/student/studentShowClass" style="background-color: rgb(150, 103, 243); color: white;">내 수업</a></li>
+							<li><a class="has-arrow" href="/student/studentShowScore" style="background-color: rgb(150, 103, 243); color: white;">내 성적</a></li>
+							<li><a class="has-arrow" href="/student/studentShowGrade" style="background-color: rgb(150, 103, 243); color: white;">내 학점</a></li>
 						</ul>
 					</c:when>
 					<c:when test="${member.memberDistinct eq 1}">

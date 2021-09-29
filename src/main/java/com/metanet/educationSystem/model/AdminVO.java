@@ -15,4 +15,4 @@ public class AdminVO {
 		this.adminNO = null;
 		this.adminDepartment = null; 
 	}
-}
+} 
