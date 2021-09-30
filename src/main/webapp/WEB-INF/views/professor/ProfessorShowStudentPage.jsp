@@ -19,18 +19,18 @@
 					<div class="col-lg-12">
 						<div class="card">
 							<div class="card-body">
-								<h4 class="card-title">수강생조회</h4>
+								<h4 class="card-title">수강생 조회</h4>
 								<div class="table-responsive">
 									<table
 										class="table table-striped table-bordered zero-configuration">
 										<thead>
 											<tr>
-												<th>강좌번호</th>
-												<th>강좌이름</th>
-												<th>학생이름</th>
-												<th>학생no</th>
-												<th>학생email</th>
-												<th>학생phoneno</th>
+												<th>강좌 번호</th>
+												<th>강좌 이름</th>
+												<th>학생 이름</th>
+												<th>학생 번호</th>
+												<th>학생 이메일</th>
+												<th>학생 전화번호</th>
 											</tr>
 										</thead>
 										<tbody>

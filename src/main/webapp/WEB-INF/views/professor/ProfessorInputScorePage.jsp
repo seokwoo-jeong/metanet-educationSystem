@@ -28,7 +28,7 @@
 												String classNO = request.getParameter("classNO");
 												String memberNO = request.getParameter("memberNO");
 												%>
-												<label>학수번호</label> <input type="text" class="form-control" id="classNO" name="classNO" value="<%=classNO%>" readonly>
+												<label>강좌 번호</label> <input type="text" class="form-control" id="classNO" name="classNO" value="<%=classNO%>" readonly>
 											</div>
 											<div class="form-group col-md-6">
 												<label>학생 학번</label> <input type="text" class="form-control" id="memberNO" name="memberNO" value="<%=memberNO%>" readonly>

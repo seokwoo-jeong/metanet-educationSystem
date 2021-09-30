@@ -25,8 +25,8 @@
 									<table class="table table-striped table-bordered zero-configuration">
 										<thead>
 											<tr>
-												<th>강좌번호</th>
-												<th>강좌이름</th>
+												<th>강좌 번호</th>
+												<th>강좌 이름</th>
 											</tr>
 										</thead>
 										<tbody>
